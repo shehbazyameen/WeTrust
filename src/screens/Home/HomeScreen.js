@@ -19,8 +19,19 @@ const HomeScreen = ({navigation}) => {
       <Text style={{color:"#ffffff", fontSize:30,marginTop:42,}}>
         Solutions for 
       </Text>
-      <ScrollView>
-      <ButtonLarge  title='Attorneys' price="200"></ButtonLarge>
+      <ScrollView
+      showsVerticalScrollIndicator={false}
+      style={{ marginTop:42,paddingTop:12, flex:1}}>
+      <ButtonLarge style={{marginTop:42}}  title='Attorneys' price="200"></ButtonLarge>
+        <ButtonLarge style={{marginTop:42}}  title='Attorneys' price="200"></ButtonLarge>
+         <ButtonLarge style={{marginTop:42}}  title='Attorneys' price="200"></ButtonLarge>
+          <ButtonLarge style={{marginTop:42}}  title='Attorneys' price="200"></ButtonLarge>
+            <ButtonLarge style={{marginTop:42}}  title='Attorneys' price="200"></ButtonLarge>
+
+            <View style={{height:50}}></View>
+          
+
+        
       </ScrollView>
      
 
