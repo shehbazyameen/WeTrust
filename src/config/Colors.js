@@ -6,4 +6,7 @@ export const colors = {
   white: '#FFFFFF',
   btnColor1: '#AC872E',
   textColor1: '#00AEEF',
+
+  inputFieldBorderColor: '#E6E6E6',
+  inputFieldBorder: '#EBEBEB',
 };
