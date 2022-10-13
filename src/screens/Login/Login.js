@@ -8,6 +8,7 @@ import {labels} from '../../config/Lables';
 import SmallButton from '../../components/SmallButton';
 
 const Login = ({navigation}) => {
+  console.log("first")
   return (
     <View style={{flex: 1, backgroundColor: colors.screenColor}}>
       <Image
