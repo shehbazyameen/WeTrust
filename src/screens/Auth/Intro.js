@@ -29,7 +29,8 @@ const Intro = ({navigation}) => {
   const slides = [
     {
       key: 's1',
-      //   backgroundImage: Assets.cashBack,
+      backgroundImage: Assets.backImage,
+      backgroundImage2: Assets.Union,
       title: 'Cash Back!',
       description:
         'Lorem ipsum dolor sit amet, consectetur \n adipiscing elit, sed do eiusmod tempor incit \n ut labore et dolore magna aliqua. ',
@@ -52,11 +53,23 @@ const Intro = ({navigation}) => {
   ];
 
   const _renderItem = ({item}) => {
-    const data = item;
     return (
-      <View>
-        <Text>hhhh</Text>
-      </View>
+      <ImageBackground
+        // resizeMode="contain"
+        source={item.backgroundImage}
+        style={{flex: 1}}>
+        <View style={{flex: 1}}></View>
+
+        <Image
+          source={item.backgroundImage2}
+          resizeMode="cover"
+          style={{width: '110%',alignSelf:'center'}}
+        />
+
+        {/* <View style={{flex: 0.5, backgroundColor: 'red'}}>
+          <Text>hhhh</Text>
+        </View> */}
+      </ImageBackground>
     );
   };
 
