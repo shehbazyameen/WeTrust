@@ -10,8 +10,8 @@ const HomeScreen = ({navigation}) => {
   const {width, height} = Dimensions.get('window');
   return (
    
-    <ImageBackground resizeMode="contain"  style={{flex:1}} source={Assets?.homeCover} resizeMode="cover">
-    <View style={{flex:1,backgroundColor:"#191C4D",opacity:0.4,alignItems:"center"}}>
+    <ImageBackground  style={{flex:1}} source={Assets?.homeCover} resizeMode="cover">
+    <View style={{flex:1,backgroundColor:"#191C4D60",alignItems:"center"}}>
 
       <Image source={Assets?.logo}
       style={{marginTop:118}}
@@ -31,6 +31,7 @@ const HomeScreen = ({navigation}) => {
     </ImageBackground>
     
   );
+
 };
 
 export default HomeScreen;
