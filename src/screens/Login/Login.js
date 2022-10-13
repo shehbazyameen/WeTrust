@@ -7,7 +7,7 @@ import {Assets} from '../../assests';
 import {labels} from '../../config/Lables';
 import SmallButton from '../../components/SmallButton';
 
-const Login = () => {
+const Login = ({navigation}) => {
   return (
     <View style={{flex: 1, backgroundColor: colors.screenColor}}>
       <Image
@@ -52,7 +52,7 @@ const Login = () => {
         />
         <View style={{marginTop: 42}} />
 
-        <SmallButton title={labels.signIn} />
+        <SmallButton title={labels.signIn} onPress={()=>{navigation.replace("HomeStack",{screen:"HomeScreen"});}} />
       </View>
     </View>
   );

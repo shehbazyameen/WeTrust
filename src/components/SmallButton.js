@@ -9,10 +9,12 @@ import {
 import {colors} from '../config/Colors';
 const {width, height} = Dimensions.get('window');
 
-const SmallButton = ({title = '', backgroundColor}) => {
+const SmallButton = ({title = '', backgroundColor,onPress=()=>{}}) => {
   return (
     <>
-      <TouchableOpacity style={[styles.main]}>
+      <TouchableOpacity style={[styles.main]}
+        onPress={onPress}
+      >
         <Text style={[styles.text]}>{title}</Text>
       </TouchableOpacity>
     </>

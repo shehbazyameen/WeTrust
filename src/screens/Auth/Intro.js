@@ -23,7 +23,8 @@ const Intro = ({navigation}) => {
 
   const continueToWelcome = async () => {
     await AsyncStorage.setItem('intro', JSON.stringify(true));
-    navigation.replace("HomeStack",{screen:"HomeScreen"});
+    // navigation.replace("HomeStack",{screen:"HomeScreen"});
+     navigation.replace("Login");
   };
 
   const slides = [
