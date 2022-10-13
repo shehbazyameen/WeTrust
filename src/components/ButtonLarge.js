@@ -22,12 +22,14 @@ const ButtonLarge = ({title = '', price = false, backgroundColor}) => {
 
 const styles = StyleSheet.create({
   main: {
-    backgroundColor: 'red',
+    backgroundColor: '#AC872E',
+    opacity:1,
     height: width / 5,
     width: width / 2,
     borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop:42
   },
 });
 

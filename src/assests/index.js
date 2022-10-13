@@ -3,4 +3,6 @@ export const Assets = {
   logo: require('../assests/images/logo.png'),
   backImage: require('../assests/images/backImage.png'),
   Union: require('../assests/images/Union.png'),
+  homeCover:require('../assests/images/homeCover.png'),
+  logo:require('../assests/images/logo.png')
 };
