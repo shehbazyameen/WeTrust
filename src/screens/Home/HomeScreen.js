@@ -8,6 +8,7 @@ import { Assets } from '../../assests';
 
 const HomeScreen = ({navigation}) => {
   const {width, height} = Dimensions.get('window');
+  console.log("first")
   return (
    
     <ImageBackground  style={{flex:1}} source={Assets?.homeCover} resizeMode="cover">
