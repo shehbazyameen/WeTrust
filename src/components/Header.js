@@ -11,6 +11,7 @@ import {
 import {Header} from '@rneui/themed';
 import {colors} from '../config/Colors';
 import fonts from '../assests/fonts';
+import {Assets} from '../assests';
 const {width, height} = Dimensions.get('window');
 
 const CustomHeader = ({
@@ -31,6 +32,7 @@ const CustomHeader = ({
 }) => {
   return (
     <Header
+      backgroundImage={Assets.headerImage}
       barStyle={barStyle}
       statusBarProps={statusBarProps}
       containerStyle={[

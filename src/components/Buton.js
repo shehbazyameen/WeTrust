@@ -9,6 +9,7 @@ import {
 const {width, height} = Dimensions.get('window');
 
 const ButtonLarge = ({title = '', price = false, backgroundColor}) => {
+  console.log("0")
   return (
     <>
       <TouchableOpacity style={[styles.main]}>

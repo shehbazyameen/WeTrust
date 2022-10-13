@@ -31,12 +31,12 @@ export const InputFeild = ({
     <View
       style={[
         {
-          backgroundColor: 'lightgray',
-          padding: 6,
+          backgroundColor: colors.inputFieldBorderColor,
+          padding: 8,
           borderRadius: 6,
-          borderRightWidth: 0.5,
-          borderBottomWidth: 0.5,
-          borderColor: 'red',
+          borderRightWidth: 0.8,
+          borderBottomWidth: 0.8,
+          borderColor: colors.white,
         },
       ]}>
       <Input
