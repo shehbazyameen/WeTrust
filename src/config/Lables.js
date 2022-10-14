@@ -4,4 +4,5 @@ export const labels = {
   loginToYourAccount: 'Login to your account',
   signIn: 'Sign in',
   skip: 'Skip',
+  slideHowWork:"Slide to see how it works"
 };

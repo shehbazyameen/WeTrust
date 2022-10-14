@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   Dimensions,
+  Image,
 } from 'react-native';
 import {Assets} from '../../assests/index';
 import {colors} from '../../config/Colors';
@@ -51,16 +52,21 @@ const Intro = ({navigation}) => {
         source={item.backgroundImage}
         style={{paddingBottom: 0, height: height, width: width}}>
         <TouchableOpacity
-          style={{
-            position: 'absolute',
-            right: 0,
-            padding: 32,
-            paddingHorizontal: 12,
-          }}
+          style={styles.skipTouch}
           onPress={() => {
             continueToWelcome();
           }}>
           <Text style={styles.textskip}>{labels.skip}</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.slideTouch}
+          onPress={() => {
+            continueToWelcome();
+          }}>
+          <Text style={styles.textslide}>{labels.slideHowWork}</Text>
+          <View style={{width: 20}} />
+          <Image source={Assets.forwardArrow} />
         </TouchableOpacity>
       </ImageBackground>
     );
