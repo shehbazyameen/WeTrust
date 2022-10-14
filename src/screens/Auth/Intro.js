@@ -24,53 +24,30 @@ const Intro = ({navigation}) => {
   const continueToWelcome = async () => {
     await AsyncStorage.setItem('intro', JSON.stringify(true));
     // navigation.replace("HomeStack",{screen:"HomeScreen"});
-     navigation.replace("Login");
+    navigation.replace('Login');
   };
 
   const slides = [
     {
       key: 's1',
-      backgroundImage: Assets.backImage,
-      backgroundImage2: Assets.Union,
-      title: 'Cash Back!',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur \n adipiscing elit, sed do eiusmod tempor incit \n ut labore et dolore magna aliqua. ',
-      title2: 'Why',
+      backgroundImage: Assets.intro1,
     },
     {
       key: 's2',
-      //   backgroundImage: Assets.cashBack,
-      title: 'Cash Back!',
-      description: 'eiusmod tempor incididunt ut labore',
-      title2: 'Profiles',
+      backgroundImage: Assets.intro2,
     },
     {
       key: 's3',
-      //   backgroundImage: Assets.cashBack,
-      title: 'Cash Back!',
-      description: 'eiusmod tempor incididunt ut labore',
-      title2: 'Compliance',
+      backgroundImage: Assets.intro3,
     },
   ];
 
   const _renderItem = ({item}) => {
     return (
       <ImageBackground
-        // resizeMode="contain"
+        resizeMode="cover"
         source={item.backgroundImage}
-        style={{flex: 1}}>
-        <View style={{flex: 1}}></View>
-
-        <Image
-          source={item.backgroundImage2}
-          resizeMode="cover"
-          style={{width: '110%',alignSelf:'center'}}
-        />
-
-        {/* <View style={{flex: 0.5, backgroundColor: 'red'}}>
-          <Text>hhhh</Text>
-        </View> */}
-      </ImageBackground>
+        style={{flex: 1, paddingBottom: 50}}></ImageBackground>
     );
   };
 
@@ -99,22 +76,9 @@ const Intro = ({navigation}) => {
     return (
       <TouchableOpacity
         activeOpacity={0.7}
-        // style={[
-        //   styles.renderButtonSkip,
-        //   styles.backgroundColor(colors.primaryColor),
-        // ]}
         onPress={() => {
           continueToWelcome();
-        }}>
-        <Text
-        //   style={[
-        //     styles.LatoSemibold(colors.white, 14),
-        //     styles.textAlign('center'),
-        //   ]}
-        >
-          {labels.skip}
-        </Text>
-      </TouchableOpacity>
+        }}></TouchableOpacity>
     );
   };
   const _renderItemDone = () => {
@@ -124,21 +88,16 @@ const Intro = ({navigation}) => {
         activeOpacity={0.7}
         onPress={() => {
           continueToWelcome();
-        }}>
-        <Text
-        //   style={[
-        //     styles.LatoSemibold(colors.primaryColor, 14),
-        //     styles.textAlign('center'),
-        //   ]}
-        >
-          {'labels.done'}
-        </Text>
-      </TouchableOpacity>
+        }}></TouchableOpacity>
     );
   };
   return (
     <View style={{flex: 1}}>
-      <StatusBar barStyle="light-content" backgroundColor={colors.linear1} />
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor={'transparent'}
+        translucent={true}
+      />
       <ImageBackground
         resizeMode="contain"
         source={Assets.abstract}
@@ -146,8 +105,8 @@ const Intro = ({navigation}) => {
         <AppIntroSlider
           ref={refSwipe}
           renderItem={_renderItem}
-          //   activeDotStyle={[styles.backgroundColor(colors.dots)]}
-          //   dotStyle={[styles.backgroundColor(colors.white)]}
+          activeDotStyle={{backgroundColor: colors.btnColor1, marginTop: 40}}
+          dotStyle={{backgroundColor: colors.dots, marginTop: 40}}
           data={slides}
           renderNextButton={_renderNext}
           renderDoneButton={_renderItemDone}

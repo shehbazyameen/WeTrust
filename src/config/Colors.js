@@ -9,4 +9,5 @@ export const colors = {
 
   inputFieldBorderColor: '#E6E6E6',
   inputFieldBorder: '#EBEBEB',
+  dots: '#DCDCE4',
 };
