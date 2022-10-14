@@ -17,6 +17,44 @@ import {Assets} from '../../assests';
 const HomeScreen = ({navigation}) => {
   const {width, height} = Dimensions.get('window');
   const [activeColor, setActiveColor] = useState(false);
+  const [activeElementId,setActiveElementId]=useState('');
+  const data = [
+    {
+      id: 1,
+      name: 'Attorney',
+      price: 200,
+    },
+    {
+      id: 2,
+      name: 'Attorney',
+      price: 250,
+    },
+    {
+      id: 3,
+      name: 'Attorney',
+      price: 300,
+    },
+    {
+      id: 4,
+      name: 'Attorney',
+      price: 500,
+    },
+    {
+      id: 5,
+      name: 'Attorney',
+      price: 200,
+    },
+    {
+      id: 6,
+      name: 'Attorney',
+      price: 200,
+    },
+    {
+      id: 7,
+      name: 'Attorney',
+      price: 200,
+    },
+  ];
   return (
     <ImageBackground
       style={{flex: 1}}
@@ -35,50 +73,51 @@ const HomeScreen = ({navigation}) => {
             paddingTop: 12,
             height: '40%',
           }}>
-          <ButtonLarge
-            style={{marginTop: 42, backgroundColor: '#AC872E'}}
-            title="Attorneys"
-            price="200"></ButtonLarge>
-          <TouchableOpacity
-            onPress={() => {
-              setActiveColor(true);
-            }}
-            style={{
-              backgroundColor: activeColor ? 'blue' : '#AC872E',
-              opacity: 1,
-              height: width / 5,
-              width: width / 2,
-              borderRadius: 4,
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginTop: 42,
-            }}>
-            <Text style={{color: activeColor ? '#ffffff' : '#000000'}}>
-              Atorney
-            </Text>
-            {activeColor && (
-              <Text
-                style={{
-                  paddingTop: 12,
-                  color: activeColor ? '#ffffff' : '#000000',
-                }}>
-                $ 200
-              </Text>
-            )}
-          </TouchableOpacity>
-          <ButtonLarge
-            style={{marginTop: 42}}
-            title="Attorneys"
-            price="200"></ButtonLarge>
-          <ButtonLarge
-            style={{marginTop: 42}}
-            title="Attorneys"
-            price="200"></ButtonLarge>
-          <ButtonLarge
-            style={{marginTop: 42}}
-            title="Attorneys"
-            price="200"></ButtonLarge>
-
+             {
+             data.map((item,index)=>{
+              return (
+                <TouchableOpacity
+                  onPress={() => {
+                    setActiveColor(true);
+                    setActiveElementId(item?.id);
+                  }}
+                  style={{
+                    backgroundColor:
+                      activeColor && activeElementId == item?.id
+                        ? 'blue'
+                        : '#AC872E',
+                    opacity: 1,
+                    height: width / 5,
+                    width: width / 2,
+                    borderRadius: 4,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginTop: 42,
+                  }}>
+                  <Text
+                    style={{
+                      color:
+                        activeColor && activeElementId == item?.id
+                          ? '#ffffff'
+                          : '#000000',
+                    }}>
+                    {item?.name}
+                  </Text>
+                  {activeColor && (
+                    <Text
+                      style={{
+                        paddingTop: 12,
+                        color: activeColor ? '#ffffff' : '#000000',
+                      }}>
+                      ${item?.price}
+                    </Text>
+                  )}
+                </TouchableOpacity>
+              );
+             })
+            }
+          
+        
           <View style={{height: 50}}></View>
         </ScrollView>
       </View>
