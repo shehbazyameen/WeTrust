@@ -16,8 +16,6 @@ import {Assets} from '../../assests';
 import fonts from '../../assests/fonts';
 
 const HomeScreen = ({navigation}) => {
-  console.log('first');
-  console.log('first');
   const {width, height} = Dimensions.get('window');
   const [activeColor, setActiveColor] = useState(false);
   const [activeElementId, setActiveElementId] = useState('');
