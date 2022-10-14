@@ -1,0 +1,37 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assests/fonts/index.js",
+      "sha1": "df018d4989f2fccb8dcd19aa0e8b1e07d2e5757b"
+    },
+    {
+      "path": "src/assests/fonts/Lato-Bold.ttf",
+      "sha1": "542498221d97bee5bdbccf86ee8890bf8e8005c9"
+    },
+    {
+      "path": "src/assests/fonts/SitkaBanner.ttf",
+      "sha1": "97abe3634301d1fdf6d0475d7e876650faaed2e0"
+    },
+    {
+      "path": "src/assests/fonts/SitkaDisplay.ttf",
+      "sha1": "9045a0ae46560e2183a89217d5e96596eeb5c157"
+    },
+    {
+      "path": "src/assests/fonts/SitkaHeading.ttf",
+      "sha1": "ebd402baeebd29ccc8592c348a82334c3c9ab3f7"
+    },
+    {
+      "path": "src/assests/fonts/SitkaSmall.ttf",
+      "sha1": "c6567c212e5d4e56ecd841553fcfbbddd698865a"
+    },
+    {
+      "path": "src/assests/fonts/SitkaSubheading.ttf",
+      "sha1": "0ce9f340ee8bed9dcd0cca31567396d422a2e3c4"
+    },
+    {
+      "path": "src/assests/fonts/SitkaText.ttf",
+      "sha1": "8b75a38daaafb9bae31f4fe45a0258c51f631618"
+    }
+  ]
+}

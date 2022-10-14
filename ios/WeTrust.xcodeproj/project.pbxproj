@@ -14,6 +14,14 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-WeTrust-WeTrustTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-WeTrust-WeTrustTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		986ACF673D5947B18037C252 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03B09734A54E4F1CAF15F525 /* Lato-Bold.ttf */; };
+		C8D04B40C72B49C5B2554EE0 /* SitkaBanner.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0D1F7822CF7649BC99D4DD3C /* SitkaBanner.ttf */; };
+		724FC8C8107C4F0DA805F030 /* SitkaDisplay.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C88BF7AF7FCC40D7B273B2B5 /* SitkaDisplay.ttf */; };
+		2DF6849CBC364C52A15CFA68 /* SitkaHeading.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6661570D8D74730B63595C3 /* SitkaHeading.ttf */; };
+		E20EFD8A47DA4F1C85CB9594 /* SitkaSmall.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCE943DE24874266A0380AEB /* SitkaSmall.ttf */; };
+		DACA597C18B74ED2BAE4E281 /* SitkaSubheading.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C49FFB0E444CB4A3F45D /* SitkaSubheading.ttf */; };
+		69A0AEA44B3541DCA96E2673 /* SitkaText.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9598C08A3D064EA6A4220C16 /* SitkaText.ttf */; };
+		3EDDCD29CDAE4FC2B7269C92 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 2C83B063997344B0A9730084 /* index.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +52,14 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = WeTrust/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-WeTrust-WeTrustTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeTrust-WeTrustTests.release.xcconfig"; path = "Target Support Files/Pods-WeTrust-WeTrustTests/Pods-WeTrust-WeTrustTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		03B09734A54E4F1CAF15F525 /* Lato-Bold.ttf */ = {isa = PBXFileReference; name = "Lato-Bold.ttf"; path = "../src/assests/fonts/Lato-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0D1F7822CF7649BC99D4DD3C /* SitkaBanner.ttf */ = {isa = PBXFileReference; name = "SitkaBanner.ttf"; path = "../src/assests/fonts/SitkaBanner.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C88BF7AF7FCC40D7B273B2B5 /* SitkaDisplay.ttf */ = {isa = PBXFileReference; name = "SitkaDisplay.ttf"; path = "../src/assests/fonts/SitkaDisplay.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C6661570D8D74730B63595C3 /* SitkaHeading.ttf */ = {isa = PBXFileReference; name = "SitkaHeading.ttf"; path = "../src/assests/fonts/SitkaHeading.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FCE943DE24874266A0380AEB /* SitkaSmall.ttf */ = {isa = PBXFileReference; name = "SitkaSmall.ttf"; path = "../src/assests/fonts/SitkaSmall.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		55A9C49FFB0E444CB4A3F45D /* SitkaSubheading.ttf */ = {isa = PBXFileReference; name = "SitkaSubheading.ttf"; path = "../src/assests/fonts/SitkaSubheading.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9598C08A3D064EA6A4220C16 /* SitkaText.ttf */ = {isa = PBXFileReference; name = "SitkaText.ttf"; path = "../src/assests/fonts/SitkaText.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2C83B063997344B0A9730084 /* index.js */ = {isa = PBXFileReference; name = "index.js"; path = "../src/assests/fonts/index.js"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +138,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				E470FAD85CB74669917B234C /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +164,22 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		E470FAD85CB74669917B234C /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				03B09734A54E4F1CAF15F525 /* Lato-Bold.ttf */,
+				0D1F7822CF7649BC99D4DD3C /* SitkaBanner.ttf */,
+				C88BF7AF7FCC40D7B273B2B5 /* SitkaDisplay.ttf */,
+				C6661570D8D74730B63595C3 /* SitkaHeading.ttf */,
+				FCE943DE24874266A0380AEB /* SitkaSmall.ttf */,
+				55A9C49FFB0E444CB4A3F45D /* SitkaSubheading.ttf */,
+				9598C08A3D064EA6A4220C16 /* SitkaText.ttf */,
+				2C83B063997344B0A9730084 /* index.js */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +277,14 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				986ACF673D5947B18037C252 /* Lato-Bold.ttf in Resources */,
+				C8D04B40C72B49C5B2554EE0 /* SitkaBanner.ttf in Resources */,
+				724FC8C8107C4F0DA805F030 /* SitkaDisplay.ttf in Resources */,
+				2DF6849CBC364C52A15CFA68 /* SitkaHeading.ttf in Resources */,
+				E20EFD8A47DA4F1C85CB9594 /* SitkaSmall.ttf in Resources */,
+				DACA597C18B74ED2BAE4E281 /* SitkaSubheading.ttf in Resources */,
+				69A0AEA44B3541DCA96E2673 /* SitkaText.ttf in Resources */,
+				3EDDCD29CDAE4FC2B7269C92 /* index.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

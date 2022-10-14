@@ -8,6 +8,7 @@ const fonts = {
   SitkaSubheading:
     Platform.OS === 'ios' ? 'SitkaSubheading' : 'SitkaSubheading',
   SitkaDisplay: Platform.OS === 'ios' ? 'SitkaText' : 'SitkaText',
+
   LatoBold: Platform.OS === 'ios' ? '  Lato-Bold' : '  Lato-Bold',
 };
 

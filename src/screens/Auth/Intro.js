@@ -2,10 +2,10 @@ import React, {useState, useRef} from 'react';
 import {
   View,
   Text,
-  Image,
   StatusBar,
   TouchableOpacity,
   ImageBackground,
+  Dimensions,
 } from 'react-native';
 import {Assets} from '../../assests/index';
 import {colors} from '../../config/Colors';
@@ -13,6 +13,8 @@ import {labels} from '../../config/Lables';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import styles from './Styles';
+
+const {height, width} = Dimensions.get('window');
 
 const Intro = ({navigation}) => {
   // Declare state variables
@@ -45,15 +47,20 @@ const Intro = ({navigation}) => {
   const _renderItem = ({item}) => {
     return (
       <ImageBackground
-        resizeMode="cover"
+        resizeMode="stretch"
         source={item.backgroundImage}
-        style={{paddingBottom: 0, height: '100%', width: '100%'}}>
+        style={{paddingBottom: 0, height: height, width: width}}>
         <TouchableOpacity
-          style={{position: 'absolute', right: 0, padding: 32}}
+          style={{
+            position: 'absolute',
+            right: 0,
+            padding: 32,
+            paddingHorizontal: 12,
+          }}
           onPress={() => {
             continueToWelcome();
           }}>
-          <Text>Skip </Text>
+          <Text style={styles.textskip}>{labels.skip}</Text>
         </TouchableOpacity>
       </ImageBackground>
     );
@@ -104,16 +111,14 @@ const Intro = ({navigation}) => {
         <AppIntroSlider
           ref={refSwipe}
           renderItem={_renderItem}
-          activeDotStyle={{backgroundColor: colors.btnColor1, marginTop: 40}}
-          dotStyle={{backgroundColor: colors.dots, marginTop: 40}}
+          activeDotStyle={{backgroundColor: colors.btnColor1, marginTop: 14}}
+          dotStyle={{backgroundColor: colors.dots, marginTop: 14}}
           data={slides}
           renderNextButton={_renderNext}
           renderDoneButton={_renderItemDone}
           renderSkipButton={_renderItemSkip}
           showSkipButton={true}
           dotClickEnabled={true}
-          //   onSlideChange={index => setIndex(index)}
-          // onDone={_onDone}
         />
       </ImageBackground>
     </View>
