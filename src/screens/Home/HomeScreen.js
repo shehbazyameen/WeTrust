@@ -13,6 +13,7 @@ import Styles from './Styles';
 import ButtonLarge from '../../components/ButtonLarge';
 import CustomHeader from '../../components/Header';
 import {Assets} from '../../assests';
+import fonts from '../../assests/fonts';
 
 const HomeScreen = ({navigation}) => {
   console.log("first")
@@ -60,14 +61,20 @@ const HomeScreen = ({navigation}) => {
       <View
         style={{flex: 1, backgroundColor: '#191C4D60', alignItems: 'center'}}>
         <Image source={Assets?.logo} style={{marginTop: 118}}></Image>
-        <Text style={{color: '#ffffff', fontSize: 30, marginTop: 42}}>
+        <Text
+          style={{
+            color: '#ffffff',
+            fontFamily: fonts.SitkaDisplay,
+            fontSize: 30,
+            marginTop: 42,
+          }}>
           Solutions for
         </Text>
         <View style={{height: height / 2}}>
           <ScrollView
             showsVerticalScrollIndicator={false}
             style={{
-              marginTop: 30,
+              marginTop: 25,
               paddingTop: 12,
             }}>
             {data.map((item, index) => {
@@ -96,6 +103,8 @@ const HomeScreen = ({navigation}) => {
                         activeColor && activeElementId == item?.id
                           ? '#ffffff'
                           : '#ffffff',
+                      fontSize: 20,
+                      fontFamily: fonts.SitkaDisplay,
                     }}>
                     {item?.name}
                   </Text>
@@ -117,6 +126,9 @@ const HomeScreen = ({navigation}) => {
         </View>
         {activeElementId !== '' && (
           <TouchableOpacity
+            onPress={() =>{navigation.navigate("HomeStack",{
+              screen:"DocumentUpload"
+            })}}
             style={{
               backgroundColor: '#AC872E',
               opacity: 1,
@@ -127,10 +139,16 @@ const HomeScreen = ({navigation}) => {
               justifyContent: 'center',
               marginTop: 32,
             }}>
-            <Text style={{color: '#ffffff'}}>Continue</Text>
+            <Text
+              style={{
+                color: '#ffffff',
+                fontFamily: fonts.SitkaDisplay,
+                fontSize: 14,
+              }}>
+              Continue
+            </Text>
           </TouchableOpacity>
         )}
-      
       </View>
     </ImageBackground>
   );

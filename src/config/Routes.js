@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Splash, HomeScreen, Intro, Login} from '../screens';
+import {Splash, HomeScreen, Intro, Login,DocumentUpload} from '../screens';
 const AuthStack = createNativeStackNavigator();
 const AppStack = createNativeStackNavigator();
 const RootStack = createNativeStackNavigator();
@@ -13,6 +13,11 @@ const HomeStack = ({props}) => {
         options={{headerShown: false}}
         name="HomeScreen"
         component={HomeScreen}
+      />
+      <AppStack.Screen
+        options={{headerShown: false}}
+        name="DocumentUpload"
+        component={DocumentUpload}
       />
     </AppStack.Navigator>
   );
