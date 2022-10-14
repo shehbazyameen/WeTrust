@@ -1,6 +1,7 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import styles from './Styles';
+import {Assets} from '../../assests';
 
 const Splash = ({navigation}) => {
   setTimeout(() => {
@@ -9,12 +10,7 @@ const Splash = ({navigation}) => {
 
   return (
     <View style={[styles.Container]}>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate('HomeStack');
-        }}>
-        <Text>Splash</Text>
-      </TouchableOpacity>
+      <Image source={Assets.splashLogo} />
     </View>
   );
 };
