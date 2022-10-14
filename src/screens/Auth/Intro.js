@@ -47,7 +47,11 @@ const Intro = ({navigation}) => {
       <ImageBackground
         resizeMode="cover"
         source={item.backgroundImage}
-        style={{flex: 1, paddingBottom: 50}}></ImageBackground>
+        style={{paddingBottom: 0, height: '100%', width: '100%'}}>
+        <TouchableOpacity style={{position: 'absolute', right: 0, padding: 32}}>
+          <Text>Skip </Text>
+        </TouchableOpacity>
+      </ImageBackground>
     );
   };
 
@@ -59,16 +63,7 @@ const Intro = ({navigation}) => {
         onPress={() => {
           refSwipe.current.goToSlide(index + 1);
           setIndex(index + 1);
-        }}>
-        <Text
-        //   style={[
-        //     styles.LatoSemibold(colors.primaryColor, 14),
-        //     styles.textAlign('center'),
-        //   ]}
-        >
-          {labels.nextCapital}
-        </Text>
-      </TouchableOpacity>
+        }}></TouchableOpacity>
     );
   };
 
@@ -113,7 +108,6 @@ const Intro = ({navigation}) => {
           renderSkipButton={_renderItemSkip}
           showSkipButton={true}
           dotClickEnabled={true}
-
           //   onSlideChange={index => setIndex(index)}
           // onDone={_onDone}
         />
