@@ -15,43 +15,40 @@ import CustomHeader from '../../components/Header';
 import {Assets} from '../../assests';
 
 const HomeScreen = ({navigation}) => {
+  console.log("first")
+  console.log('first');
   const {width, height} = Dimensions.get('window');
   const [activeColor, setActiveColor] = useState(false);
   const [activeElementId,setActiveElementId]=useState('');
   const data = [
     {
       id: 1,
-      name: 'Attorney',
+      name: 'ATTORNEYS',
       price: 200,
     },
     {
       id: 2,
-      name: 'Attorney',
+      name: 'CAR DEALERSHIP',
       price: 250,
     },
     {
       id: 3,
-      name: 'Attorney',
+      name: 'REAL ESTATE',
       price: 300,
     },
     {
       id: 4,
-      name: 'Attorney',
+      name: 'AUTOMOBILE',
       price: 500,
     },
     {
       id: 5,
-      name: 'Attorney',
+      name: 'INDIVIDUAL',
       price: 200,
     },
     {
       id: 6,
-      name: 'Attorney',
-      price: 200,
-    },
-    {
-      id: 7,
-      name: 'Attorney',
+      name: 'BUSINESS',
       price: 200,
     },
   ];
@@ -66,15 +63,14 @@ const HomeScreen = ({navigation}) => {
         <Text style={{color: '#ffffff', fontSize: 30, marginTop: 42}}>
           Solutions for
         </Text>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          style={{
-            marginTop: 42,
-            paddingTop: 12,
-            height: '40%',
-          }}>
-             {
-             data.map((item,index)=>{
+        <View style={{height: height / 2}}>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            style={{
+              marginTop: 42,
+              paddingTop: 12,
+            }}>
+            {data.map((item, index) => {
               return (
                 <TouchableOpacity
                   onPress={() => {
@@ -84,7 +80,7 @@ const HomeScreen = ({navigation}) => {
                   style={{
                     backgroundColor:
                       activeColor && activeElementId == item?.id
-                        ? 'blue'
+                        ? '#191C4D'
                         : '#AC872E',
                     opacity: 1,
                     height: width / 5,
@@ -99,11 +95,11 @@ const HomeScreen = ({navigation}) => {
                       color:
                         activeColor && activeElementId == item?.id
                           ? '#ffffff'
-                          : '#000000',
+                          : '#ffffff',
                     }}>
                     {item?.name}
                   </Text>
-                  {activeColor && (
+                  {activeColor && activeElementId == item?.id && (
                     <Text
                       style={{
                         paddingTop: 12,
@@ -114,12 +110,27 @@ const HomeScreen = ({navigation}) => {
                   )}
                 </TouchableOpacity>
               );
-             })
-            }
-          
-        
-          <View style={{height: 50}}></View>
-        </ScrollView>
+            })}
+
+            <View style={{height: 50}}></View>
+          </ScrollView>
+        </View>
+        {activeElementId !== '' && (
+          <TouchableOpacity
+            style={{
+              backgroundColor: '#AC872E',
+              opacity: 1,
+              height: width / 8,
+              width: width / 3,
+              borderRadius: 4,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginTop: 32,
+            }}>
+            <Text style={{color: '#ffffff'}}>Continue</Text>
+          </TouchableOpacity>
+        )}
+      
       </View>
     </ImageBackground>
   );
