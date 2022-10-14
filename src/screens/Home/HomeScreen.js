@@ -67,7 +67,7 @@ const HomeScreen = ({navigation}) => {
           <ScrollView
             showsVerticalScrollIndicator={false}
             style={{
-              marginTop: 42,
+              marginTop: 30,
               paddingTop: 12,
             }}>
             {data.map((item, index) => {
@@ -112,7 +112,7 @@ const HomeScreen = ({navigation}) => {
               );
             })}
 
-            <View style={{height: 50}}></View>
+            <View style={{height: 30}}></View>
           </ScrollView>
         </View>
         {activeElementId !== '' && (
