@@ -23,7 +23,7 @@ const Intro = ({navigation}) => {
 
   const continueToWelcome = async () => {
     await AsyncStorage.setItem('intro', JSON.stringify(true));
-    // navigation.replace("HomeStack",{screen:"HomeScreen"});
+    // navigation.replace('HomeStack', {screen: 'HomeScreen'});
     navigation.replace('Login');
   };
 
@@ -48,7 +48,11 @@ const Intro = ({navigation}) => {
         resizeMode="cover"
         source={item.backgroundImage}
         style={{paddingBottom: 0, height: '100%', width: '100%'}}>
-        <TouchableOpacity style={{position: 'absolute', right: 0, padding: 32}}>
+        <TouchableOpacity
+          style={{position: 'absolute', right: 0, padding: 32}}
+          onPress={() => {
+            continueToWelcome();
+          }}>
           <Text>Skip </Text>
         </TouchableOpacity>
       </ImageBackground>
