@@ -14,14 +14,19 @@ const DocumentUpload = () => {
             width: '100%',
             marginTop: -220,
             position: 'absolute',
-            right: 18,
+            right: 8,
             // backgroundColor: 'red',
           }}
           source={Assets.headerImage}
         />
+        <TouchableOpacity style={{}}>
+          <Image
+            style={{position: 'absolute', top: 90, marginLeft: 30}}
+            source={Assets.forwardArrow}></Image>
+        </TouchableOpacity>
       </View>
-<View style={{height:180}}></View>
-      <View style={{alignItems:"center",justifyContent:"center"}}>
+      <View style={{height: 180}}></View>
+      <View style={{alignItems: 'center', justifyContent: 'center'}}>
         <TouchableOpacity>
           <Image source={Assets.docUpload} />
         </TouchableOpacity>
