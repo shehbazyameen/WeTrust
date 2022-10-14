@@ -11,4 +11,7 @@ export const Assets = {
   loginLogo: require('../assests/images/loginLogo.png'),
   splashLogo: require('../assests/images/splashLogo.png'),
   forwardArrow: require('../assests/images/forwardArrow.png'),
+  docUpload: require('../assests/images/docUpload1.png'),
+  docUploadActive: require('../assests/images/docUploadActive1.png'),
+  homeLogo: require('../assests/images/homeLogo1.png'),
 };
