@@ -16,11 +16,11 @@ import {Assets} from '../../assests';
 import fonts from '../../assests/fonts';
 
 const HomeScreen = ({navigation}) => {
-  console.log("first")
+  console.log('first');
   console.log('first');
   const {width, height} = Dimensions.get('window');
   const [activeColor, setActiveColor] = useState(false);
-  const [activeElementId,setActiveElementId]=useState('');
+  const [activeElementId, setActiveElementId] = useState('');
   const data = [
     {
       id: 1,
@@ -59,8 +59,8 @@ const HomeScreen = ({navigation}) => {
       source={Assets?.homeCover}
       resizeMode="cover">
       <View
-        style={{flex: 1, backgroundColor: '#191C4D60', alignItems: 'center'}}>
-        <Image source={Assets?.logo} style={{marginTop: 118}}></Image>
+        style={{flex: 1, backgroundColor: '#191C4D80', alignItems: 'center'}}>
+        <Image source={Assets?.homeLogo} style={{marginTop: 118}}></Image>
         <Text
           style={{
             color: '#ffffff',
@@ -126,9 +126,11 @@ const HomeScreen = ({navigation}) => {
         </View>
         {activeElementId !== '' && (
           <TouchableOpacity
-            onPress={() =>{navigation.navigate("HomeStack",{
-              screen:"DocumentUpload"
-            })}}
+            onPress={() => {
+              navigation.navigate('HomeStack', {
+                screen: 'DocumentUpload',
+              });
+            }}
             style={{
               backgroundColor: '#AC872E',
               opacity: 1,
