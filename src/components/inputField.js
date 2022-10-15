@@ -1,7 +1,8 @@
 import React from 'react';
-import {StyleSheet, Image, TouchableOpacity, Text, View} from 'react-native';
+import {StyleSheet, Image, TouchableOpacity, View} from 'react-native';
 import {colors} from '../config/Colors';
 import {Input} from '@rneui/themed';
+import fonts from '../assests/fonts';
 
 export const InputFeild = ({
   value = '',
@@ -32,7 +33,7 @@ export const InputFeild = ({
       style={[
         {
           backgroundColor: colors.inputFieldBorderColor,
-          padding: 8,
+          padding: 4,
           borderRadius: 6,
           borderRightWidth: 0.8,
           borderBottomWidth: 0.8,
@@ -52,7 +53,6 @@ export const InputFeild = ({
               source={leftIcon}
               resizeMode="contain"
             />
-            <Text>hi</Text>
           </>
         }
         rightIcon={
@@ -64,8 +64,6 @@ export const InputFeild = ({
               source={rightIcon}
               resizeMode={'contain'}
             />
-
-            <Text>hi</Text>
           </TouchableOpacity>
         }
         inputContainerStyle={[
@@ -90,7 +88,7 @@ export const InputFeild = ({
           },
         ]}
         inputStyle={[
-          // styles.LatoRegular(colors.black, textSize),
+          styles.textInput,
           // leftIcon && styles.mL(22),
           {marginLeft: 12},
         ]}
@@ -107,7 +105,12 @@ export const InputFeild = ({
 const styles = StyleSheet.create({
   searchIconInInputField: {
     position: 'absolute',
-    left: 8,
+    // left: 8,
+  },
+  textInput: {
+    fontFamily: fonts.SitkaDisplay,
+    fontSize: 14,
+    color: colors.primaryBlueOpacity50,
   },
   inputFeildStyle: {
     paddingHorizontal: 22,

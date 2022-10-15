@@ -14,4 +14,11 @@ export const Assets = {
   docUpload: require('../assests/images/docUpload1.png'),
   docUploadActive: require('../assests/images/docUploadActive1.png'),
   homeLogo: require('../assests/images/homeLogo1.png'),
+
+  user: require('../assests/images/user.png'),
+  Password: require('../assests/images/Password.png'),
+
+  twitter: require('../assests/images/twiter.png'),
+  facebook: require('../assests/images/facebook.png'),
+  google: require('../assests/images/google.png'),
 };

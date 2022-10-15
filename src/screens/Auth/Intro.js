@@ -60,6 +60,7 @@ const Intro = ({navigation}) => {
         </TouchableOpacity>
 
         <TouchableOpacity
+          activeOpacity={0.7}
           style={styles.slideTouch}
           onPress={() => {
             continueToWelcome();
