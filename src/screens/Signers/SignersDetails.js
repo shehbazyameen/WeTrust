@@ -4,10 +4,8 @@ import {colors} from '../../config/Colors';
 import {Assets} from '../../assests';
 import fonts from '../../assests/fonts';
 
-const Signers = ({navigation}) => {
-  const [progress, setProgres] = useState(0);
-  const [showProgress, setShowProgress] = useState(false);
-  const {width, height} = Dimensions.get('window');
+const SignersDetails = () => {
+    const {width, height} = Dimensions.get('window');
   return (
     <View style={{flex: 1, backgroundColor: colors.screenColor}}>
       <View>
@@ -35,7 +33,7 @@ const Signers = ({navigation}) => {
             fontSize: 24,
             color: '#191C4C',
           }}>
-          Select a Signers
+          Witness Details
         </Text>
 
         <TouchableOpacity
@@ -82,9 +80,7 @@ const Signers = ({navigation}) => {
           </Text>
         </TouchableOpacity>
         <View>
-          <TouchableOpacity style={{flexDirection: 'row', marginTop: 110}}
-          onPress={()=>navigation.navigate("SignersDetails")}
-          >
+          <TouchableOpacity style={{flexDirection: 'row', marginTop: 110}}>
             <Text style={{color: '#191C4D'}}>Click here to </Text>
             <Text style={{color: '#AC872E', textDecorationLine: 'underline'}}>
               Skip
@@ -93,7 +89,7 @@ const Signers = ({navigation}) => {
         </View>
       </View>
     </View>
-  );
-};
+  )
+}
 
-export default Signers;
+export default SignersDetails
