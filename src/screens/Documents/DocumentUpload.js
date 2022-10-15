@@ -6,8 +6,8 @@ import fonts from '../../assests/fonts';
 import * as Progress from 'react-native-progress';
 import DocumentPicker from 'react-native-document-picker';
 
-const DocumentUpload = () => {
-   const [progress, setProgres] = useState(0.1);
+const DocumentUpload = ({navigation}) => {
+   const [progress, setProgres] = useState(0);
    const [showProgress,setShowProgress]=useState(false)
    const selectDocument = async () => {
     setShowProgress(false)
@@ -129,6 +129,7 @@ const DocumentUpload = () => {
         <View>
           {showProgress && (
             <TouchableOpacity
+            onPress={()=>navigation.navigate("HomeStack",{screen:"Signers"})}
               style={{backgroundColor: '#AC872E', borderRadius: 6}}>
               <Text
                 style={{
