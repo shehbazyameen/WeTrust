@@ -69,7 +69,7 @@ const HomeScreen = ({navigation}) => {
           }}>
           Solutions for
         </Text>
-        <View style={{height: height / 1.7}}>
+        <View style={{height: height / 2}}>
           <ScrollView
             showsVerticalScrollIndicator={false}
             style={{
