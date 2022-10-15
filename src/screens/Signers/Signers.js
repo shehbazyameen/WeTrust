@@ -84,10 +84,18 @@ const Signers = () => {
           </Text>
         </TouchableOpacity>
         <View>
-          <Text>Click here to</Text>
-          <Text>Click 
+        <TouchableOpacity style={{flexDirection:"row",marginTop:110}}>
+        <Text
+            style={{color:"#191C4D"}}
+          >Click here to </Text>
+          <Text
+            style={{color:"#AC872E",textDecorationLine:"underline"}}
+          >Skip
             
           </Text>
+
+        </TouchableOpacity>
+        
         </View>
       </View>
     </View>
