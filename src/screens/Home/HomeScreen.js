@@ -16,8 +16,6 @@ import {Assets} from '../../assests';
 import fonts from '../../assests/fonts';
 
 const HomeScreen = ({navigation}) => {
-  console.log('first');
-  console.log('first');
   const {width, height} = Dimensions.get('window');
   const [activeColor, setActiveColor] = useState(false);
   const [activeElementId, setActiveElementId] = useState('');
@@ -60,17 +58,18 @@ const HomeScreen = ({navigation}) => {
       resizeMode="cover">
       <View
         style={{flex: 1, backgroundColor: '#191C4D80', alignItems: 'center'}}>
-        <Image source={Assets?.homeLogo} style={{marginTop: 118}}></Image>
+          
+        <Image source={Assets?.homeLogo} style={{marginTop: 100}}></Image>
         <Text
           style={{
             color: '#ffffff',
             fontFamily: fonts.SitkaDisplay,
             fontSize: 30,
-            marginTop: 42,
+            marginTop: 32,
           }}>
           Solutions for
         </Text>
-        <View style={{height: height / 2}}>
+        <View style={{height: height / 1.7}}>
           <ScrollView
             showsVerticalScrollIndicator={false}
             style={{
@@ -139,7 +138,8 @@ const HomeScreen = ({navigation}) => {
               borderRadius: 4,
               alignItems: 'center',
               justifyContent: 'center',
-              marginTop: 32,
+              marginVertical:10,
+              
             }}>
             <Text
               style={{
