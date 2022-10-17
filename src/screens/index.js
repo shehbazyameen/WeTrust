@@ -15,4 +15,5 @@ export {
   DocumentUpload,
   Signers,
   SignersDetails,
+  Signup,
 };

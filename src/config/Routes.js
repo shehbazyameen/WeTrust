@@ -38,11 +38,6 @@ const HomeStack = ({props}) => {
         name="SignersDetails"
         component={SignersDetails}
       />
-      <AppStack.Screen
-        options={{headerShown: false}}
-        name="Signup"
-        component={Signup}
-      />
     </AppStack.Navigator>
   );
 };
@@ -65,6 +60,11 @@ const AuthenticationStack = () => {
         options={{headerShown: false}}
         name="Login"
         component={Login}
+      />
+      <AppStack.Screen
+        options={{headerShown: false}}
+        name="Signup"
+        component={Signup}
       />
     </AuthStack.Navigator>
   );
