@@ -1,10 +1,18 @@
-import {View, Text, Image, TouchableOpacity, Dimensions} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+  ScrollView,
+} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {colors} from '../../config/Colors';
 import {Assets} from '../../assests';
 import fonts from '../../assests/fonts';
+import {InputFeild} from '../../components/inputField';
 
-const SignersDetails = () => {
+const SignersDetails = ({navigation}) => {
   const {width, height} = Dimensions.get('window');
   return (
     <View style={{flex: 1, backgroundColor: colors.screenColor}}>
@@ -26,17 +34,22 @@ const SignersDetails = () => {
         </TouchableOpacity>
       </View>
       <View style={{height: height / 5}}></View>
-      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+      <View
+        style={{
+          // justifyContent: 'center',
+          // alignItems: 'center',
+          paddingHorizontal: 50,
+        }}>
         <Text
           style={{
             fontFamily: fonts.SitkaDisplay,
+            textAlign: 'center',
             fontSize: 24,
             color: '#191C4C',
           }}>
           Witness Details
         </Text>
-
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => {}}
           style={{
             backgroundColor: '#A5822C',
@@ -78,15 +91,98 @@ const SignersDetails = () => {
             }}>
             WITNESS
           </Text>
-        </TouchableOpacity>
-        <View>
-          <TouchableOpacity style={{flexDirection: 'row', marginTop: 110}}>
-            <Text style={{color: '#191C4D'}}>Click here to </Text>
-            <Text style={{color: '#AC872E', textDecorationLine: 'underline'}}>
-              Skip
-            </Text>
-          </TouchableOpacity>
-        </View>
+        </TouchableOpacity> */}
+        <ScrollView>
+          <View
+            style={{
+              height: 50,
+            }}
+          />
+          <InputFeild
+            // refValueCurrent={refenterpassword}
+            returnKeyType={'next'}
+            // imageInputField
+            placeholder={'First Name'}
+            // leftIcon={Assets.Password}
+            rightIcon={Assets.user}
+            // value={email}
+            // onChange={e => setEmail(e)}
+          />
+          <View
+            style={{
+              height: 20,
+            }}
+          />
+          <InputFeild
+            // refValueCurrent={refenterpassword}
+            returnKeyType={'next'}
+            // imageInputField
+            placeholder={'Last Name'}
+            // leftIcon={Assets.Password}
+            rightIcon={Assets.user}
+            // value={email}
+            // onChange={e => setEmail(e)}
+          />
+          <View
+            style={{
+              height: 20,
+            }}
+          />
+          <InputFeild
+            // refValueCurrent={refenterpassword}
+            returnKeyType={'next'}
+            // imageInputField
+            placeholder={'Email'}
+            // leftIcon={Assets.Password}
+            rightIcon={Assets.Password}
+            // value={email}
+            // onChange={e => setEmail(e)}
+          />
+          <View
+            style={{
+              height: 20,
+            }}
+          />
+
+          <InputFeild
+            // refValueCurrent={refenterpassword}
+            returnKeyType={'next'}
+            // imageInputField
+            placeholder={'Phone'}
+            // leftIcon={Assets.Password}
+            rightIcon={Assets.user}
+            // value={email}
+            // onChange={e => setEmail(e)}
+          />
+          <View>
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('HomeStack', {screen: 'Signers'})
+              }
+              style={{
+                backgroundColor: '#AC872E',
+                borderRadius: 6,
+                marginHorizontal: 40,
+                marginVertical: 40,
+                justifyContent: 'center',
+                alignItems: 'center',
+                paddingHorizontal: 40,
+                paddingVertical: 12,
+              }}>
+              <Text
+                style={{
+                  // marginHorizontal: 40,
+                  color: '#ffffff',
+                  // marginVertical: 12,
+                  fontFamily: fonts.SitkaDisplay,
+                  fontWeight: 'bold',
+                  fontSize: 14,
+                }}>
+                Get Started
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
       </View>
     </View>
   );
