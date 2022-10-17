@@ -21,16 +21,16 @@ const Login = ({navigation}) => {
       behavior={Platform.OS === 'ios' ? 'padding' : null}
       style={{flex: 1, backgroundColor: colors.screenColor}}>
       <View style={{flex: 1, backgroundColor: colors.screenColor}}>
-        <Image
-          resizeMode="cover"
-          style={{
-            width: '100%',
-            marginTop: -220,
-            position: 'absolute',
-            right: 8,
-          }}
-          source={Assets.headerImage}
-        />
+        <View>
+          <Image
+            resizeMode="cover"
+            style={{
+              width: '100%',
+              position: 'absolute',
+            }}
+            source={Assets.headerImage}
+          />
+        </View>
 
         <View
           style={{

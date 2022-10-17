@@ -21,20 +21,35 @@ const Signup = ({navigation}) => {
       behavior={Platform.OS === 'ios' ? 'padding' : null}
       style={{flex: 1, backgroundColor: colors.screenColor}}>
       <View style={{flex: 1, backgroundColor: colors.screenColor}}>
-        <Image
-          resizeMode="cover"
-          style={{
-            width: '100%',
-            marginTop: -220,
-            position: 'absolute',
-            right: 8,
-          }}
-          source={Assets.headerImage}
-        />
+        <View>
+          <Image
+            resizeMode="cover"
+            style={{
+              width: '100%',
+            }}
+            source={Assets.headerImage}
+          />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.goBack();
+            }}
+            activeOpacity={0.7}
+            style={{padding: 2}}>
+            <Image
+              style={{
+                position: 'absolute',
+                bottom: 20,
+                left: 40,
+              }}
+              resizeMode="cover"
+              source={Assets.backArrowHeader}
+            />
+          </TouchableOpacity>
+        </View>
 
         <View
           style={{
-            marginTop: 122,
+            // marginTop: 122,
             justifyContent: 'center',
             marginHorizontal: 22,
           }}>
@@ -86,19 +101,22 @@ const Signup = ({navigation}) => {
               // value={email}
               // onChange={e => setEmail(e)}
             />
-
             <View style={{marginTop: 42}} />
-
             <SmallButton
               title={labels.signUp}
               onPress={() => {
                 navigation.replace('HomeStack', {screen: 'HomeScreen'});
               }}
             />
-
             <View style={{marginTop: 64}} />
           </ScrollView>
         </View>
+
+        <Image
+          style={{position: 'absolute', right: 0, bottom: 0}}
+          resizeMode="contain"
+          source={Assets.footer}
+        />
       </View>
     </KeyboardAvoidingView>
   );
