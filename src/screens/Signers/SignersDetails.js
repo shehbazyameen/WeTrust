@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   Dimensions,
   ScrollView,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Keyboard
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {colors} from '../../config/Colors';
@@ -14,6 +15,27 @@ import fonts from '../../assests/fonts';
 import {InputFeild} from '../../components/inputField';
 
 const SignersDetails = ({navigation}) => {
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      () => {
+        setKeyboardVisible(true); // or some other action
+      },
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        setKeyboardVisible(false); // or some other action
+      },
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
   const {width, height} = Dimensions.get('window');
   return (
     <>
@@ -202,11 +224,13 @@ const SignersDetails = ({navigation}) => {
         </View>
       </KeyboardAvoidingView>
       <View style={{height: 100}}></View>
-      <Image
-        style={{position: 'absolute', right: 0, bottom: 0}}
-        resizeMode="contain"
-        source={Assets.footer}
-      />
+      {!isKeyboardVisible && (
+        <Image
+          style={{position: 'relative', right: 0, bottom: 0}}
+          resizeMode="contain"
+          source={Assets.footer}
+        />
+      )}
     </>
   );
 };
