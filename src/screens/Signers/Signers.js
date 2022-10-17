@@ -82,11 +82,26 @@ const Signers = ({navigation}) => {
           </Text>
         </TouchableOpacity>
         <View>
-          <TouchableOpacity style={{flexDirection: 'row', marginTop: 110}}
-          onPress={()=>navigation.navigate("SignersDetails")}
-          >
-            <Text style={{color: '#191C4D'}}>Click here to </Text>
-            <Text style={{color: '#AC872E', textDecorationLine: 'underline'}}>
+          <TouchableOpacity
+            style={{flexDirection: 'row', marginTop: 110}}
+            onPress={() => navigation.navigate('SignersDetails')}>
+            <Text
+              style={{
+                color: '#191C4D',
+                fontFamily: fonts.SitkaDisplay,
+                fontSize: 15,
+                fontWeight: 'normal',
+              }}>
+              Click here to{' '}
+            </Text>
+            <Text
+              style={{
+                color: '#AC872E',
+                fontFamily: fonts.SitkaDisplay,
+                fontSize: 15,
+                fontWeight: 'normal',
+                textDecorationLine: 'underline',
+              }}>
               Skip
             </Text>
           </TouchableOpacity>
