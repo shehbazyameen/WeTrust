@@ -69,7 +69,7 @@ const DocumentUpload = ({navigation}) => {
           resizeMode="cover"
           style={{
             width: '100%',
-            marginTop: -220,
+            marginTop: 0,
             position: 'absolute',
             right: 8,
           }}
@@ -83,14 +83,14 @@ const DocumentUpload = ({navigation}) => {
       </View>
       <View style={{height: height / 6}}></View>
       <View style={{alignItems: 'center', justifyContent: 'center'}}>
-        <Text
+        {/* <Text
           style={{
             fontSize: 24,
             fontFamily: fonts.SitkaDisplay,
             color: '#191C4C',
           }}>
           ID Verification
-        </Text>
+        </Text> */}
         <TouchableOpacity
           style={{marginTop: 40}}
           onPress={() => selectDocument()}>

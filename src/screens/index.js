@@ -5,6 +5,7 @@ import Login from './Login/Login';
 import DocumentUpload from './Documents/DocumentUpload';
 import Signers from './Signers/Signers';
 import SignersDetails from './Signers/SignersDetails';
+import SignerVerification from './Signers/SignerVerification';
 import Signup from './Signup/Signup';
 
 export {
@@ -16,4 +17,5 @@ export {
   Signers,
   SignersDetails,
   Signup,
+  SignerVerification
 };

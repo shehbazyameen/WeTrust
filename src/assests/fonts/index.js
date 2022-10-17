@@ -9,6 +9,7 @@ const fonts = {
     Platform.OS === 'ios' ? 'SitkaSubheading' : 'SitkaSubheading',
   SitkaDisplay: Platform.OS === 'ios' ? 'SitkaText' : 'SitkaText',
   LatoBold: Platform.OS === 'ios' ? '  Lato-Bold' : '  Lato-Bold',
+  SEGOEUI: Platform.OS === 'ios' ? '  SEGOEUI' : '  SEGOEUI',
 };
 
 export default fonts;

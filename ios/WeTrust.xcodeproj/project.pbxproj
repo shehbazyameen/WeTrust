@@ -21,7 +21,8 @@
 		E20EFD8A47DA4F1C85CB9594 /* SitkaSmall.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCE943DE24874266A0380AEB /* SitkaSmall.ttf */; };
 		DACA597C18B74ED2BAE4E281 /* SitkaSubheading.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55A9C49FFB0E444CB4A3F45D /* SitkaSubheading.ttf */; };
 		69A0AEA44B3541DCA96E2673 /* SitkaText.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9598C08A3D064EA6A4220C16 /* SitkaText.ttf */; };
-		3EDDCD29CDAE4FC2B7269C92 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = 2C83B063997344B0A9730084 /* index.js */; };
+		6FB43BC728914C519E41E3B2 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = C8025094CBD942139FA73B70 /* index.js */; };
+		8EFA1F71B48D49E485BE1E69 /* SEGOEUI.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 572B4739860947C19CFAF78B /* SEGOEUI.TTF */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +60,8 @@
 		FCE943DE24874266A0380AEB /* SitkaSmall.ttf */ = {isa = PBXFileReference; name = "SitkaSmall.ttf"; path = "../src/assests/fonts/SitkaSmall.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		55A9C49FFB0E444CB4A3F45D /* SitkaSubheading.ttf */ = {isa = PBXFileReference; name = "SitkaSubheading.ttf"; path = "../src/assests/fonts/SitkaSubheading.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		9598C08A3D064EA6A4220C16 /* SitkaText.ttf */ = {isa = PBXFileReference; name = "SitkaText.ttf"; path = "../src/assests/fonts/SitkaText.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		2C83B063997344B0A9730084 /* index.js */ = {isa = PBXFileReference; name = "index.js"; path = "../src/assests/fonts/index.js"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C8025094CBD942139FA73B70 /* index.js */ = {isa = PBXFileReference; name = "index.js"; path = "../src/assests/fonts/index.js"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		572B4739860947C19CFAF78B /* SEGOEUI.TTF */ = {isa = PBXFileReference; name = "SEGOEUI.TTF"; path = "../src/assests/fonts/SEGOEUI.TTF"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +177,8 @@
 				FCE943DE24874266A0380AEB /* SitkaSmall.ttf */,
 				55A9C49FFB0E444CB4A3F45D /* SitkaSubheading.ttf */,
 				9598C08A3D064EA6A4220C16 /* SitkaText.ttf */,
-				2C83B063997344B0A9730084 /* index.js */,
+				C8025094CBD942139FA73B70 /* index.js */,
+				572B4739860947C19CFAF78B /* SEGOEUI.TTF */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -284,7 +287,8 @@
 				E20EFD8A47DA4F1C85CB9594 /* SitkaSmall.ttf in Resources */,
 				DACA597C18B74ED2BAE4E281 /* SitkaSubheading.ttf in Resources */,
 				69A0AEA44B3541DCA96E2673 /* SitkaText.ttf in Resources */,
-				3EDDCD29CDAE4FC2B7269C92 /* index.js in Resources */,
+				6FB43BC728914C519E41E3B2 /* index.js in Resources */,
+				8EFA1F71B48D49E485BE1E69 /* SEGOEUI.TTF in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

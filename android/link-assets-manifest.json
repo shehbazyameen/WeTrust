@@ -3,11 +3,15 @@
   "data": [
     {
       "path": "src/assests/fonts/index.js",
-      "sha1": "df018d4989f2fccb8dcd19aa0e8b1e07d2e5757b"
+      "sha1": "394a8207ee030d27212ce297c383c504a679c37c"
     },
     {
       "path": "src/assests/fonts/Lato-Bold.ttf",
       "sha1": "542498221d97bee5bdbccf86ee8890bf8e8005c9"
+    },
+    {
+      "path": "src/assests/fonts/SEGOEUI.TTF",
+      "sha1": "280935e382b62fe953a4efe09b2bbf8d34b0f14a"
     },
     {
       "path": "src/assests/fonts/SitkaBanner.ttf",
