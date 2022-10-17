@@ -92,7 +92,7 @@ const SignersDetails = ({navigation}) => {
             WITNESS
           </Text>
         </TouchableOpacity> */}
-        <ScrollView>
+        <ScrollView style={{paddingBottom:100}}>
           <View
             style={{
               height: 50,
@@ -154,7 +154,7 @@ const SignersDetails = ({navigation}) => {
             // value={email}
             // onChange={e => setEmail(e)}
           />
-          <View>
+          <View style={{marginHorizontal: 40, marginVertical: 25}}>
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate('HomeStack', {screen: 'Signers'})
@@ -162,8 +162,7 @@ const SignersDetails = ({navigation}) => {
               style={{
                 backgroundColor: '#AC872E',
                 borderRadius: 6,
-                marginHorizontal: 40,
-                marginVertical: 40,
+
                 justifyContent: 'center',
                 alignItems: 'center',
                 paddingHorizontal: 40,
@@ -178,7 +177,7 @@ const SignersDetails = ({navigation}) => {
                   fontWeight: 'bold',
                   fontSize: 14,
                 }}>
-                Get Started
+                Continue
               </Text>
             </TouchableOpacity>
           </View>
