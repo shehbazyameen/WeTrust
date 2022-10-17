@@ -5,7 +5,7 @@ import {Assets} from '../../assests';
 import fonts from '../../assests/fonts';
 
 const SignersDetails = () => {
-    const {width, height} = Dimensions.get('window');
+  const {width, height} = Dimensions.get('window');
   return (
     <View style={{flex: 1, backgroundColor: colors.screenColor}}>
       <View>
@@ -89,7 +89,7 @@ const SignersDetails = () => {
         </View>
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default SignersDetails
+export default SignersDetails;

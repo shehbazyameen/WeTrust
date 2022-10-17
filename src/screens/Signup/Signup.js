@@ -15,7 +15,7 @@ import {labels} from '../../config/Lables';
 import SmallButton from '../../components/SmallButton';
 import styles from './Styles';
 
-const Login = ({navigation}) => {
+const Signup = ({navigation}) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}
@@ -109,13 +109,7 @@ const Login = ({navigation}) => {
                 flexDirection: 'row',
               }}>
               <Text style={[styles.textSignWith]}>{labels.dontAccount}</Text>
-              <TouchableOpacity
-                style={{}}
-                onPress={() => {
-                  navigation.navigate('Signup');
-                }}>
-                <Text style={[styles.textSignhere]}>{labels.signUpHere}</Text>
-              </TouchableOpacity>
+              <Text style={[styles.textSignhere]}>{labels.signUpHere}</Text>
             </View>
             <View style={{marginTop: 64}} />
           </ScrollView>
@@ -125,4 +119,4 @@ const Login = ({navigation}) => {
   );
 };
 
-export default Login;
+export default Signup;
