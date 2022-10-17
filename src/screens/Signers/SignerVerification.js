@@ -197,36 +197,49 @@ const SignerVerification = ({navigation}) => {
               borderRadius: 6,
               paddingHorizontal: 15,
             }}>
-            <Text style={{marginTop: 15,textAlign:"center",fontFamily:fonts.SitkaDisplay,fontSize:18,fontWeight:"bold",color:"#191C4D"}}>
+            <Text
+              style={{
+                marginTop: 15,
+                textAlign: 'center',
+                fontFamily: fonts.SitkaDisplay,
+                fontSize: 18,
+                fontWeight: 'bold',
+                color: '#191C4D',
+              }}>
               Acceptable Forms of Identification for Notary Services
             </Text>
 
-        <View style={{marginTop:20}}>
-            {data.map((item,index)=>{
+            <View style={{marginTop: 20}}>
+              {data.map((item, index) => {
                 return (
                   <View prop={item?.id} style={{flexDirection: 'row'}}>
                     <View
                       style={{
                         height: 8,
-                        margin:7,
+                        margin: 7,
                         width: 8,
                         borderRadius: 10,
                         backgroundColor: '#AC872E',
                       }}
                     />
-                    <Text style={{paddingHorizontal:10,fontFamily:fonts.SEGOEUI,colors:"#707070"}}>{item?.details}</Text>
+                    <Text
+                      style={{
+                        paddingHorizontal: 10,
+                        fontFamily: fonts.SEGOEUI,
+                        colors: '#707070',
+                      }}>
+                      {item?.details}
+                    </Text>
                   </View>
                 );
-            })}
-        </View>
+              })}
+            </View>
           </View>
 
-          <View style={{paddingVertical:20,paddingBottom:30}}>
+          <View style={{paddingVertical: 20, paddingBottom: 30}}>
             {showProgress && (
               <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate('HomeStack', {screen: 'Signers'})
-                }
+                onPress={() => navigation.navigate('SignersSuccess')}
                 style={{backgroundColor: '#AC872E', borderRadius: 6}}>
                 <Text
                   style={{
