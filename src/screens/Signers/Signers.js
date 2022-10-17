@@ -15,7 +15,7 @@ const Signers = ({navigation}) => {
           resizeMode="cover"
           style={{
             width: '100%',
-            marginTop: -220,
+            marginTop:0,
             position: 'absolute',
             right: 8,
           }}
