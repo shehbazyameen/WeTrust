@@ -61,7 +61,7 @@ const Login = ({navigation}) => {
               returnKeyType={'next'}
               // imageInputField
               placeholder={labels.userName}
-              leftIcon={Assets.Password}
+              leftIcon={Assets.user}
               // rightIcon={Assets.user}
               // value={email}
               // onChange={e => setEmail(e)}
@@ -72,7 +72,7 @@ const Login = ({navigation}) => {
               // returnKeyType={'next'}
               // imageInputField
               placeholder={labels.password}
-              leftIcon={Assets.user}
+              leftIcon={Assets.Password}
               // value={email}
               // onChange={e => setEmail(e)}
             />

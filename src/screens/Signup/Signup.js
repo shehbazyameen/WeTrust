@@ -52,8 +52,8 @@ const Signup = ({navigation}) => {
             <View style={{marginTop: 42}} />
             <Text style={[styles.textWelcome]}>{labels.welcomeBack}</Text>
             <View style={{marginTop: 10}} />
-            <Text style={[styles.textLoginYourAccount]}>
-              {labels.loginToYourAccount}
+            <Text style={[styles.createYourAccount]}>
+              {labels.createYourAccount}
             </Text>
             <View style={{marginTop: 42}} />
             <InputFeild
@@ -61,7 +61,7 @@ const Signup = ({navigation}) => {
               returnKeyType={'next'}
               // imageInputField
               placeholder={labels.userName}
-              leftIcon={Assets.Password}
+              leftIcon={Assets.user}
               // rightIcon={Assets.user}
               // value={email}
               // onChange={e => setEmail(e)}
@@ -71,46 +71,31 @@ const Signup = ({navigation}) => {
               // refValueCurrent={refenterpassword}
               // returnKeyType={'next'}
               // imageInputField
-              placeholder={labels.password}
-              leftIcon={Assets.user}
+              placeholder={labels.email}
+              leftIcon={Assets.Email}
               // value={email}
               // onChange={e => setEmail(e)}
             />
+            <View style={{marginTop: 35}} />
+            <InputFeild
+              // refValueCurrent={refenterpassword}
+              // returnKeyType={'next'}
+              // imageInputField
+              placeholder={labels.password}
+              leftIcon={Assets.Password}
+              // value={email}
+              // onChange={e => setEmail(e)}
+            />
+
             <View style={{marginTop: 42}} />
+
             <SmallButton
-              title={labels.signIn}
+              title={labels.signUp}
               onPress={() => {
                 navigation.replace('HomeStack', {screen: 'HomeScreen'});
               }}
             />
-            <View style={{marginTop: 53}} />
-            <Text style={[styles.textSignWith]}>{labels.orSignWth}</Text>
-            <View style={{marginTop: 16}} />
-            <View
-              style={{
-                flexDirection: 'row',
-              }}>
-              <TouchableOpacity activeOpacity={0.7}>
-                <Image resizeMode="contain" source={Assets.twitter} />
-              </TouchableOpacity>
-              <View style={{width: 16}} />
 
-              <TouchableOpacity activeOpacity={0.7}>
-                <Image resizeMode="contain" source={Assets.google} />
-              </TouchableOpacity>
-              <View style={{width: 16}} />
-              <TouchableOpacity activeOpacity={0.7}>
-                <Image resizeMode="contain" source={Assets.facebook} />
-              </TouchableOpacity>
-            </View>
-            <View style={{marginTop: 64}} />
-            <View
-              style={{
-                flexDirection: 'row',
-              }}>
-              <Text style={[styles.textSignWith]}>{labels.dontAccount}</Text>
-              <Text style={[styles.textSignhere]}>{labels.signUpHere}</Text>
-            </View>
             <View style={{marginTop: 64}} />
           </ScrollView>
         </View>

@@ -10,4 +10,7 @@ export const labels = {
   orSignWth: 'or sign in with',
   dontAccount: "Don't have an account?",
   signUpHere: ' Sign up here',
+  createYourAccount: 'Create your account',
+  email: 'Email',
+  signUp:"Sign up",
 };

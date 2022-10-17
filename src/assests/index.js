@@ -21,4 +21,5 @@ export const Assets = {
   twitter: require('../assests/images/twiter.png'),
   facebook: require('../assests/images/facebook.png'),
   google: require('../assests/images/google.png'),
+  Email: require('../assests/images/Email.png'),
 };
