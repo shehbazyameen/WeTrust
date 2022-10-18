@@ -6,6 +6,7 @@ import DocumentUpload from './Documents/DocumentUpload';
 import Signers from './Signers/Signers';
 import SignersDetails from './Signers/SignersDetails';
 import Signup from './Signup/Signup';
+import Payment from './Payment/Payment';
 
 export {
   Splash,
@@ -16,4 +17,5 @@ export {
   Signers,
   SignersDetails,
   Signup,
+  Payment,
 };

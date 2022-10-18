@@ -105,18 +105,18 @@ const Signup = ({navigation}) => {
             <SmallButton
               title={labels.signUp}
               onPress={() => {
-                navigation.replace('HomeStack', {screen: 'HomeScreen'});
+                navigation.replace('HomeStack', {screen: 'Payment'});
               }}
             />
             <View style={{marginTop: 64}} />
           </ScrollView>
         </View>
 
-        <Image
+        {/* <Image
           style={{position: 'absolute', right: 0, bottom: 0}}
           resizeMode="contain"
           source={Assets.footer}
-        />
+        /> */}
       </View>
     </KeyboardAvoidingView>
   );

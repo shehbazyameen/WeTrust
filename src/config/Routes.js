@@ -10,6 +10,7 @@ import {
   Signers,
   SignersDetails,
   Signup,
+  Payment,
 } from '../screens';
 const AuthStack = createNativeStackNavigator();
 const AppStack = createNativeStackNavigator();
@@ -37,6 +38,11 @@ const HomeStack = ({props}) => {
         options={{headerShown: false}}
         name="SignersDetails"
         component={SignersDetails}
+      />
+      <AppStack.Screen
+        options={{headerShown: false}}
+        name="Payment"
+        component={Payment}
       />
     </AppStack.Navigator>
   );
