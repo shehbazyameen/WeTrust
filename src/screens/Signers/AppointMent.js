@@ -14,17 +14,47 @@ import fonts from '../../assests/fonts';
 import * as Progress from 'react-native-progress';
 import DocumentPicker from 'react-native-document-picker';
 import {InputFeild} from '../../components/inputField';
+import DatePicker from 'react-native-date-picker';
+  
 const AppointMent = () => {
-        const {width, height} = Dimensions.get('window');
+         const {width, height} = Dimensions.get('window');
+         const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+
+          const showDatePicker = () => {
+           setDatePickerVisibility(true);
+         };
+
+          const hideDatePicker = () => {
+           setDatePickerVisibility(false);
+         };
+     const [date, setDate] = useState(
+       new Date(),
+     );
+     const [open, setOpen] = useState(false);
   return (
     <View style={{flex: 1}}>
+      <DatePicker
+        modal
+        open={open}
+        date={date}
+        onConfirm={date => {
+          setOpen(false);
+          setDate(date);
+        }}
+        onCancel={() => {
+          setOpen(false);
+        }}
+        mode="date"
+        maximumDate={new Date()}
+      />
       <ImageBackground
         resizeMode="stretch"
         source={Assets.backHeaderFooter}
         style={{
           flex: 1,
           justifyContent: 'center',
-          alignItems: 'center',
+          padding: 40,
+          // alignItems: 'center',
         }}>
         <View style={{height: height / 6}} />
         <Text
@@ -32,6 +62,7 @@ const AppointMent = () => {
             fontFamily: fonts.SitkaDisplay,
             fontSize: 24,
             color: '#191C4C',
+            textAlign: 'center',
           }}>
           Book Appointment
         </Text>
@@ -104,7 +135,8 @@ const AppointMent = () => {
             }}
           />
 
-          <InputFeild
+          {/* <InputFeild
+            onFocus={showDatePicker}
             // refValueCurrent={refenterpassword}
             returnKeyType={'next'}
             // imageInputField
@@ -113,7 +145,33 @@ const AppointMent = () => {
             rightIcon={Assets.user}
             // value={email}
             // onChange={e => setEmail(e)}
-          />
+          /> */}
+          <TouchableOpacity
+            onPress={() => {
+              // setDatePickerVisibility(true);
+              setOpen(true)
+            }}
+            style={{
+              backgroundColor: colors.white,
+              paddingHorizontal: 30,
+              paddingVertical: 20,
+
+              borderRadius: 6,
+              borderRightWidth: 0.8,
+              borderBottomWidth: 0.8,
+              borderColor: colors.inputFieldBorderColor,
+            }}>
+            <View
+              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+              <View>
+                <Text>Date</Text>
+              </View>
+              <View style={{justifyContent: 'flex-end'}}>
+                <Image source={Assets.user} />
+              </View>
+            </View>
+          </TouchableOpacity>
+
           <View style={{marginHorizontal: 40, marginVertical: 25}}>
             <TouchableOpacity
               onPress={() => navigation.navigate('SignerVerification')}

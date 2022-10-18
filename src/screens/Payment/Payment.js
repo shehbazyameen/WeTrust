@@ -88,7 +88,7 @@ const Payment = ({navigation}) => {
             </View>
           </View>
 
-          {/* <CreditCardInput /> */}
+          <CreditCardInput />
         </View>
       </ImageBackground>
     </KeyboardAvoidingView>
