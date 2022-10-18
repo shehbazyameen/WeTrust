@@ -21,5 +21,6 @@ export const Assets = {
   google: require('../assests/images/google.png'),
   Email: require('../assests/images/Email.png'),
   footer: require('../assests/images/footer.png'),
-  halfScreen: require('../assests/images/Path.png'),
+  halfScreen: require('../assests/images/halfScreen.png'),
+  check: require('../assests/images/check.png'),
 };
