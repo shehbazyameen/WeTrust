@@ -13,6 +13,7 @@ import {
   Payment,
   SignerVerification,
   SignersSuccess,
+  AppointMent,
 } from '../screens';
 const AuthStack = createNativeStackNavigator();
 const AppStack = createNativeStackNavigator();
@@ -58,6 +59,11 @@ const HomeStack = ({props}) => {
         name="SignersSuccess"
         component={SignersSuccess}
       />
+      <AppStack.Screen
+        options={{headerShown: false}}
+        name="AppointMent"
+        component={AppointMent}
+      />
     </AppStack.Navigator>
   );
 };
@@ -85,6 +91,11 @@ const AuthenticationStack = () => {
         options={{headerShown: false}}
         name="Signup"
         component={Signup}
+      />
+      <AppStack.Screen
+        options={{headerShown: false}}
+        name="AppointMent"
+        component={AppointMent}
       />
     </AuthStack.Navigator>
   );

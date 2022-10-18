@@ -15,7 +15,7 @@ import * as Progress from 'react-native-progress';
 import DocumentPicker from 'react-native-document-picker';
 
 
-const SignersSuccess = () => {
+const SignersSuccess = ({navigation}) => {
     const {width, height} = Dimensions.get('window');
   return (
     <View style={{flex: 1}}>
@@ -68,11 +68,10 @@ const SignersSuccess = () => {
           }}>
           <View>
             <TouchableOpacity
-              onPress={() => navigation.navigate('SignerVerification')}
+              onPress={() => navigation.navigate('AppointMent')}
               style={{
                 backgroundColor: '#AC872E',
                 borderRadius: 6,
-    
 
                 justifyContent: 'center',
                 alignItems: 'center',
@@ -97,18 +96,16 @@ const SignersSuccess = () => {
               style={{
                 backgroundColor: '#AC872E',
                 borderRadius: 6,
-
+                marginTop: 30,
                 justifyContent: 'center',
                 alignItems: 'center',
                 paddingHorizontal: 18,
                 paddingVertical: 12,
-                marginTop:30
               }}>
               <Text
                 style={{
-                 
                   color: '#ffffff',
-                 
+
                   fontFamily: fonts.SitkaDisplay,
                   fontWeight: 'bold',
                   fontSize: 14,

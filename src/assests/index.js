@@ -24,5 +24,5 @@ export const Assets = {
   halfScreen: require('../assests/images/halfScreen.png'),
   check: require('../assests/images/check.png'),
   backHeaderFooter: require('../assests/images/backHeaderFooter.png'),
-  halfScreen: require('../assests/images/Path.png'),
+  halfScreen: require('../assests/images/halfScreen.png'),
 };
