@@ -6,6 +6,7 @@ import {
   Platform,
   ScrollView,
   TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
 import React from 'react';
 import {colors} from '../../config/Colors';
@@ -21,96 +22,78 @@ const Signup = ({navigation}) => {
       behavior={Platform.OS === 'ios' ? 'padding' : null}
       style={{flex: 1, backgroundColor: colors.screenColor}}>
       <View style={{flex: 1, backgroundColor: colors.screenColor}}>
-        <View>
-          <Image
-            resizeMode="cover"
-            style={{
-              width: '100%',
-            }}
-            source={Assets.headerImage}
-          />
-          <TouchableOpacity
-            onPress={() => {
-              navigation.goBack();
-            }}
-            activeOpacity={0.7}
-            style={{padding: 2}}>
-            <Image
-              style={{
-                position: 'absolute',
-                bottom: 20,
-                left: 40,
-              }}
-              resizeMode="cover"
-              source={Assets.backArrowHeader}
-            />
-          </TouchableOpacity>
-        </View>
-
-        <View
+        <ImageBackground
+          resizeMode="stretch"
+          source={Assets.backHeaderFooter}
           style={{
-            // marginTop: 122,
+            flex: 1,
             justifyContent: 'center',
-            marginHorizontal: 22,
           }}>
-          <Image
-            style={{alignSelf: 'center'}}
-            resizeMode="cover"
-            source={Assets.logo}
-          />
-          <View style={{marginTop: 10}} />
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{
-              alignItems: 'center',
+          <View
+            style={{
+              marginTop: 90,
+              justifyContent: 'center',
+              marginHorizontal: 22,
             }}>
-            <View style={{marginTop: 42}} />
-            <Text style={[styles.textWelcome]}>{labels.welcomeBack}</Text>
+            <Image
+              style={{alignSelf: 'center'}}
+              resizeMode="cover"
+              source={Assets.logo}
+            />
             <View style={{marginTop: 10}} />
-            <Text style={[styles.createYourAccount]}>
-              {labels.createYourAccount}
-            </Text>
-            <View style={{marginTop: 42}} />
-            <InputFeild
-              // refValueCurrent={refenterpassword}
-              returnKeyType={'next'}
-              // imageInputField
-              placeholder={labels.userName}
-              leftIcon={Assets.user}
-              // rightIcon={Assets.user}
-              // value={email}
-              // onChange={e => setEmail(e)}
-            />
-            <View style={{marginTop: 35}} />
-            <InputFeild
-              // refValueCurrent={refenterpassword}
-              // returnKeyType={'next'}
-              // imageInputField
-              placeholder={labels.email}
-              leftIcon={Assets.Email}
-              // value={email}
-              // onChange={e => setEmail(e)}
-            />
-            <View style={{marginTop: 35}} />
-            <InputFeild
-              // refValueCurrent={refenterpassword}
-              // returnKeyType={'next'}
-              // imageInputField
-              placeholder={labels.password}
-              leftIcon={Assets.Password}
-              // value={email}
-              // onChange={e => setEmail(e)}
-            />
-            <View style={{marginTop: 42}} />
-            <SmallButton
-              title={labels.signUp}
-              onPress={() => {
-                navigation.replace('HomeStack', {screen: 'Payment'});
-              }}
-            />
-            <View style={{marginTop: 64}} />
-          </ScrollView>
-        </View>
+            <ScrollView
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{
+                alignItems: 'center',
+              }}>
+              <View style={{marginTop: 42}} />
+              <Text style={[styles.textWelcome]}>{labels.welcomeBack}</Text>
+              <View style={{marginTop: 10}} />
+              <Text style={[styles.createYourAccount]}>
+                {labels.createYourAccount}
+              </Text>
+              <View style={{marginTop: 42}} />
+              <InputFeild
+                // refValueCurrent={refenterpassword}
+                returnKeyType={'next'}
+                // imageInputField
+                placeholder={labels.userName}
+                leftIcon={Assets.user}
+                // rightIcon={Assets.user}
+                // value={email}
+                // onChange={e => setEmail(e)}
+              />
+              <View style={{marginTop: 35}} />
+              <InputFeild
+                // refValueCurrent={refenterpassword}
+                // returnKeyType={'next'}
+                // imageInputField
+                placeholder={labels.email}
+                leftIcon={Assets.Email}
+                // value={email}
+                // onChange={e => setEmail(e)}
+              />
+              <View style={{marginTop: 35}} />
+              <InputFeild
+                // refValueCurrent={refenterpassword}
+                // returnKeyType={'next'}
+                // imageInputField
+                placeholder={labels.password}
+                leftIcon={Assets.Password}
+                // value={email}
+                // onChange={e => setEmail(e)}
+              />
+              <View style={{marginTop: 42}} />
+              <SmallButton
+                title={labels.signUp}
+                onPress={() => {
+                  navigation.replace('HomeStack', {screen: 'Payment'});
+                }}
+              />
+              <View style={{marginTop: 64}} />
+            </ScrollView>
+          </View>
+        </ImageBackground>
 
         {/* <Image
           style={{position: 'absolute', right: 0, bottom: 0}}
