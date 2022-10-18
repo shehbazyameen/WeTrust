@@ -8,6 +8,7 @@ import SignersDetails from './Signers/SignersDetails';
 import SignerVerification from './Signers/SignerVerification';
 import SignersSuccess from './Signers/SignersSuccess';
 import Signup from './Signup/Signup';
+import Payment from './Payment/Payment';
 
 export {
   Splash,
@@ -18,6 +19,7 @@ export {
   Signers,
   SignersDetails,
   Signup,
+  Payment,
   SignerVerification,
   SignersSuccess,
 };
