@@ -87,49 +87,7 @@ const SignersDetails = ({navigation}) => {
               }}>
               Witness Details
             </Text>
-            {/* <TouchableOpacity
-          onPress={() => {}}
-          style={{
-            backgroundColor: '#A5822C',
-            opacity: 1,
-            height: width / 5,
-            width: width / 2,
-            borderRadius: 4,
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: 60,
-          }}>
-          <Text
-            style={{
-              color: '#ffffff',
-              fontSize: 20,
-              fontFamily: fonts.SitkaDisplay,
-            }}>
-            CO-SIGNER
-          </Text>
-        </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => {}}
-          style={{
-            backgroundColor: '#A5822C',
-            opacity: 1,
-            height: width / 5,
-            width: width / 2,
-            borderRadius: 4,
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: 110,
-          }}>
-          <Text
-            style={{
-              color: '#ffffff',
-              fontSize: 20,
-              fontFamily: fonts.SitkaDisplay,
-            }}>
-            WITNESS
-          </Text>
-        </TouchableOpacity> */}
             <ScrollView style={{paddingBottom: 100}}>
               <View
                 style={{
@@ -194,9 +152,7 @@ const SignersDetails = ({navigation}) => {
               />
               <View style={{marginHorizontal: 40, marginVertical: 25}}>
                 <TouchableOpacity
-                  onPress={() =>
-                    navigation.navigate('HomeStack', {screen: 'Signers'})
-                  }
+                  onPress={() => navigation.navigate('SignerVerification')}
                   style={{
                     backgroundColor: '#AC872E',
                     borderRadius: 6,

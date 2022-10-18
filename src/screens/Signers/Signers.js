@@ -15,7 +15,7 @@ const Signers = ({navigation}) => {
           resizeMode="cover"
           style={{
             width: '100%',
-            marginTop: -220,
+            marginTop: 0,
             position: 'absolute',
             right: 8,
           }}
@@ -39,7 +39,9 @@ const Signers = ({navigation}) => {
         </Text>
 
         <TouchableOpacity
-          onPress={() => {}}
+          onPress={() => {
+            navigation.navigate('SignersDetails');
+          }}
           style={{
             backgroundColor: '#A5822C',
             opacity: 1,
@@ -61,7 +63,9 @@ const Signers = ({navigation}) => {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => {}}
+          onPress={() => {
+            navigation.navigate('SignersDetails');
+          }}
           style={{
             backgroundColor: '#A5822C',
             opacity: 1,

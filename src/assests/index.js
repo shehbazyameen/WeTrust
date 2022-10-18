@@ -22,4 +22,5 @@ export const Assets = {
   Email: require('../assests/images/Email.png'),
   footer: require('../assests/images/footer.png'),
   backHeaderFooter: require('../assests/images/backHeaderFooter.png'),
+  halfScreen: require('../assests/images/Path.png'),
 };
