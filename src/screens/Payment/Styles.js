@@ -11,8 +11,9 @@ export default StyleSheet.create({
   },
   textWelcome: {
     fontFamily: fonts.SitkaDisplay,
-    fontSize: 30,
+    fontSize: 24,
     color: colors.primaryBlue,
+    textAlign: 'center',
   },
   textLoginYourAccount: {
     fontFamily: fonts.SitkaDisplay,
