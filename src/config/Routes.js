@@ -14,6 +14,7 @@ import {
   SignerVerification,
   SignersSuccess,
   AppointMent,
+  AppointmentDetails
 } from '../screens';
 const AuthStack = createNativeStackNavigator();
 const AppStack = createNativeStackNavigator();
@@ -63,6 +64,11 @@ const HomeStack = ({props}) => {
         options={{headerShown: false}}
         name="AppointMent"
         component={AppointMent}
+      />
+      <AppStack.Screen
+        options={{headerShown: false}}
+        name="AppointmentDetails"
+        component={AppointmentDetails}
       />
     </AppStack.Navigator>
   );

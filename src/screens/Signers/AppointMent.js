@@ -15,8 +15,8 @@ import * as Progress from 'react-native-progress';
 import DocumentPicker from 'react-native-document-picker';
 import {InputFeild} from '../../components/inputField';
 import DatePicker from 'react-native-date-picker';
-  
-const AppointMent = () => {
+import moment from 'moment/moment';
+const AppointMent = ({navigation}) => {
          const {width, height} = Dimensions.get('window');
          const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
@@ -40,11 +40,12 @@ const AppointMent = () => {
         onConfirm={date => {
           setOpen(false);
           setDate(date);
+          console.log(date, 'date');
         }}
         onCancel={() => {
           setOpen(false);
         }}
-        mode="date"
+        mode="datetime"
         maximumDate={new Date()}
       />
       <ImageBackground
@@ -53,7 +54,7 @@ const AppointMent = () => {
         style={{
           flex: 1,
           justifyContent: 'center',
-          padding: 40,
+          padding: 20,
           // alignItems: 'center',
         }}>
         <View style={{height: height / 6}} />
@@ -149,7 +150,7 @@ const AppointMent = () => {
           <TouchableOpacity
             onPress={() => {
               // setDatePickerVisibility(true);
-              setOpen(true)
+              setOpen(true);
             }}
             style={{
               backgroundColor: colors.white,
@@ -157,14 +158,29 @@ const AppointMent = () => {
               paddingVertical: 20,
 
               borderRadius: 6,
-              borderRightWidth: 0.8,
-              borderBottomWidth: 0.8,
+              // borderRightWidth: 0.8,
+              // borderBottomWidth: 0.8,
               borderColor: colors.inputFieldBorderColor,
+              shadowColor: '#000',
+              shadowOffset: {
+                width: 0,
+                height: 1,
+              },
+              shadowOpacity: 0.2,
+              shadowRadius: 1.41,
+              elevation: 2,
+              borderWidth: 3,
+
+              // alignSelf: 'center',
             }}>
             <View
               style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <View>
-                <Text>Date</Text>
+                <Text>
+                  {date !== ''
+                    ? moment(date).format('MMMM Do YYYY, h:mm:ss a')
+                    : 'Date'}{' '}
+                </Text>
               </View>
               <View style={{justifyContent: 'flex-end'}}>
                 <Image source={Assets.user} />
@@ -172,16 +188,16 @@ const AppointMent = () => {
             </View>
           </TouchableOpacity>
 
-          <View style={{marginHorizontal: 40, marginVertical: 25}}>
+          <View style={{marginHorizontal: 90, marginVertical: 30}}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('SignerVerification')}
+              onPress={() => navigation.navigate('AppointmentDetails')}
               style={{
                 backgroundColor: '#AC872E',
                 borderRadius: 6,
 
                 justifyContent: 'center',
                 alignItems: 'center',
-                paddingHorizontal: 40,
+                paddingHorizontal: 18,
                 paddingVertical: 12,
               }}>
               <Text
@@ -193,7 +209,7 @@ const AppointMent = () => {
                   fontWeight: 'bold',
                   fontSize: 14,
                 }}>
-                Continue
+                Book Appointment
               </Text>
             </TouchableOpacity>
           </View>
