@@ -19,14 +19,14 @@ import styles from './Styles';
 const {height, width} = Dimensions.get('window');
 
 const Intro = ({navigation}) => {
-   const fadeAnim = useRef(new Animated.Value(0)).current;
-   const [showBorder,setShow]=useState(false) 
-   const animate=()=>{
-     Animated.timing(fadeAnim, {
-       toValue: 80,
-       duration: 300,
-     }).start();
-   }
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const [showBorder, setShow] = useState(false);
+  const animate = () => {
+    Animated.timing(fadeAnim, {
+      toValue: 80,
+      duration: 300,
+    }).start();
+  };
   // Declare state variables
   const [index, setIndex] = useState(0);
 
@@ -75,7 +75,7 @@ const Intro = ({navigation}) => {
             setTimeout(() => {
               continueToWelcome();
             }, 500);
-            setShow(true)
+            setShow(true);
             animate();
           }}>
           <Animated.View style={{marginRight: fadeAnim}}>
@@ -84,9 +84,9 @@ const Intro = ({navigation}) => {
           <View style={{width: 20}} />
           <View
             style={{
-              width: showBorder? 20:0,
-              height: showBorder? 20:0,
-              borderRadius: showBorder? 10:0,
+              width: showBorder ? 20 : 0,
+              height: showBorder ? 20 : 0,
+              borderRadius: showBorder ? 10 : 0,
               backgroundColor: '#A3802C',
               justifyContent: 'center',
               alignItems: 'center',

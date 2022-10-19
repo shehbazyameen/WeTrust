@@ -28,7 +28,6 @@ export const InputFeild = ({
   textSize = 16,
   disabled,
   paddingHorizontal = 22,
-  paddingLfet = 22,
   paddingHorizontalRight = 0,
 }) => {
   return (
