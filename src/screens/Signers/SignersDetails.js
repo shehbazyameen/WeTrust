@@ -87,6 +87,7 @@ const SignersDetails = ({navigation}) => {
         <InputFeild
           // refValueCurrent={refenterpassword}
           returnKeyType={'next'}
+          paddingHorizontal={0}
           // imageInputField
           placeholder={'First Name'}
           // leftIcon={Assets.Password}

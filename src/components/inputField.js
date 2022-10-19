@@ -27,6 +27,8 @@ export const InputFeild = ({
   placeholderTextColor,
   textSize = 16,
   disabled,
+  paddingHorizontal = 22,
+  paddingLfet=22
 }) => {
   return (
     <View
@@ -81,10 +83,10 @@ export const InputFeild = ({
         maxLength={maxLength}
         containerStyle={[
           styles.inputFeildStyle,
-
           {
             height: height,
             backgroundColor: bg,
+            paddingHorizontal: paddingHorizontal,
           },
         ]}
         inputStyle={[
@@ -113,7 +115,6 @@ const styles = StyleSheet.create({
     color: colors.primaryBlueOpacity50,
   },
   inputFeildStyle: {
-    paddingHorizontal: 22,
     alignItems: 'center',
     borderRadius: 6,
   },
