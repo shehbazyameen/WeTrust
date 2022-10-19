@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     fontFamily: fonts.SitkaDisplay,
-    fontSize: 14,
+    fontSize: 16,
     color: colors.primaryBlueOpacity50,
   },
   inputFeildStyle: {
