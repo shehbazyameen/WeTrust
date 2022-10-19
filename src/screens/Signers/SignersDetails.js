@@ -17,6 +17,7 @@ import {InputFeild} from '../../components/inputField';
 
 const SignersDetails = ({navigation}) => {
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const [firstName, setFirstName] = useState('');
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
@@ -78,7 +79,9 @@ const SignersDetails = ({navigation}) => {
         }}>
         Witness Details
       </Text>
-      <ScrollView style={{paddingBottom: 100}}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={{paddingBottom: 100}}>
         <View
           style={{
             height: 50,
@@ -88,12 +91,13 @@ const SignersDetails = ({navigation}) => {
           // refValueCurrent={refenterpassword}
           returnKeyType={'next'}
           paddingHorizontal={0}
+          paddingHorizontalRight={22}
           // imageInputField
           placeholder={'First Name'}
           // leftIcon={Assets.Password}
           rightIcon={Assets.user}
-          // value={email}
-          // onChange={e => setEmail(e)}
+          value={firstName}
+          onChange={e => setFirstName(e)}
         />
         <View
           style={{
@@ -101,6 +105,8 @@ const SignersDetails = ({navigation}) => {
           }}
         />
         <InputFeild
+          paddingHorizontal={0}
+          paddingHorizontalRight={22}
           // refValueCurrent={refenterpassword}
           returnKeyType={'next'}
           // imageInputField
@@ -116,6 +122,8 @@ const SignersDetails = ({navigation}) => {
           }}
         />
         <InputFeild
+          paddingHorizontal={0}
+          paddingHorizontalRight={22}
           // refValueCurrent={refenterpassword}
           returnKeyType={'next'}
           // imageInputField
@@ -132,6 +140,8 @@ const SignersDetails = ({navigation}) => {
         />
 
         <InputFeild
+          paddingHorizontal={0}
+          paddingHorizontalRight={22}
           // refValueCurrent={refenterpassword}
           returnKeyType={'next'}
           // imageInputField

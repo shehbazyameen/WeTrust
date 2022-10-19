@@ -28,7 +28,8 @@ export const InputFeild = ({
   textSize = 16,
   disabled,
   paddingHorizontal = 22,
-  paddingLfet=22
+  paddingLfet = 22,
+  paddingHorizontalRight = 0,
 }) => {
   return (
     <View
@@ -63,6 +64,7 @@ export const InputFeild = ({
             onPress={() => rightIconOnPress()}>
             <Image
               // style={[styles.height_width(22, 22)]}
+              style={{paddingHorizontal: paddingHorizontalRight}}
               source={rightIcon}
               resizeMode={'contain'}
             />
@@ -107,7 +109,7 @@ export const InputFeild = ({
 const styles = StyleSheet.create({
   searchIconInInputField: {
     position: 'absolute',
-    // left: 8,
+    // right: 18,
   },
   textInput: {
     fontFamily: fonts.SitkaDisplay,
