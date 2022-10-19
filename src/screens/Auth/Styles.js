@@ -20,6 +20,7 @@ export default StyleSheet.create({
     color: colors.white,
     fontSize: 14,
     textAlign: 'center',
+  
   },
 
   skipTouch: {

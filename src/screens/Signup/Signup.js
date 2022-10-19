@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import {colors} from '../../config/Colors';
 import {InputFeild} from '../../components/inputField';
 import {Assets} from '../../assests';
@@ -17,6 +17,10 @@ import SmallButton from '../../components/SmallButton';
 import styles from './Styles';
 
 const Signup = ({navigation}) => {
+  const [userName,setUserName]=useState('');
+  const [email,setEmail]=useState('');
+  const [password,setPassword]=useState('');
+  
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}
@@ -60,8 +64,8 @@ const Signup = ({navigation}) => {
                 placeholder={labels.userName}
                 leftIcon={Assets.user}
                 // rightIcon={Assets.user}
-                // value={email}
-                // onChange={e => setEmail(e)}
+                value={userName}
+                onChange={e => setUserName(e)}
               />
               <View style={{marginTop: 35}} />
               <InputFeild
@@ -70,8 +74,8 @@ const Signup = ({navigation}) => {
                 // imageInputField
                 placeholder={labels.email}
                 leftIcon={Assets.Email}
-                // value={email}
-                // onChange={e => setEmail(e)}
+                value={email}
+                onChange={e => setEmail(e)}
               />
               <View style={{marginTop: 35}} />
               <InputFeild
@@ -80,8 +84,8 @@ const Signup = ({navigation}) => {
                 // imageInputField
                 placeholder={labels.password}
                 leftIcon={Assets.Password}
-                // value={email}
-                // onChange={e => setEmail(e)}
+                value={password}
+                onChange={e => setPassword(e)}
               />
               <View style={{marginTop: 42}} />
               <SmallButton

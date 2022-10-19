@@ -7,7 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React,{useState} from 'react';
 import {colors} from '../../config/Colors';
 import {InputFeild} from '../../components/inputField';
 import {Assets} from '../../assests';
@@ -16,6 +16,8 @@ import SmallButton from '../../components/SmallButton';
 import styles from './Styles';
 
 const Login = ({navigation}) => {
+  const [email,setEmail]=useState('');
+  const [password,setPassword]=useState('');
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}
@@ -63,8 +65,8 @@ const Login = ({navigation}) => {
               placeholder={labels.userName}
               leftIcon={Assets.user}
               // rightIcon={Assets.user}
-              // value={email}
-              // onChange={e => setEmail(e)}
+              value={email}
+               onChange={e => setEmail(e)}
             />
             <View style={{marginTop: 35}} />
             <InputFeild
@@ -73,8 +75,8 @@ const Login = ({navigation}) => {
               // imageInputField
               placeholder={labels.password}
               leftIcon={Assets.Password}
-              // value={email}
-              // onChange={e => setEmail(e)}
+               value={password}
+              onChange={e => setPassword(e)}
             />
             <View style={{marginTop: 42}} />
             <SmallButton
