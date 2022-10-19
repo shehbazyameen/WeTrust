@@ -27,4 +27,5 @@ export const Assets = {
   buyIcon: require('../assests/images/buyIcon.png'),
   backArrowHeader: require('../assests/images/backArrowHeader.png'),
   date: require('../assests/images/Date.png'),
+  phone: require('../assests/images/phone.png'),
 };
