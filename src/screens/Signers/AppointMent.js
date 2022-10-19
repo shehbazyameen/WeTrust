@@ -46,7 +46,6 @@ const AppointMent = ({navigation}) => {
           setOpen(false);
         }}
         mode="datetime"
-        maximumDate={new Date()}
       />
       <ImageBackground
         resizeMode="stretch"
@@ -57,7 +56,27 @@ const AppointMent = ({navigation}) => {
           padding: 20,
           // alignItems: 'center',
         }}>
-        <View style={{height: height / 6}} />
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}
+          style={{
+            position: 'absolute',
+            top: 80,
+            paddingHorizontal: 32,
+            height: 30,
+            width: 30,
+            left: 0,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Image
+            style={{alignSelf: 'center'}}
+            resizeMode="contain"
+            source={Assets.backArrowHeader}
+          />
+        </TouchableOpacity>
+        <View style={{marginTop: 100}} />
         <Text
           style={{
             fontFamily: fonts.SitkaDisplay,
@@ -81,6 +100,8 @@ const AppointMent = ({navigation}) => {
             placeholder={'First Name'}
             // leftIcon={Assets.Password}
             rightIcon={Assets.user}
+            paddingHorizontal={0}
+            paddingHorizontalRight={22}
             // value={email}
             // onChange={e => setEmail(e)}
           />
@@ -96,6 +117,8 @@ const AppointMent = ({navigation}) => {
             placeholder={'Last Name'}
             // leftIcon={Assets.Password}
             rightIcon={Assets.user}
+            paddingHorizontal={0}
+            paddingHorizontalRight={22}
             // value={email}
             // onChange={e => setEmail(e)}
           />
@@ -111,6 +134,8 @@ const AppointMent = ({navigation}) => {
             placeholder={'Email'}
             // leftIcon={Assets.Password}
             rightIcon={Assets.Email}
+            paddingHorizontal={0}
+            paddingHorizontalRight={22}
             // value={email}
             // onChange={e => setEmail(e)}
           />
@@ -127,6 +152,8 @@ const AppointMent = ({navigation}) => {
             placeholder={'Phone'}
             // leftIcon={Assets.Password}
             rightIcon={Assets.user}
+            paddingHorizontal={0}
+            paddingHorizontalRight={22}
             // value={email}
             // onChange={e => setEmail(e)}
           />
@@ -154,7 +181,7 @@ const AppointMent = ({navigation}) => {
             }}
             style={{
               backgroundColor: colors.white,
-              paddingHorizontal: 30,
+              paddingHorizontal: 22,
               paddingVertical: 20,
 
               borderRadius: 6,
@@ -182,8 +209,8 @@ const AppointMent = ({navigation}) => {
                     : 'Date'}{' '}
                 </Text>
               </View>
-              <View style={{justifyContent: 'flex-end'}}>
-                <Image source={Assets.date} />
+              <View style={{}}>
+                <Image source={Assets.date} style={{width: 22, height: 22}} />
               </View>
             </View>
           </TouchableOpacity>
