@@ -20,31 +20,38 @@ import SignersSuccess from '../Signers/SignersSuccess';
 
 const {height, width} = Dimensions.get('window');
 const Payment = ({navigation}) => {
-   const {width, height} = Dimensions.get('window');
+  const {width, height} = Dimensions.get('window');
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}
       style={{flex: 1, backgroundColor: colors.screenColor}}>
-      <TouchableOpacity
-        style={{
-          position: 'absolute',
-          top: 80,
-          paddingHorizontal: 32,
-        }}>
-        <Image
-          style={{alignSelf: 'center'}}
-          resizeMode="contain"
-          source={Assets.backArrowHeader}
-        />
-      </TouchableOpacity>
-
       <ImageBackground
         resizeMode="stretch"
         source={Assets.backHeaderFooter}
         style={{
-          flex:1,
+          flex: 1,
           justifyContent: 'center',
         }}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}
+          style={{
+            position: 'absolute',
+            top: 80,
+            paddingHorizontal: 32,
+            height: 30,
+            width: 30,
+            left: 0,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Image
+            style={{alignSelf: 'center'}}
+            resizeMode="contain"
+            source={Assets.backArrowHeader}
+          />
+        </TouchableOpacity>
         <View style={{marginTop: 100}} />
         <ScrollView>
           <View style={{padding: 22}}>
@@ -174,7 +181,7 @@ const Payment = ({navigation}) => {
               <SmallButton
                 title={'Pay Now'}
                 onPress={() => {
-                   navigation.navigate('SignersSuccess');
+                  navigation.navigate('SignersSuccess');
                 }}
               />
             </View>

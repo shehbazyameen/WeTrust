@@ -29,6 +29,26 @@ const Signup = ({navigation}) => {
             flex: 1,
             justifyContent: 'center',
           }}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.goBack();
+            }}
+            style={{
+              position: 'absolute',
+              top: 80,
+              paddingHorizontal: 32,
+              height: 30,
+              width: 30,
+              left: 0,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            <Image
+              style={{alignSelf: 'center'}}
+              resizeMode="contain"
+              source={Assets.backArrowHeader}
+            />
+          </TouchableOpacity>
           <View
             style={{
               marginTop: 90,

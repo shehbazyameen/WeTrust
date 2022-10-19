@@ -14,6 +14,7 @@ import {Assets} from '../../assests';
 import {labels} from '../../config/Lables';
 import SmallButton from '../../components/SmallButton';
 import styles from './Styles';
+import Signup from '../Signup/Signup';
 
 const Login = ({navigation}) => {
   return (
@@ -80,7 +81,7 @@ const Login = ({navigation}) => {
             <SmallButton
               title={labels.signIn}
               onPress={() => {
-                navigation.replace('HomeStack', {screen: 'HomeScreen'});
+                navigation.navigate('Signup');
               }}
             />
             <View style={{marginTop: 53}} />

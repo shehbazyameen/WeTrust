@@ -6,7 +6,8 @@ import {
   Dimensions,
   ScrollView,
   KeyboardAvoidingView,
-  Keyboard,ImageBackground
+  Keyboard,
+  ImageBackground,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {colors} from '../../config/Colors';
@@ -38,96 +39,114 @@ const SignersDetails = ({navigation}) => {
   }, []);
   const {width, height} = Dimensions.get('window');
   return (
-    <View style={{flex: 1}}>
-      <ImageBackground
-        resizeMode="stretch"
-        source={Assets.backHeaderFooter}
+    <ImageBackground
+      resizeMode="stretch"
+      source={Assets.backHeaderFooter}
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        padding: 40,
+        // alignItems: 'center',
+      }}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.goBack();
+        }}
         style={{
-          flex: 1,
+          position: 'absolute',
+          top: 80,
+          paddingHorizontal: 32,
+          height: 30,
+          width: 30,
+          left: 0,
+          alignItems: 'center',
           justifyContent: 'center',
-          padding: 40,
-          // alignItems: 'center',
         }}>
-        <View style={{height: height / 6}} />
-        <Text
+        <Image
+          style={{alignSelf: 'center'}}
+          resizeMode="contain"
+          source={Assets.backArrowHeader}
+        />
+      </TouchableOpacity>
+      <View style={{marginTop: 100}} />
+      <Text
+        style={{
+          fontFamily: fonts.SitkaDisplay,
+          fontSize: 24,
+          color: '#191C4C',
+          textAlign: 'center',
+        }}>
+        Witness Details
+      </Text>
+      <ScrollView style={{paddingBottom: 100}}>
+        <View
           style={{
-            fontFamily: fonts.SitkaDisplay,
-            fontSize: 24,
-            color: '#191C4C',
-            textAlign: 'center',
-          }}>
-          Witness Details
-        </Text>
+            height: 50,
+          }}
+        />
+        <InputFeild
+          // refValueCurrent={refenterpassword}
+          returnKeyType={'next'}
+          // imageInputField
+          placeholder={'First Name'}
+          // leftIcon={Assets.Password}
+          rightIcon={Assets.user}
+          // value={email}
+          // onChange={e => setEmail(e)}
+        />
+        <View
+          style={{
+            height: 20,
+          }}
+        />
+        <InputFeild
+          // refValueCurrent={refenterpassword}
+          returnKeyType={'next'}
+          // imageInputField
+          placeholder={'Last Name'}
+          // leftIcon={Assets.Password}
+          rightIcon={Assets.user}
+          // value={email}
+          // onChange={e => setEmail(e)}
+        />
+        <View
+          style={{
+            height: 20,
+          }}
+        />
+        <InputFeild
+          // refValueCurrent={refenterpassword}
+          returnKeyType={'next'}
+          // imageInputField
+          placeholder={'Email'}
+          // leftIcon={Assets.Password}
+          rightIcon={Assets.Email}
+          // value={email}
+          // onChange={e => setEmail(e)}
+        />
+        <View
+          style={{
+            height: 20,
+          }}
+        />
 
-        <ScrollView style={{paddingBottom: 100}}>
-          <View
-            style={{
-              height: 50,
-            }}
-          />
-          <InputFeild
-            // refValueCurrent={refenterpassword}
-            returnKeyType={'next'}
-            // imageInputField
-            placeholder={'First Name'}
-            // leftIcon={Assets.Password}
-            rightIcon={Assets.user}
-            // value={email}
-            // onChange={e => setEmail(e)}
-          />
-          <View
-            style={{
-              height: 20,
-            }}
-          />
-          <InputFeild
-            // refValueCurrent={refenterpassword}
-            returnKeyType={'next'}
-            // imageInputField
-            placeholder={'Last Name'}
-            // leftIcon={Assets.Password}
-            rightIcon={Assets.user}
-            // value={email}
-            // onChange={e => setEmail(e)}
-          />
-          <View
-            style={{
-              height: 20,
-            }}
-          />
-          <InputFeild
-            // refValueCurrent={refenterpassword}
-            returnKeyType={'next'}
-            // imageInputField
-            placeholder={'Email'}
-            // leftIcon={Assets.Password}
-            rightIcon={Assets.Email}
-            // value={email}
-            // onChange={e => setEmail(e)}
-          />
-          <View
-            style={{
-              height: 20,
-            }}
-          />
+        <InputFeild
+          // refValueCurrent={refenterpassword}
+          returnKeyType={'next'}
+          // imageInputField
+          placeholder={'Phone'}
+          // leftIcon={Assets.Password}
+          rightIcon={Assets.user}
+          // value={email}
+          // onChange={e => setEmail(e)}
+        />
+        <View
+          style={{
+            height: 20,
+          }}
+        />
 
-          <InputFeild
-            // refValueCurrent={refenterpassword}
-            returnKeyType={'next'}
-            // imageInputField
-            placeholder={'Phone'}
-            // leftIcon={Assets.Password}
-            rightIcon={Assets.user}
-            // value={email}
-            // onChange={e => setEmail(e)}
-          />
-          <View
-            style={{
-              height: 20,
-            }}
-          />
-
-          {/* <InputFeild
+        {/* <InputFeild
             onFocus={showDatePicker}
             // refValueCurrent={refenterpassword}
             returnKeyType={'next'}
@@ -138,37 +157,34 @@ const SignersDetails = ({navigation}) => {
             // value={email}
             // onChange={e => setEmail(e)}
           /> */}
-          
 
+        <View style={{marginHorizontal: 40, marginVertical: 25}}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('SignerVerification')}
+            style={{
+              backgroundColor: '#AC872E',
+              borderRadius: 6,
 
-          <View style={{marginHorizontal: 40, marginVertical: 25}}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('SignerVerification')}
+              justifyContent: 'center',
+              alignItems: 'center',
+              paddingHorizontal: 40,
+              paddingVertical: 12,
+            }}>
+            <Text
               style={{
-                backgroundColor: '#AC872E',
-                borderRadius: 6,
-
-                justifyContent: 'center',
-                alignItems: 'center',
-                paddingHorizontal: 40,
-                paddingVertical: 12,
+                // marginHorizontal: 40,
+                color: '#ffffff',
+                // marginVertical: 12,
+                fontFamily: fonts.SitkaDisplay,
+                fontWeight: 'bold',
+                fontSize: 14,
               }}>
-              <Text
-                style={{
-                  // marginHorizontal: 40,
-                  color: '#ffffff',
-                  // marginVertical: 12,
-                  fontFamily: fonts.SitkaDisplay,
-                  fontWeight: 'bold',
-                  fontSize: 14,
-                }}>
-                Continue
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-      </ImageBackground>
-    </View>
+              Continue
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </ImageBackground>
   );
 };
 

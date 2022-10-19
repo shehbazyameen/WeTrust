@@ -1,4 +1,11 @@
-import {View, Text, Image, TouchableOpacity, Dimensions, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+  ScrollView,
+} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {colors} from '../../config/Colors';
 import {Assets} from '../../assests';
@@ -7,111 +14,108 @@ import * as Progress from 'react-native-progress';
 import DocumentPicker from 'react-native-document-picker';
 
 const SignerVerification = ({navigation}) => {
+  const data = [
+    {
+      id: 1,
+      details: 'State-issued drivers license',
+    },
+    {
+      id: 2,
+      details: 'State-issued identification card',
+    },
+    {
+      id: 3,
+      details:
+        'U.S. passport issued by the U.S. Department of State U.S. military ID State,',
+    },
+    {
+      id: 4,
+      details: 'U.S. military ID',
+    },
+    {
+      id: 5,
+      details: 'State, county and local government IDs',
+    },
+    {
+      id: 6,
+      details:
+        'Permanent resident card, or "green card," issued by the U.S. Citizenship and Immigration Services*',
+    },
+    {
+      id: 7,
+      details: 'Foreign passport*',
+    },
+    {
+      id: 8,
+      details: 'Drivers license officially issued in Mexico or Canada*',
+    },
+    {
+      id: 9,
+      details: 'Digital drivers license*',
+    },
+    {
+      id: 10,
+      details: 'ID deemed acceptable to the U.S.',
+    },
+    {
+      id: 11,
+      details: 'Department of Homeland Security*',
+    },
+    {
+      id: 12,
+      details:
+        'Inmate ID issued by the State Department of Corrections or Federal Bureau of Prisons, ',
+    },
+  ];
+  const [progress, setProgres] = useState(0);
+  const [showProgress, setShowProgress] = useState(false);
+  const selectDocument = async () => {
+    setShowProgress(false);
+    setProgres(0);
 
+    try {
+      const res = await DocumentPicker.pickMultiple({
+        type: [DocumentPicker.types.allFiles],
+      });
+      console.log(res, 'response');
+      let muiltipleFileNames = '';
+      res.map((r, i) => {
+        muiltipleFileNames += `${r.name}, `;
+      });
+      let request = [];
+      request = res?.map((res1, i) => {
+        let formData = new FormData();
+        formData.append('file', {
+          uri: res1.uri,
+          type: res1.type, // mime type
+          name: res1.name,
+        });
+        console.log('gggg', formData);
+        let obj = {
+          name: res1.name,
+          type: res1.type,
+        };
+        setTimeout(() => {
+          setProgres(1);
+        }, 300);
+        setTimeout(() => {
+          setShowProgress(true);
+        }, 500);
+        // Get_File_Url_Method(formData, value => {
+        //   getUrlMethod(value, fieldId, label, obj);
+        // });
+      });
+      // Get_File_Url_Method(formData, value => {
+      //   setSingleDocument('Doc is Selected');
+      //   props.updatedFieldValue(value, fieldId);
+      // });
+    } catch (err) {
+      if (DocumentPicker.isCancel(err)) {
+      }
+    }
+  };
 
-      const data = [
-        {
-          id: 1,
-          details: 'State-issued drivers license',
-        },
-        {
-          id: 2,
-          details: 'State-issued identification card',
-        },
-        {
-          id: 3,
-          details:
-            'U.S. passport issued by the U.S. Department of State U.S. military ID State,',
-        },
-        {
-          id: 4,
-          details: 'U.S. military ID',
-        },
-        {
-          id: 5,
-          details: 'State, county and local government IDs',
-        },
-        {
-          id: 6,
-          details:
-            'Permanent resident card, or "green card," issued by the U.S. Citizenship and Immigration Services*',
-        },
-        {
-          id: 7,
-          details: 'Foreign passport*',
-        },
-        {
-          id: 8,
-          details: 'Drivers license officially issued in Mexico or Canada*',
-        },
-        {
-          id: 9,
-          details: 'Digital drivers license*',
-        },
-        {
-          id: 10,
-          details: 'ID deemed acceptable to the U.S.',
-        },
-        {
-          id: 11,
-          details: 'Department of Homeland Security*',
-        },
-        {
-          id: 12,
-          details:
-            'Inmate ID issued by the State Department of Corrections or Federal Bureau of Prisons, ',
-        },
-      ];
-      const [progress, setProgres] = useState(0);
-      const [showProgress, setShowProgress] = useState(false);
-      const selectDocument = async () => {
-        setShowProgress(false);
-        setProgres(0);
-
-        try {
-          const res = await DocumentPicker.pickMultiple({
-            type: [DocumentPicker.types.allFiles],
-          });
-          console.log(res, 'response');
-          let muiltipleFileNames = '';
-          res.map((r, i) => {
-            muiltipleFileNames += `${r.name}, `;
-          });
-          let request = [];
-          request = res?.map((res1, i) => {
-            let formData = new FormData();
-            formData.append('file', {
-              uri: res1.uri,
-              type: res1.type, // mime type
-              name: res1.name,
-            });
-            console.log('gggg', formData);
-            let obj = {
-              name: res1.name,
-              type: res1.type,
-            };
-            setTimeout(() => {
-              setProgres(1);
-            }, 300);
-            setTimeout(() => {
-              setShowProgress(true);
-            }, 500);
-            // Get_File_Url_Method(formData, value => {
-            //   getUrlMethod(value, fieldId, label, obj);
-            // });
-          });
-          // Get_File_Url_Method(formData, value => {
-          //   setSingleDocument('Doc is Selected');
-          //   props.updatedFieldValue(value, fieldId);
-          // });
-        } catch (err) {
-          if (DocumentPicker.isCancel(err)) {
-          }
-        }
-      };
-
-     
-      const {width, height} = Dimensions.get('window');
+  const {width, height} = Dimensions.get('window');
   return (
     <View style={{flex: 1, backgroundColor: colors.screenColor}}>
       <View>
@@ -125,13 +129,29 @@ const SignerVerification = ({navigation}) => {
           }}
           source={Assets.headerImage}
         />
-        <TouchableOpacity style={{}}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}
+          style={{
+            position: 'absolute',
+            top: 80,
+            paddingHorizontal: 32,
+            height: 30,
+            width: 30,
+            left: 0,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
           <Image
-            style={{position: 'absolute', top: 90, marginLeft: 30}}
-            source={Assets.forwardArrow}></Image>
+            style={{alignSelf: 'center'}}
+            resizeMode="contain"
+            source={Assets.backArrowHeader}
+          />
         </TouchableOpacity>
+        <View style={{marginTop: 100}} />
       </View>
-      <View style={{height: height / 6}}></View>
+
       <ScrollView>
         <View style={{alignItems: 'center', justifyContent: 'center'}}>
           <Text
