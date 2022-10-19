@@ -18,9 +18,9 @@ import {InputFeild} from '../../components/inputField';
 const SignersDetails = ({navigation}) => {
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const [firstName, setFirstName] = useState('');
-   const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-     const [Phone, setPhone] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [Phone, setPhone] = useState('');
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
