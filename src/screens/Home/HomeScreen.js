@@ -79,6 +79,7 @@ const HomeScreen = ({navigation}) => {
             {data.map((item, index) => {
               return (
                 <TouchableOpacity
+                   key={item?.id}
                   onPress={() => {
                     setActiveColor(true);
                     setActiveElementId(item?.id);

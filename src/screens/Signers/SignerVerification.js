@@ -232,7 +232,7 @@ const SignerVerification = ({navigation}) => {
             <View style={{marginTop: 20}}>
               {data.map((item, index) => {
                 return (
-                  <View prop={item?.id} style={{flexDirection: 'row'}}>
+                  <View key={item?.id} style={{flexDirection: 'row'}}>
                     <View
                       style={{
                         height: 8,
