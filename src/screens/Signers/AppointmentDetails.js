@@ -98,7 +98,7 @@ const AppointmentDetails = ({navigation}) => {
             </View>
             <View>
               <TouchableOpacity
-                onPress={() => navigation.navigate('SignerVerification')}
+                onPress={() => navigation.navigate('HomeScreen')}
                 style={{
                   backgroundColor: '#AC872E',
                   borderRadius: 6,

@@ -87,7 +87,7 @@ const Signup = ({navigation}) => {
               <SmallButton
                 title={labels.signUp}
                 onPress={() => {
-                  navigation.replace('HomeStack', {screen: 'Payment'});
+                  navigation.replace('HomeStack', {screen: 'HomeScreen'});
                 }}
               />
               <View style={{marginTop: 64}} />

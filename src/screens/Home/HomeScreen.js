@@ -126,9 +126,10 @@ const HomeScreen = ({navigation}) => {
         {activeElementId !== '' && (
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('HomeStack', {
-                screen: 'DocumentUpload',
-              });
+              navigation.navigate('DocumentUpload'
+              );
+                setActiveColor(false);
+                setActiveElementId('');
             }}
             style={{
               backgroundColor: '#AC872E',

@@ -16,9 +16,11 @@ import {labels} from '../../config/Lables';
 import styles from './Styles';
 import {InputFeild} from '../../components/inputField';
 import SmallButton from '../../components/SmallButton';
+import SignersSuccess from '../Signers/SignersSuccess';
 
 const {height, width} = Dimensions.get('window');
 const Payment = ({navigation}) => {
+   const {width, height} = Dimensions.get('window');
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}
@@ -40,10 +42,10 @@ const Payment = ({navigation}) => {
         resizeMode="stretch"
         source={Assets.backHeaderFooter}
         style={{
-          flex: 1,
+          flex:1,
           justifyContent: 'center',
         }}>
-        <View style={{marginTop: 66}} />
+        <View style={{marginTop: 100}} />
         <ScrollView>
           <View style={{padding: 22}}>
             <Text style={[styles.textWelcome]}>{'Payment Summary'}</Text>
@@ -172,7 +174,7 @@ const Payment = ({navigation}) => {
               <SmallButton
                 title={'Pay Now'}
                 onPress={() => {
-                  // navigation.replace('HomeStack', {screen: 'Payment'});
+                   navigation.navigate('SignersSuccess');
                 }}
               />
             </View>

@@ -13,6 +13,8 @@ import {Assets} from '../../assests';
 import fonts from '../../assests/fonts';
 import * as Progress from 'react-native-progress';
 import DocumentPicker from 'react-native-document-picker';
+import DocumentUpload from '../Documents/DocumentUpload';
+import HomeScreen from '../Home/HomeScreen';
 
 
 const SignersSuccess = ({navigation}) => {
@@ -92,7 +94,7 @@ const SignersSuccess = ({navigation}) => {
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => navigation.navigate('SignerVerification')}
+              onPress={() => navigation.navigate('HomeScreen')}
               style={{
                 backgroundColor: '#AC872E',
                 borderRadius: 6,

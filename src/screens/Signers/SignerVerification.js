@@ -239,7 +239,7 @@ const SignerVerification = ({navigation}) => {
           <View style={{paddingVertical: 20, paddingBottom: 30}}>
             {showProgress && (
               <TouchableOpacity
-                onPress={() => navigation.navigate('SignersSuccess')}
+                onPress={() => navigation.navigate('Payment')}
                 style={{backgroundColor: '#AC872E', borderRadius: 6}}>
                 <Text
                   style={{
