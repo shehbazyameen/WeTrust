@@ -7,6 +7,7 @@ import {
   ImageBackground,
   Dimensions,
   Image,
+  Animated,
 } from 'react-native';
 import {Assets} from '../../assests/index';
 import {colors} from '../../config/Colors';
@@ -18,6 +19,13 @@ import styles from './Styles';
 const {height, width} = Dimensions.get('window');
 
 const Intro = ({navigation}) => {
+   const fadeAnim = useRef(new Animated.Value(0)).current;
+   const animate=()=>{
+     Animated.timing(fadeAnim, {
+       toValue: 80,
+       duration: 300,
+     }).start();
+   }
   // Declare state variables
   const [index, setIndex] = useState(0);
 
@@ -63,9 +71,14 @@ const Intro = ({navigation}) => {
           activeOpacity={0.7}
           style={styles.slideTouch}
           onPress={() => {
-            continueToWelcome();
+            setTimeout(() => {
+              continueToWelcome();
+            },500);
+            animate()
           }}>
-          <Text style={styles.textslide}>{labels.slideHowWork}</Text>
+          <Animated.View style={{marginRight:fadeAnim}}>
+            <Text style={styles.textslide}>{labels.slideHowWork}</Text>
+          </Animated.View>
           <View style={{width: 20}} />
           <Image source={Assets.forwardArrow} />
         </TouchableOpacity>
