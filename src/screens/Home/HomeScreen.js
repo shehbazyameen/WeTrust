@@ -19,6 +19,22 @@ const HomeScreen = ({navigation}) => {
   const {width, height} = Dimensions.get('window');
   const [activeColor, setActiveColor] = useState(false);
   const [activeElementId, setActiveElementId] = useState('');
+  const [scrollHeight,setScrollHeight]=useState(1.7)
+
+  React.useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+    setActiveElementId("")
+    });
+
+    // Return the function to unsubscribe from the event so it gets removed on unmount
+    return unsubscribe;
+  }, [navigation]);
+  useEffect(()=>{
+    if(activeElementId!==""){
+      setScrollHeight(2)
+
+    }
+  },[activeElementId]) 
   const data = [
     {
       id: 1,
@@ -69,12 +85,13 @@ const HomeScreen = ({navigation}) => {
           }}>
           Solutions for
         </Text>
-        <View style={{height: height / 2}}>
+        <View style={{height: height/scrollHeight}}>
           <ScrollView
-            showsVerticalScrollIndicator={false}
+             showsVerticalScrollIndicator={true}
             style={{
               marginTop: 25,
               paddingTop: 12,
+              paddingHorizontal:10
             }}>
             {data.map((item, index) => {
               return (
