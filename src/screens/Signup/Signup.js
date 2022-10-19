@@ -105,6 +105,8 @@ const Signup = ({navigation}) => {
                 placeholder={labels.password}
                 leftIcon={Assets.Password}
                 value={password}
+                secureTextEntry={true}
+                password={true} 
                 onChange={e => setPassword(e)}
               />
               <View style={{marginTop: 42}} />

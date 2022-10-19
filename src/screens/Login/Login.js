@@ -74,6 +74,8 @@ const Login = ({navigation}) => {
               // refValueCurrent={refenterpassword}
               // returnKeyType={'next'}
               // imageInputField
+              secureTextEntry={true}
+              password={true} 
               placeholder={labels.password}
               leftIcon={Assets.Password}
                value={password}

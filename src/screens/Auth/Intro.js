@@ -20,6 +20,7 @@ const {height, width} = Dimensions.get('window');
 
 const Intro = ({navigation}) => {
    const fadeAnim = useRef(new Animated.Value(0)).current;
+   const [showBorder,setShow]=useState(false) 
    const animate=()=>{
      Animated.timing(fadeAnim, {
        toValue: 80,
@@ -73,14 +74,25 @@ const Intro = ({navigation}) => {
           onPress={() => {
             setTimeout(() => {
               continueToWelcome();
-            },500);
-            animate()
+            }, 500);
+            setShow(true)
+            animate();
           }}>
-          <Animated.View style={{marginRight:fadeAnim}}>
+          <Animated.View style={{marginRight: fadeAnim}}>
             <Text style={styles.textslide}>{labels.slideHowWork}</Text>
           </Animated.View>
           <View style={{width: 20}} />
-          <Image source={Assets.forwardArrow} />
+          <View
+            style={{
+              width: showBorder? 20:0,
+              height: showBorder? 20:0,
+              borderRadius: showBorder? 10:0,
+              backgroundColor: '#A3802C',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Image source={Assets.forwardArrow} />
+          </View>
         </TouchableOpacity>
       </ImageBackground>
     );
