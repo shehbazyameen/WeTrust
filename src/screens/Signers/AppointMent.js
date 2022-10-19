@@ -183,7 +183,7 @@ const AppointMent = ({navigation}) => {
                 </Text>
               </View>
               <View style={{justifyContent: 'flex-end'}}>
-                <Image source={Assets.user} />
+                <Image source={Assets.date} />
               </View>
             </View>
           </TouchableOpacity>

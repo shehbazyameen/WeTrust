@@ -21,7 +21,6 @@
     "react": "18.1.0",
     "react-native": "0.70.2",
     "react-native-app-intro-slider": "^4.0.4",
-    "react-native-credit-card-input": "^0.4.1",
     "react-native-date-picker": "^4.2.5",
     "react-native-document-picker": "^8.1.1",
     "react-native-flip-card-plus": "^2.0.0",
