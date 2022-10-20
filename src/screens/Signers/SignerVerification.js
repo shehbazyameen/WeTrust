@@ -117,7 +117,7 @@ const SignerVerification = ({navigation}) => {
 
   const {width, height} = Dimensions.get('window');
   return (
-    <View style={{flex: 1, backgroundColor: colors.screenColor}}>
+    <View style={{flex: 1, backgroundColor: colors.screenColor,paddingHorizontal:20}}>
       <View>
         <Image
           resizeMode="cover"
@@ -210,12 +210,13 @@ const SignerVerification = ({navigation}) => {
 
               elevation: 5,
               margin: 20,
-              height: height / 1.8,
+              // height: height / 1.8,
               //   backgroundColor: 'red',
               backgroundColor: colors.backgroundColor,
-              width: '80%',
+             
               borderRadius: 6,
               paddingHorizontal: 15,
+              padding:5,
             }}>
             <Text
               style={{
@@ -246,7 +247,7 @@ const SignerVerification = ({navigation}) => {
                       style={{
                         paddingHorizontal: 10,
                         fontFamily: fonts.SEGOEUI,
-                        colors: '#707070',
+                        color: '#707070',
                       }}>
                       {item?.details}
                     </Text>
