@@ -217,13 +217,23 @@ const AppointMent = ({navigation}) => {
               </View>
             </View>
           </TouchableOpacity>
-
-          <View style={{marginHorizontal: 90, marginVertical: 30}}>
+          <View
+          style={{
+            height:height/25
+          }}
+          />
+          <View
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+            
+            }}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('AppointmentDetails')}
+              onPress={() => navigation.navigate('AppointMent')}
               style={{
                 backgroundColor: '#AC872E',
                 borderRadius: 6,
+                width: width / 2.2,
 
                 justifyContent: 'center',
                 alignItems: 'center',

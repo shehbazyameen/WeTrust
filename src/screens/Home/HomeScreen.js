@@ -23,7 +23,9 @@ const HomeScreen = ({navigation}) => {
 
   React.useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
+  
     setActiveElementId("")
+    setScrollHeight(1.7)
     });
 
     // Return the function to unsubscribe from the event so it gets removed on unmount

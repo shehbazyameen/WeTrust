@@ -106,7 +106,7 @@ const Signers = ({navigation}) => {
           <View>
             <TouchableOpacity
               style={{flexDirection: 'row', marginTop: 110}}
-              onPress={() => navigation.navigate('HomeScreen')}>
+              onPress={() => navigation.navigate('Payment')}>
               <Text
                 style={{
                   color: '#191C4D',
