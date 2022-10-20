@@ -15,7 +15,9 @@ import {Assets} from '../../assests';
 import fonts from '../../assests/fonts';
 import {InputFeild} from '../../components/inputField';
 
-const SignersDetails = ({navigation}) => {
+const SignersDetails = ({navigation,route}) => {
+  let isCosigner = route?.params?.signer;
+
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -80,7 +82,7 @@ const SignersDetails = ({navigation}) => {
           color: '#191C4C',
           textAlign: 'center',
         }}>
-        Witness Details
+        {isCosigner ? 'Co-Signer Details' : ' Witness Details'}
       </Text>
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -116,8 +118,8 @@ const SignersDetails = ({navigation}) => {
           placeholder={'Last Name'}
           // leftIcon={Assets.Password}
           rightIcon={Assets.user}
-          // value={email}
-          // onChange={e => setEmail(e)}
+          value={lastName}
+          onChange={e => setLastName(e)}
         />
         <View
           style={{
@@ -133,8 +135,8 @@ const SignersDetails = ({navigation}) => {
           placeholder={'Email'}
           // leftIcon={Assets.Password}
           rightIcon={Assets.Email}
-          // value={email}
-          // onChange={e => setEmail(e)}
+          value={email}
+          onChange={e => setEmail(e)}
         />
         <View
           style={{
@@ -149,10 +151,11 @@ const SignersDetails = ({navigation}) => {
           returnKeyType={'next'}
           // imageInputField
           placeholder={'Phone'}
+          keyboardType="numeric"
           // leftIcon={Assets.Password}
           rightIcon={Assets.phone}
-          // value={email}
-          // onChange={e => setEmail(e)}
+          value={Phone}
+          onChange={e => setPhone(e.slice(0,14))}
         />
         <View
           style={{
