@@ -17,23 +17,21 @@ import {InputFeild} from '../../components/inputField';
 import DatePicker from 'react-native-date-picker';
 import moment from 'moment/moment';
 const AppointMent = ({navigation}) => {
-         const {width, height} = Dimensions.get('window');
-         const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-             const [firstName, setFirstName] = useState('');
-             const [lastName, setLastName] = useState('');
-             const [email, setEmail] = useState('');
-             const [Phone, setPhone] = useState('');
-          const showDatePicker = () => {
-           setDatePickerVisibility(true);
-         };
+  const {width, height} = Dimensions.get('window');
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [Phone, setPhone] = useState('');
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
 
-          const hideDatePicker = () => {
-           setDatePickerVisibility(false);
-         };
-     const [date, setDate] = useState(
-       new Date(),
-     );
-     const [open, setOpen] = useState(false);
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+  const [date, setDate] = useState(new Date());
+  const [open, setOpen] = useState(false);
   return (
     <View style={{flex: 1}}>
       <DatePicker
@@ -166,70 +164,81 @@ const AppointMent = ({navigation}) => {
             }}
           />
 
-          {/* <InputFeild
-            onFocus={showDatePicker}
-            // refValueCurrent={refenterpassword}
-            returnKeyType={'next'}
-            // imageInputField
-            placeholder={'Date'}
-            // leftIcon={Assets.Password}
-            rightIcon={Assets.user}
-            // value={email}
-            // onChange={e => setEmail(e)}
-          /> */}
-          <TouchableOpacity
-            onPress={() => {
-              // setDatePickerVisibility(true);
-              setOpen(true);
-            }}
-            style={{
-              backgroundColor: colors.white,
-              paddingHorizontal: 22,
-              paddingVertical: 20,
-
-              borderRadius: 6,
-              // borderRightWidth: 0.8,
-              // borderBottomWidth: 0.8,
-              borderColor: colors.inputFieldBorderColor,
-              shadowColor: '#000',
-              shadowOffset: {
-                width: 0,
-                height: 1,
-              },
-              shadowOpacity: 0.2,
-              shadowRadius: 1.41,
-              elevation: 2,
-              borderWidth: 3,
-
-              // alignSelf: 'center',
-            }}>
-            <View
-              style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-              <View>
-                <Text>
-                  {date !== ''
-                    ? moment(date).format('MMMM Do YYYY, h:mm:ss a')
-                    : 'Date'}{' '}
-                </Text>
-              </View>
-              <View style={{}}>
-                <Image source={Assets.date} style={{width: 22, height: 22}} />
-              </View>
-            </View>
-          </TouchableOpacity>
           <View
-          style={{
-            height:height/25
-          }}
+            style={[
+              {
+                backgroundColor: colors.inputFieldBorderColor,
+                padding: 4,
+                borderRadius: 6,
+                borderRightWidth: 0.8,
+                borderBottomWidth: 0.8,
+                borderColor: colors.white,
+              },
+            ]}>
+            <TouchableOpacity
+              onPress={() => {
+                // setDatePickerVisibility(true);
+                setOpen(true);
+              }}
+              style={{
+                backgroundColor: colors.white,
+                paddingHorizontal: 22,
+                paddingVertical: 20,
+                borderRadius: 6,
+                borderColor: colors.inputFieldBorderColor,
+                shadow: {
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 0,
+                    height: 1,
+                  },
+                  shadowOpacity: 0.2,
+                  shadowRadius: 1.41,
+                  elevation: 2,
+                },
+
+                // alignSelf: 'center',
+              }}>
+              <View style={{flexDirection: 'row'}}>
+                <View>
+                  <Text
+                    style={{
+                      fontFamily: fonts.SitkaDisplay,
+                      fontSize: 16,
+                      color: colors.primaryBlue70,
+                    }}>
+                    {date !== ''
+                      ? moment(date).format('MMMM Do YYYY, h:mm:ss a')
+                      : 'Date'}{' '}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    position: 'absolute',
+                    right: -6,
+                  }}>
+                  <Image
+                    source={Assets.date}
+                    style={{width: 22, height: 22}}
+                    resizeMode={'contain'}
+                  />
+                </View>
+              </View>
+            </TouchableOpacity>
+          </View>
+
+          <View
+            style={{
+              height: height / 25,
+            }}
           />
           <View
             style={{
               justifyContent: 'center',
               alignItems: 'center',
-            
             }}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('AppointMent')}
+              onPress={() => navigation.navigate('AppointmentDetails')}
               style={{
                 backgroundColor: '#AC872E',
                 borderRadius: 6,

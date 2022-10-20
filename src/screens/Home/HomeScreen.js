@@ -19,24 +19,22 @@ const HomeScreen = ({navigation}) => {
   const {width, height} = Dimensions.get('window');
   const [activeColor, setActiveColor] = useState(false);
   const [activeElementId, setActiveElementId] = useState('');
-  const [scrollHeight,setScrollHeight]=useState(1.7)
+  const [scrollHeight, setScrollHeight] = useState(1.7);
 
   React.useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
-  
-    setActiveElementId("")
-    setScrollHeight(1.7)
+      setActiveElementId('');
+      setScrollHeight(1.7);
     });
 
     // Return the function to unsubscribe from the event so it gets removed on unmount
     return unsubscribe;
   }, [navigation]);
-  useEffect(()=>{
-    if(activeElementId!==""){
-      setScrollHeight(2)
-
+  useEffect(() => {
+    if (activeElementId !== '') {
+      setScrollHeight(1.74);
     }
-  },[activeElementId]) 
+  }, [activeElementId]);
   const data = [
     {
       id: 1,
@@ -76,7 +74,6 @@ const HomeScreen = ({navigation}) => {
       resizeMode="cover">
       <View
         style={{flex: 1, backgroundColor: '#191C4D80', alignItems: 'center'}}>
-          
         <Image source={Assets?.homeLogo} style={{marginTop: 100}}></Image>
         <Text
           style={{
@@ -87,18 +84,18 @@ const HomeScreen = ({navigation}) => {
           }}>
           Solutions for
         </Text>
-        <View style={{height: height/scrollHeight}}>
+        <View style={{height: height / scrollHeight}}>
           <ScrollView
-             showsVerticalScrollIndicator={true}
+            showsVerticalScrollIndicator={true}
             style={{
               marginTop: 25,
               paddingTop: 12,
-              paddingHorizontal:10
+              paddingHorizontal: 10,
             }}>
             {data.map((item, index) => {
               return (
                 <TouchableOpacity
-                   key={item?.id}
+                  key={item?.id}
                   onPress={() => {
                     setActiveColor(true);
                     setActiveElementId(item?.id);
@@ -140,37 +137,42 @@ const HomeScreen = ({navigation}) => {
               );
             })}
 
-            <View style={{height: 30}}></View>
+            <View style={{height: 80}}/>
           </ScrollView>
         </View>
         {activeElementId !== '' && (
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('DocumentUpload'
-              );
+          <View
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              padding: 12,
+            }}>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('DocumentUpload');
                 setActiveColor(false);
                 setActiveElementId('');
-            }}
-            style={{
-              backgroundColor: '#AC872E',
-              opacity: 1,
-              height: width / 8,
-              width: width / 3,
-              borderRadius: 4,
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginVertical:10,
-              
-            }}>
-            <Text
+              }}
               style={{
-                color: '#ffffff',
-                fontFamily: fonts.SitkaDisplay,
-                fontSize: 14,
+                backgroundColor: '#AC872E',
+                opacity: 1,
+                height: width / 8,
+                width: width / 3,
+                borderRadius: 4,
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginVertical: 10,
               }}>
-              Continue
-            </Text>
-          </TouchableOpacity>
+              <Text
+                style={{
+                  color: '#ffffff',
+                  fontFamily: fonts.SitkaDisplay,
+                  fontSize: 14,
+                }}>
+                Continue
+              </Text>
+            </TouchableOpacity>
+          </View>
         )}
       </View>
     </ImageBackground>

@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   textInput: {
     fontFamily: fonts.SitkaDisplay,
     fontSize: 16,
-    color: 'red',
+    // color: 'red',
   },
   inputFeildStyle: {
     alignItems: 'center',

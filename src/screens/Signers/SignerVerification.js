@@ -117,7 +117,7 @@ const SignerVerification = ({navigation}) => {
 
   const {width, height} = Dimensions.get('window');
   return (
-    <View style={{flex: 1, backgroundColor: colors.screenColor,paddingHorizontal:20}}>
+    <View style={{flex: 1, backgroundColor: colors.screenColor}}>
       <View>
         <Image
           resizeMode="cover"
@@ -153,7 +153,7 @@ const SignerVerification = ({navigation}) => {
       </View>
 
       <ScrollView>
-        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+        <View style={{alignItems: 'center', justifyContent: 'center',paddingHorizontal:20}}>
           <Text
             style={{
               fontSize: 24,
