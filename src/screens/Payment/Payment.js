@@ -211,31 +211,40 @@ const Payment = ({navigation}) => {
             <View style={{marginTop: 17}} />
 
             <View style={{flexDirection: 'row'}}>
-             
+              <View
+                style={[
+                  {
+                    backgroundColor: colors.inputFieldBorderColor,
+                    padding: 4,
+                    borderRadius: 6,
+                    borderRightWidth: 0.8,
+                    borderBottomWidth: 0.8,
+                    borderColor: colors.white,
+                  },
+                  {width: '52%'},
+                ]}>
                 <TouchableOpacity
+                  activeOpacity={0.7}
                   onPress={() => {
                     // setDatePickerVisibility(true);
                     setOpen(true);
                   }}
                   style={{
-                    width:"60%",
                     backgroundColor: colors.white,
                     paddingHorizontal: 22,
                     paddingVertical: 20,
-
                     borderRadius: 6,
-                    // borderRightWidth: 0.8,
-                    // borderBottomWidth: 0.8,
                     borderColor: colors.inputFieldBorderColor,
-                    shadowColor: '#000',
-                    shadowOffset: {
-                      width: 0,
-                      height: 1,
+                    shadow: {
+                      shadowColor: '#000',
+                      shadowOffset: {
+                        width: 0,
+                        height: 1,
+                      },
+                      shadowOpacity: 0.2,
+                      shadowRadius: 1.41,
+                      elevation: 2,
                     },
-                    shadowOpacity: 0.2,
-                    shadowRadius: 1.41,
-                    elevation: 1,
-                    borderWidth: 2,
 
                     // alignSelf: 'center',
                   }}>
@@ -258,8 +267,9 @@ const Payment = ({navigation}) => {
                     </View>
                   </View>
                 </TouchableOpacity>
-           
+              </View>
 
+              <View style={{width: '8%'}} />
               <View style={{width: '40%'}}>
                 <InputFeild
                   // refValueCurrent={refenterpassword}
@@ -287,7 +297,6 @@ const Payment = ({navigation}) => {
                 }}
               />
             </View>
-
             <View style={{marginTop: 64}} />
           </View>
         </ScrollView>
