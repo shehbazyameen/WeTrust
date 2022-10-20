@@ -24,7 +24,7 @@ export const InputFeild = ({
   maxLength = 100,
   autoFocus = false,
   autoCapitalize = 'none',
-  placeholderTextColor,
+  placeholderTextColor = colors.primaryBlue70,
   textSize = 16,
   disabled,
   paddingHorizontal = 22,
@@ -93,7 +93,7 @@ export const InputFeild = ({
         inputStyle={[
           styles.textInput,
           // leftIcon && styles.mL(22),
-          {marginLeft: 12},
+          {marginLeft: 12, color: 'black'},
         ]}
         onSubmitEditing={() =>
           refValueCurrent ? refValueCurrent.current.focus() : ''
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   textInput: {
     fontFamily: fonts.SitkaDisplay,
     fontSize: 16,
-    color: colors.primaryBlueOpacity50,
+    color: 'red',
   },
   inputFeildStyle: {
     alignItems: 'center',
