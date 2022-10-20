@@ -19,7 +19,10 @@ import moment from 'moment/moment';
 const AppointMent = ({navigation}) => {
          const {width, height} = Dimensions.get('window');
          const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-
+             const [firstName, setFirstName] = useState('');
+             const [lastName, setLastName] = useState('');
+             const [email, setEmail] = useState('');
+             const [Phone, setPhone] = useState('');
           const showDatePicker = () => {
            setDatePickerVisibility(true);
          };
@@ -102,8 +105,8 @@ const AppointMent = ({navigation}) => {
             rightIcon={Assets.user}
             paddingHorizontal={0}
             paddingHorizontalRight={22}
-            // value={email}
-            // onChange={e => setEmail(e)}
+            value={firstName}
+            onChange={e => setFirstName(e)}
           />
           <View
             style={{
@@ -119,8 +122,8 @@ const AppointMent = ({navigation}) => {
             rightIcon={Assets.user}
             paddingHorizontal={0}
             paddingHorizontalRight={22}
-            // value={email}
-            // onChange={e => setEmail(e)}
+            value={lastName}
+            onChange={e => setLastName(e)}
           />
           <View
             style={{
@@ -136,8 +139,8 @@ const AppointMent = ({navigation}) => {
             rightIcon={Assets.Email}
             paddingHorizontal={0}
             paddingHorizontalRight={22}
-            // value={email}
-            // onChange={e => setEmail(e)}
+            value={email}
+            onChange={e => setEmail(e)}
           />
           <View
             style={{
@@ -154,8 +157,8 @@ const AppointMent = ({navigation}) => {
             rightIcon={Assets.user}
             paddingHorizontal={0}
             paddingHorizontalRight={22}
-            // value={email}
-            // onChange={e => setEmail(e)}
+            value={Phone}
+            onChange={e => setPhone(e)}
           />
           <View
             style={{

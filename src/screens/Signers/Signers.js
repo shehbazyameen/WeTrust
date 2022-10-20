@@ -58,7 +58,7 @@ const Signers = ({navigation}) => {
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('SignersDetails');
+              navigation.navigate('SignersDetails', {signer: true});
             }}
             style={{
               backgroundColor: '#A5822C',
@@ -82,7 +82,7 @@ const Signers = ({navigation}) => {
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('SignersDetails');
+              navigation.navigate('SignersDetails', {signer: false});
             }}
             style={{
               backgroundColor: '#A5822C',
@@ -106,7 +106,7 @@ const Signers = ({navigation}) => {
           <View>
             <TouchableOpacity
               style={{flexDirection: 'row', marginTop: 110}}
-              onPress={() => navigation.navigate('SignersDetails')}>
+              onPress={() => navigation.navigate('HomeScreen')}>
               <Text
                 style={{
                   color: '#191C4D',

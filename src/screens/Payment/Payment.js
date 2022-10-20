@@ -21,6 +21,7 @@ import SignersSuccess from '../Signers/SignersSuccess';
 import Stripe from 'react-native-stripe-api';
 import DatePicker from 'react-native-date-picker';
 import moment from 'moment/moment';
+import fonts from '../../assests/fonts';
 
 const {height, width} = Dimensions.get('window');
 
@@ -210,23 +211,54 @@ const Payment = ({navigation}) => {
             <View style={{marginTop: 17}} />
 
             <View style={{flexDirection: 'row'}}>
-              <TouchableOpacity
-                onPress={() => setOpen(true)}
-                style={{width: '60%'}}>
-                <InputFeild
-                  disabled={1}
-                  // refValueCurrent={refenterpassword}
-                  returnKeyType={'next'}
-                  // imageInputField
-                  placeholder={'Exp Date'}
-                  // leftIcon={Assets.user}
-                  // rightIcon={Assets.user}
-                  value={cardHolderExp}
-                  onChange={e => setcardHolderExp(e)}
-                  paddingHorizontal={0}
-                  paddingHorizontalRight={22}
-                />
-              </TouchableOpacity>
+             
+                <TouchableOpacity
+                  onPress={() => {
+                    // setDatePickerVisibility(true);
+                    setOpen(true);
+                  }}
+                  style={{
+                    width:"60%",
+                    backgroundColor: colors.white,
+                    paddingHorizontal: 22,
+                    paddingVertical: 20,
+
+                    borderRadius: 6,
+                    // borderRightWidth: 0.8,
+                    // borderBottomWidth: 0.8,
+                    borderColor: colors.inputFieldBorderColor,
+                    shadowColor: '#000',
+                    shadowOffset: {
+                      width: 0,
+                      height: 1,
+                    },
+                    shadowOpacity: 0.2,
+                    shadowRadius: 1.41,
+                    elevation: 1,
+                    borderWidth: 2,
+
+                    // alignSelf: 'center',
+                  }}>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                    }}>
+                    <View>
+                      <Text
+                        style={{
+                          fontFamily: fonts.SitkaDisplay,
+                          fontSize: 16,
+                          color: colors.primaryBlueOpacity50,
+                        }}>
+                        {cardHolderExp?.length
+                          ? `${cardHolderExp[0]}/${cardHolderExp[1]}`
+                          : 'Date'}{' '}
+                      </Text>
+                    </View>
+                  </View>
+                </TouchableOpacity>
+           
 
               <View style={{width: '40%'}}>
                 <InputFeild
@@ -250,8 +282,8 @@ const Payment = ({navigation}) => {
               <SmallButton
                 title={'Pay Now'}
                 onPress={() => {
-                  // navigation.navigate('SignersSuccess');
-                  Submit();
+                  navigation.navigate('SignersSuccess');
+                  // Submit();
                 }}
               />
             </View>
