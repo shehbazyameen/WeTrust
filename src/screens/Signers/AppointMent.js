@@ -7,7 +7,7 @@ import {
   ScrollView,
   ImageBackground,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {colors} from '../../config/Colors';
 import {Assets} from '../../assests';
 import fonts from '../../assests/fonts';
@@ -17,6 +17,12 @@ import {InputFeild} from '../../components/inputField';
 import DatePicker from 'react-native-date-picker';
 import moment from 'moment/moment';
 const AppointMent = ({navigation}) => {
+  //use ref
+
+  const useLastName = useRef();
+  const refEmail = useRef();
+  const refPhoneNo = useRef();
+
   const {width, height} = Dimensions.get('window');
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [firstName, setFirstName] = useState('');
@@ -95,7 +101,7 @@ const AppointMent = ({navigation}) => {
             }}
           />
           <InputFeild
-            // refValueCurrent={refenterpassword}
+            refValueCurrent={useLastName}
             returnKeyType={'next'}
             // imageInputField
             placeholder={'First Name'}
@@ -112,7 +118,8 @@ const AppointMent = ({navigation}) => {
             }}
           />
           <InputFeild
-            // refValueCurrent={refenterpassword}
+            valueRef={useLastName}
+            refValueCurrent={refEmail}
             returnKeyType={'next'}
             // imageInputField
             placeholder={'Last Name'}
@@ -129,7 +136,8 @@ const AppointMent = ({navigation}) => {
             }}
           />
           <InputFeild
-            // refValueCurrent={refenterpassword}
+            valueRef={refEmail}
+            refValueCurrent={refPhoneNo}
             returnKeyType={'next'}
             // imageInputField
             placeholder={'Email'}
@@ -147,8 +155,8 @@ const AppointMent = ({navigation}) => {
           />
 
           <InputFeild
-            // refValueCurrent={refenterpassword}
-            returnKeyType={'next'}
+            valueRef={refPhoneNo}
+            returnKeyType={'done'}
             // imageInputField
             placeholder={'Phone'}
             // leftIcon={Assets.Password}
