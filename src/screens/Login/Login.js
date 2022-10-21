@@ -7,7 +7,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {colors} from '../../config/Colors';
 import {InputFeild} from '../../components/inputField';
 import {Assets} from '../../assests';
@@ -19,6 +19,11 @@ import Signup from '../Signup/Signup';
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  //use ref
+  const refenterEmail = useRef();
+  const refenterNewPassword = useRef();
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}
@@ -60,7 +65,7 @@ const Login = ({navigation}) => {
             </Text>
             <View style={{marginTop: 42}} />
             <InputFeild
-              // refValueCurrent={refenterpassword}
+              refValueCurrent={refenterNewPassword}
               returnKeyType={'next'}
               // imageInputField
               placeholder={labels.userName}
@@ -71,8 +76,7 @@ const Login = ({navigation}) => {
             />
             <View style={{marginTop: 35}} />
             <InputFeild
-              // refValueCurrent={refenterpassword}
-              // returnKeyType={'next'}
+              valueRef={refenterNewPassword}
               // imageInputField
               returnKeyType={'done'}
               placeholder={labels.password}

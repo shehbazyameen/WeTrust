@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, {useRef, useState} from 'react';
 import {colors} from '../../config/Colors';
 import {InputFeild} from '../../components/inputField';
 import {Assets} from '../../assests';
@@ -17,10 +17,15 @@ import SmallButton from '../../components/SmallButton';
 import styles from './Styles';
 
 const Signup = ({navigation}) => {
-  const [userName,setUserName]=useState('');
-  const [email,setEmail]=useState('');
-  const [password,setPassword]=useState('');
-  
+  //use ref
+  const userNameRef = useRef();
+  const refenterEmail = useRef();
+  const refenterNewPassword = useRef();
+
+  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}
@@ -78,7 +83,7 @@ const Signup = ({navigation}) => {
               </Text>
               <View style={{marginTop: 42}} />
               <InputFeild
-                // refValueCurrent={refenterpassword}
+                refValueCurrent={userNameRef}
                 returnKeyType={'next'}
                 // imageInputField
                 placeholder={labels.userName}
@@ -89,8 +94,9 @@ const Signup = ({navigation}) => {
               />
               <View style={{marginTop: 35}} />
               <InputFeild
-                // refValueCurrent={refenterpassword}
-                // returnKeyType={'next'}
+                valueRef={userNameRef}
+                refValueCurrent={refenterEmail}
+                returnKeyType={'next'}
                 // imageInputField
                 placeholder={labels.email}
                 leftIcon={Assets.Email}
@@ -99,14 +105,14 @@ const Signup = ({navigation}) => {
               />
               <View style={{marginTop: 35}} />
               <InputFeild
-                // refValueCurrent={refenterpassword}
-                // returnKeyType={'next'}
+                valueRef={refenterEmail}
+                returnKeyType={'done'}
                 // imageInputField
                 placeholder={labels.password}
                 leftIcon={Assets.Password}
                 value={password}
                 secureTextEntry={true}
-                password={true} 
+                password={true}
                 onChange={e => setPassword(e)}
               />
               <View style={{marginTop: 42}} />
