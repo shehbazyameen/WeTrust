@@ -9,14 +9,19 @@ import {
   Keyboard,
   ImageBackground,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {colors} from '../../config/Colors';
 import {Assets} from '../../assests';
 import fonts from '../../assests/fonts';
 import {InputFeild} from '../../components/inputField';
 
-const SignersDetails = ({navigation,route}) => {
+const SignersDetails = ({navigation, route}) => {
   let isCosigner = route?.params?.signer;
+  //use ref
+
+  const useLastName = useRef();
+  const refEmail = useRef();
+  const refPhoneNo = useRef();
 
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const [firstName, setFirstName] = useState('');
@@ -155,7 +160,7 @@ const SignersDetails = ({navigation,route}) => {
           // leftIcon={Assets.Password}
           rightIcon={Assets.phone}
           value={Phone}
-          onChange={e => setPhone(e.slice(0,14))}
+          onChange={e => setPhone(e.slice(0, 14))}
         />
         <View
           style={{
