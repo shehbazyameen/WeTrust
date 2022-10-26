@@ -23,7 +23,7 @@ const SignersDetails = ({navigation, route}) => {
   const refEmail = useRef();
   const refPhoneNo = useRef();
 
-  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const [ , setKeyboardVisible] = useState(false);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');

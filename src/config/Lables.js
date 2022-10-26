@@ -12,5 +12,5 @@ export const labels = {
   signUpHere: ' Sign up here',
   createYourAccount: 'Create your account',
   email: 'Email',
-  signUp:"Sign up",
+  signUp: 'Sign up',
 };
