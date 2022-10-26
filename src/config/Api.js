@@ -1,7 +1,8 @@
-import axios from 'axios';
+import Axios from 'react-native-axios/lib/core/Axios';
+// import * as axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Toast from 'react-native-simple-toast';
-import {changeStack, navigate} from './NavigationService';
+
 import {labels} from './Lables';
 class Api {
   constructor() {

@@ -8,12 +8,14 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
+import { Axios } from 'react-native-axios';
 import React, {useRef, useState} from 'react';
 import {colors} from '../../config/Colors';
 import {InputFeild} from '../../components/inputField';
 import {Assets} from '../../assests';
 import {labels} from '../../config/Lables';
 import SmallButton from '../../components/SmallButton';
+import {RegistrationAction} from '../../config/Actions';
 import styles from './Styles';
 
 const Signup = ({navigation}) => {
@@ -25,6 +27,20 @@ const Signup = ({navigation}) => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const signUp = () => {
+    let obj = {
+      name: userName,
+      email,
+      password,
+    };
+    console.log(obj,"000")
+    Axios.Post( 'https://customdevu11.onlinetestingserver.com/wetrust/public/api/',obj).then((response)=>{
+      console.log(response,"response")
+    })
+  };
+
+  
 
   return (
     <KeyboardAvoidingView
@@ -119,7 +135,8 @@ const Signup = ({navigation}) => {
               <SmallButton
                 title={labels.signUp}
                 onPress={() => {
-                  navigation.replace('HomeStack', {screen: 'HomeScreen'});
+                  // navigation.replace('HomeStack', {screen: 'HomeScreen'});
+                  signUp();
                 }}
               />
               <View style={{marginTop: 64}} />
