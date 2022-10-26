@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
-import { Axios } from 'react-native-axios';
 import React, {useRef, useState} from 'react';
 import {colors} from '../../config/Colors';
 import {InputFeild} from '../../components/inputField';
@@ -34,13 +33,9 @@ const Signup = ({navigation}) => {
       email,
       password,
     };
-    console.log(obj,"000")
-    Axios.Post( 'https://customdevu11.onlinetestingserver.com/wetrust/public/api/',obj).then((response)=>{
-      console.log(response,"response")
-    })
+    console.log(obj, '000');
+    RegistrationAction(obj);
   };
-
-  
 
   return (
     <KeyboardAvoidingView

@@ -1,4 +1,4 @@
-import Axios from 'react-native-axios/lib/core/Axios';
+import axios from 'react-native-axios';
 // import * as axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Toast from 'react-native-simple-toast';
