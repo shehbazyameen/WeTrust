@@ -16,6 +16,9 @@ import {labels} from '../../config/Lables';
 import SmallButton from '../../components/SmallButton';
 import {RegistrationAction} from '../../config/Actions';
 import styles from './Styles';
+import axios from 'react-native-axios';
+import Toast from 'react-native-simple-toast';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Signup = ({navigation}) => {
   //use ref
@@ -27,14 +30,37 @@ const Signup = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const signUp = () => {
+  const signUp = async() => {
     let obj = {
       name: userName,
       email,
       password,
     };
-    console.log(obj, '000');
-    RegistrationAction(obj);
+
+    if(userName!==""&&email!==""&&password!==""){
+       axios
+         .post(
+           'https://customdevu11.onlinetestingserver.com/wetrust/public/api/register',
+           obj,
+         )
+         .then(response => {
+            AsyncStorage.setItem('token', response.data.access_token);
+           if (response?.status == 200) {
+             setTimeout(() => {
+               setUserName('');
+               setEmail('');
+               setPassword('');
+              
+               navigation.navigate('HomeStack', {screen: 'HomeScreen'});
+             }, 1000);
+           }
+         }).catch((error)=>{
+          Toast.show("Email or password incorrect")
+        })
+    }else{
+          Toast.show("All fields are required");
+    }
+  
   };
 
   return (

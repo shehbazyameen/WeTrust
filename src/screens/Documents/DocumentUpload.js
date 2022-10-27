@@ -13,7 +13,9 @@ import fonts from '../../assests/fonts';
 import * as Progress from 'react-native-progress';
 import DocumentPicker from 'react-native-document-picker';
 
-const DocumentUpload = ({navigation}) => {
+const DocumentUpload = ({navigation,route}) => {
+  let serviceId =route?.params?.serviceId
+  console.log(serviceId,"serviceId");
   const [progress, setProgres] = useState(0);
   const [showProgress, setShowProgress] = useState(false);
   const selectDocument = async () => {
@@ -21,37 +23,51 @@ const DocumentUpload = ({navigation}) => {
     setProgres(0);
 
     try {
-      const res = await DocumentPicker.pickMultiple({
-        type: [DocumentPicker.types.allFiles],
+      const res = await DocumentPicker.pickSingle({
+        type: [DocumentPicker.types.pdf],
+        mode: 'import',
+        copyTo: 'documentDirectory',
       });
       console.log(res, 'response');
-      let muiltipleFileNames = '';
-      res.map((r, i) => {
-        muiltipleFileNames += `${r.name}, `;
+      let formData = new FormData();
+      formData.append('file', {
+        uri: res.uri,
+        type: res.type, // mime type
+        name: res.name,
+        fileCopyUri: res.fileCopyUri,
       });
-      let request = [];
-      request = res?.map((res1, i) => {
-        let formData = new FormData();
-        formData.append('file', {
-          uri: res1.uri,
-          type: res1.type, // mime type
-          name: res1.name,
-        });
-        console.log('gggg', formData);
-        let obj = {
-          name: res1.name,
-          type: res1.type,
-        };
+      console.log(formData, 'formData');
         setTimeout(() => {
           setProgres(1);
         }, 300);
         setTimeout(() => {
           setShowProgress(true);
         }, 500);
-        // Get_File_Url_Method(formData, value => {
-        //   getUrlMethod(value, fieldId, label, obj);
-        // });
-      });
+      // let muiltipleFileNames = '';
+      // res.map((r, i) => {
+      //   muiltipleFileNames += `${r.name}, `;
+      // });
+
+      let request = [];
+      // request = res?.map((res1, i) => {
+      //   // let formData = new FormData();
+      //   // formData.append('file', {
+      //   //   uri: res1.uri,
+      //   //   type: res1.type, // mime type
+      //   //   name: res1.name,
+      //   //   fileCopyUri : res1.fileCopyUri,
+      //   // });
+      //   // console.log('gggg', request);
+
+      //   let obj = {
+      //     name: res1.name,
+      //     type: res1.type,
+      //   };
+
+      //   // Get_File_Url_Method(formData, value => {
+      //   //   getUrlMethod(value, fieldId, label, obj);
+      //   // });
+      // });
       // Get_File_Url_Method(formData, value => {
       //   setSingleDocument('Doc is Selected');
       //   props.updatedFieldValue(value, fieldId);

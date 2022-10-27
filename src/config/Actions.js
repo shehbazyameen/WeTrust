@@ -13,15 +13,15 @@ export const RegistrationAction = (
   return Api._post(
     `${EndPoints.register}`,
     data,
-    success => {
-      Toast.show(success?.message);
-      console.log(success);
+     success => {
+      Toast.show(success?.message,"ooo");
+      console.log(success,"success");
       // AsyncStorage.setItem('token', success?.detail?.token);
       // AsyncStorage.setItem('User', JSON.stringify(success?.detail?.user));
       // successCallBack();
     },
     error => {
-      console.log(success);
+      console.log(error);
       // failureCallBack();
       // Toast.show(error?.message);
     },

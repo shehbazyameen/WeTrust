@@ -14,11 +14,45 @@ import {Assets} from '../../assests';
 import {labels} from '../../config/Lables';
 import SmallButton from '../../components/SmallButton';
 import styles from './Styles';
-import Signup from '../Signup/Signup';
+import axios from 'react-native-axios';
+import Toast from 'react-native-simple-toast';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const login = () => {
+    let obj = {
+      email,
+      password,
+    };
+
+    if (email !== '' && password !== '') {
+      axios
+        .post(
+          'https://customdevu11.onlinetestingserver.com/wetrust/public/api/login',
+          obj,
+        )
+        .then(response => {
+           AsyncStorage.setItem('token', response.data.access_token);
+          console.log(response,"response")
+          if (response?.status == 200) {
+            setTimeout(() => {
+              setEmail('');
+              setPassword('');
+          
+              navigation.navigate('HomeStack', {screen: 'HomeScreen'});
+            }, 1000);
+          }
+        }).catch((error)=>{
+          Toast.show("Email or password incorrect")
+        })
+    } else {
+      Toast.show('All fields are required');
+    }
+  };
 
   //use ref
   const refenterEmail = useRef();
@@ -88,7 +122,8 @@ const Login = ({navigation}) => {
             <SmallButton
               title={labels.signIn}
               onPress={() => {
-                navigation.navigate('Signup');
+                // navigation.navigate('Signup');
+                login()
               }}
             />
             <View style={{marginTop: 53}} />

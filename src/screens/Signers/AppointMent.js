@@ -16,19 +16,32 @@ import DocumentPicker from 'react-native-document-picker';
 import {InputFeild} from '../../components/inputField';
 import DatePicker from 'react-native-date-picker';
 import moment from 'moment/moment';
+import axios from 'react-native-axios';
+import Toast from 'react-native-simple-toast';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const AppointMent = ({navigation}) => {
   //use ref
+  const [token,setToken]=useState('');
+   const {width, height} = Dimensions.get('window');
+   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+   const [firstName, setFirstName] = useState('');
+   const [lastName, setLastName] = useState('');
+   const [email, setEmail] = useState('');
+   const [Phone, setPhone] = useState('');
+
+  useEffect(()=>{
+  AsyncStorage.getItem("token").then((response)=>{
+  setToken(response)
+  })
+
+  })
 
   const useLastName = useRef();
   const refEmail = useRef();
   const refPhoneNo = useRef();
 
-  const {width, height} = Dimensions.get('window');
-  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [Phone, setPhone] = useState('');
+ 
   const showDatePicker = () => {
     setDatePickerVisibility(true);
   };
@@ -38,6 +51,45 @@ const AppointMent = ({navigation}) => {
   };
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
+
+
+  const bookAppointment = async () => {
+    let obj = {
+      firstName: firstName,
+      lastName:lastName,
+      email:email,
+      Phone:Phone
+    };
+    const config = {
+      headers: {Authorization: `Bearer ${token}`},
+    };
+    if (firstName !== ''&& lastName!=="" && email !== '' && Phone !== '') {
+      axios
+        .post(
+          'https://customdevu11.onlinetestingserver.com/wetrust/public/api/addAppointment',
+          obj,
+          config
+        )
+        .then(response => {
+       
+          if (response?.status == 200) {
+            setTimeout(() => {
+              setFirstName('');
+              setLastName('');
+              setEmail('');
+              setPhone('');
+
+            navigation.navigate('AppointmentDetails',{date:date});
+            }, 1000);
+          }
+        })
+        .catch(error => {
+          Toast.show('Email or password incorrect');
+        });
+    } else {
+      Toast.show('All fields are required');
+    }
+  };
   return (
     <View style={{flex: 1}}>
       <DatePicker
@@ -246,7 +298,7 @@ const AppointMent = ({navigation}) => {
               alignItems: 'center',
             }}>
             <TouchableOpacity
-              onPress={() => navigation.navigate('AppointmentDetails')}
+              onPress={() => bookAppointment()}
               style={{
                 backgroundColor: '#AC872E',
                 borderRadius: 6,

@@ -13,8 +13,16 @@ import {Assets} from '../../assests';
 import fonts from '../../assests/fonts';
 import * as Progress from 'react-native-progress';
 import DocumentPicker from 'react-native-document-picker';
+import moment from 'moment/moment';
+
+
 const {width, height} = Dimensions.get('window');
-const AppointmentDetails = ({navigation}) => {
+const AppointmentDetails = ({navigation,route}) => {
+ 
+  let day = moment(route?.params?.date).format('dddd');
+  let time = moment(route?.params?.date).format('hh:mm A');
+  let date = moment(route?.params?.date).format('dddd,MM,YY');
+   console.log(day,"day",time,"time",date,"date" );
   return (
     <ImageBackground
       style={{flex: 1}}
@@ -76,7 +84,7 @@ const AppointmentDetails = ({navigation}) => {
                 fontFamily: fonts.SitkaDisplay,
                 fontSize: 15,
               }}>
-              Time: 9:30 am{' '}
+              Time: {time}
             </Text>
           </View>
           <View>
@@ -87,7 +95,7 @@ const AppointmentDetails = ({navigation}) => {
                 fontFamily: fonts.SitkaDisplay,
                 fontSize: 15,
               }}>
-              Day: Monday
+              Day: {day}
             </Text>
           </View>
           <View>
@@ -98,7 +106,7 @@ const AppointmentDetails = ({navigation}) => {
                 fontFamily: fonts.SitkaDisplay,
                 fontSize: 15,
               }}>
-              Date: 26th September 2022
+              Date: {date}
             </Text>
           </View>
           <View>

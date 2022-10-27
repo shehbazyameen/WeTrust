@@ -14,17 +14,44 @@ import ButtonLarge from '../../components/ButtonLarge';
 import CustomHeader from '../../components/Header';
 import {Assets} from '../../assests';
 import fonts from '../../assests/fonts';
+import axios from 'react-native-axios';
+import Toast from 'react-native-simple-toast';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const HomeScreen = ({navigation}) => {
+  // let token = AsyncStorage.getItem("token")
+  // console.log(token,"token");
   const {width, height} = Dimensions.get('window');
   const [activeColor, setActiveColor] = useState(false);
   const [activeElementId, setActiveElementId] = useState('');
   const [scrollHeight, setScrollHeight] = useState(1.7);
+  const [data, setData] = useState([]);
+
+  const getServices = async () => {};
 
   React.useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
+      AsyncStorage.getItem('token').then(response => {
+        const config = {
+          headers: {Authorization: `Bearer ${response}`},
+        };
+        return axios
+          .get(
+            'https://customdevu11.onlinetestingserver.com/wetrust/public/api/getServices',
+            config,
+          )
+          .then(response => {
+            if (response?.status == 200) {
+               setData(response?.data?.data);
+            }
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      });
       setActiveElementId('');
       setScrollHeight(1.7);
+      getServices();
     });
 
     // Return the function to unsubscribe from the event so it gets removed on unmount
@@ -35,38 +62,38 @@ const HomeScreen = ({navigation}) => {
       setScrollHeight(1.74);
     }
   }, [activeElementId]);
-  const data = [
-    {
-      id: 1,
-      name: 'ATTORNEYS',
-      price: 200,
-    },
-    {
-      id: 2,
-      name: 'CAR DEALERSHIP',
-      price: 250,
-    },
-    {
-      id: 3,
-      name: 'REAL ESTATE',
-      price: 300,
-    },
-    {
-      id: 4,
-      name: 'AUTOMOBILE',
-      price: 500,
-    },
-    {
-      id: 5,
-      name: 'INDIVIDUAL',
-      price: 200,
-    },
-    {
-      id: 6,
-      name: 'BUSINESS',
-      price: 200,
-    },
-  ];
+  // const data = [
+  //   {
+  //     id: 1,
+  //     name: 'ATTORNEYS',
+  //     price: 200,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: 'CAR DEALERSHIP',
+  //     price: 250,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: 'REAL ESTATE',
+  //     price: 300,
+  //   },
+  //   {
+  //     id: 4,
+  //     name: 'AUTOMOBILE',
+  //     price: 500,
+  //   },
+  //   {
+  //     id: 5,
+  //     name: 'INDIVIDUAL',
+  //     price: 200,
+  //   },
+  //   {
+  //     id: 6,
+  //     name: 'BUSINESS',
+  //     price: 200,
+  //   },
+  // ];
   return (
     <ImageBackground
       style={{flex: 1}}
@@ -137,7 +164,7 @@ const HomeScreen = ({navigation}) => {
               );
             })}
 
-            <View style={{height: 80}}/>
+            <View style={{height: 80}} />
           </ScrollView>
         </View>
         {activeElementId !== '' && (
@@ -149,7 +176,7 @@ const HomeScreen = ({navigation}) => {
             }}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate('DocumentUpload');
+                navigation.navigate('DocumentUpload',{serviceId:activeElementId});
                 setActiveColor(false);
                 setActiveElementId('');
               }}
