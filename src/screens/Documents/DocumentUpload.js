@@ -18,6 +18,7 @@ const DocumentUpload = ({navigation,route}) => {
   console.log(serviceId,"serviceId");
   const [progress, setProgres] = useState(0);
   const [showProgress, setShowProgress] = useState(false);
+  const [fileResponse,setFileResponse]=useState({});
   const selectDocument = async () => {
     setShowProgress(false);
     setProgres(0);
@@ -28,15 +29,18 @@ const DocumentUpload = ({navigation,route}) => {
         mode: 'import',
         copyTo: 'documentDirectory',
       });
+      
       console.log(res, 'response');
+    
       let formData = new FormData();
-      formData.append('file', {
+      formData.append('document', {
         uri: res.uri,
         type: res.type, // mime type
         name: res.name,
         fileCopyUri: res.fileCopyUri,
       });
       console.log(formData, 'formData');
+        setFileResponse(formData);
         setTimeout(() => {
           setProgres(1);
         }, 300);
@@ -170,7 +174,7 @@ const DocumentUpload = ({navigation,route}) => {
               {showProgress && (
                 <TouchableOpacity
                   onPress={() =>
-                    navigation.navigate('HomeStack', {screen: 'Signers'})
+                    navigation.navigate('Signers',{serviceId:serviceId,document:fileResponse})
                   }
                   style={{backgroundColor: '#AC872E', borderRadius: 6}}>
                   <Text

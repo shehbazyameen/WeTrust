@@ -14,9 +14,12 @@ import {colors} from '../../config/Colors';
 import {Assets} from '../../assests';
 import fonts from '../../assests/fonts';
 import {InputFeild} from '../../components/inputField';
+import Toast from 'react-native-simple-toast';
+
 
 const SignersDetails = ({navigation, route}) => {
   let isCosigner = route?.params?.signer;
+  console.log(route?.params,"data check");
   //use ref
 
   const useLastName = useRef();
@@ -182,7 +185,18 @@ const SignersDetails = ({navigation, route}) => {
 
         <View style={{marginHorizontal: 40, marginVertical: 25}}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('SignerVerification')}
+            onPress={() => {
+            if(firstName!=="" && lastName!==""&& email!=="" && Phone?.length){
+
+                  navigation.navigate('SignerVerification',{allData:{...route.params,firstName,lastName,email,Phone}})
+                  setFirstName("");
+                  setLastName("");
+                  setEmail("");
+                  setPhone("");
+            }else{
+            Toast.show("All fields are required")
+            }  
+            }}
             style={{
               backgroundColor: '#AC872E',
               borderRadius: 6,

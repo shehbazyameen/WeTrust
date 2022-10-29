@@ -19,7 +19,18 @@ import styles from './Styles';
 import axios from 'react-native-axios';
 import Toast from 'react-native-simple-toast';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import {
+  BallIndicator,
+  BarIndicator,
+  DotIndicator,
+  MaterialIndicator,
+  PacmanIndicator,
+  PulseIndicator,
+  SkypeIndicator,
+  UIActivityIndicator,
+  WaveIndicator,
+} from 'react-native-indicators';
+ 
 const Signup = ({navigation}) => {
   //use ref
   const userNameRef = useRef();
@@ -29,8 +40,11 @@ const Signup = ({navigation}) => {
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+
 
   const signUp = async() => {
+    setLoading(true)
     let obj = {
       name: userName,
       email,
@@ -44,7 +58,10 @@ const Signup = ({navigation}) => {
            obj,
          )
          .then(response => {
+          console.log(response,"response")
+          setLoading(false);
             AsyncStorage.setItem('token', response.data.access_token);
+            // Toast.show(response?.data?.message);
            if (response?.status == 200) {
              setTimeout(() => {
                setUserName('');
@@ -55,9 +72,11 @@ const Signup = ({navigation}) => {
              }, 1000);
            }
          }).catch((error)=>{
+          setLoading(false);
           Toast.show("Email or password incorrect")
         })
     }else{
+          setLoading(false);
           Toast.show("All fields are required");
     }
   
@@ -153,13 +172,18 @@ const Signup = ({navigation}) => {
                 onChange={e => setPassword(e)}
               />
               <View style={{marginTop: 42}} />
-              <SmallButton
-                title={labels.signUp}
-                onPress={() => {
-                  // navigation.replace('HomeStack', {screen: 'HomeScreen'});
-                  signUp();
-                }}
-              />
+              {loading ? (
+                <MaterialIndicator color="#AC872E" />
+              ) : (
+                <SmallButton
+                  title={labels.signUp}
+                  onPress={() => {
+                    // navigation.replace('HomeStack', {screen: 'HomeScreen'});
+                    signUp();
+                  }}
+                />
+              )}
+
               <View style={{marginTop: 64}} />
             </ScrollView>
           </View>

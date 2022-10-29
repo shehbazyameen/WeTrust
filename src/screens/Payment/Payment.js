@@ -22,10 +22,45 @@ import Stripe from 'react-native-stripe-api';
 import DatePicker from 'react-native-date-picker';
 import moment from 'moment/moment';
 import fonts from '../../assests/fonts';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'react-native-axios';
 
 const {height, width} = Dimensions.get('window');
 
-const Payment = ({navigation}) => {
+const Payment = ({navigation,route}) => {
+
+   React.useEffect(() => {
+     const unsubscribe = navigation.addListener('focus', () => {
+       AsyncStorage.getItem('token').then(response => {
+         const config = {
+           headers: {Authorization: `Bearer ${response}`},
+         };
+         let obj = {
+           document: route?.params?.document,
+           service_id: route?.params?.serviceId,
+         };
+         return axios
+           .post(
+             'https://customdevu11.onlinetestingserver.com/wetrust/public/api/getPrice',
+              obj,
+             config,
+           )
+           .then(response => {
+             if (response?.status == 200) {
+              console.log(response?.data?.data);
+             }
+           })
+           .catch(error => {
+             console.log(error);
+           });
+       });
+      
+     });
+
+     // Return the function to unsubscribe from the event so it gets removed on unmount
+     return unsubscribe;
+   }, [navigation]);
+
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
   const [cardHolder, setcardHolder] = useState('');

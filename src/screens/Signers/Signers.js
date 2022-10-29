@@ -11,7 +11,8 @@ import {colors} from '../../config/Colors';
 import {Assets} from '../../assests';
 import fonts from '../../assests/fonts';
 
-const Signers = ({navigation}) => {
+const Signers = ({navigation,route}) => {
+  console.log(route?.params,"all data")
   const [progress, setProgres] = useState(0);
   const [showProgress, setShowProgress] = useState(false);
   const {width, height} = Dimensions.get('window');
@@ -58,7 +59,13 @@ const Signers = ({navigation}) => {
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('SignersDetails', {signer: true});
+              navigation.navigate('SignersDetails', {
+                signer: true,
+                hasSigner: true,
+                hasWitness: false,
+                document: route?.params?.document,
+                serviceId: route?.params?.serviceId,
+              });
             }}
             style={{
               backgroundColor: '#A5822C',
@@ -82,7 +89,13 @@ const Signers = ({navigation}) => {
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('SignersDetails', {signer: false});
+              navigation.navigate('SignersDetails', {
+                signer: false,
+                hasSigner: false,
+                hasWitness: true,
+                document: route?.params?.document,
+                serviceId: route?.params?.serviceId,
+              });
             }}
             style={{
               backgroundColor: '#A5822C',
@@ -106,7 +119,14 @@ const Signers = ({navigation}) => {
           <View>
             <TouchableOpacity
               style={{flexDirection: 'row', marginTop: 110}}
-              onPress={() => navigation.navigate('Payment')}>
+              onPress={() =>
+                navigation.navigate('SignerVerification', {
+                  hasSigner: false,
+                  hasWitness: false,
+                  document: route?.params?.document,
+                  serviceId: route?.params?.serviceId,
+                })
+              }>
               <Text
                 style={{
                   color: '#191C4D',

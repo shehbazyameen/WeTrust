@@ -35,7 +35,7 @@ const AppointMent = ({navigation}) => {
   setToken(response)
   })
 
-  })
+  },[])
 
   const useLastName = useRef();
   const refEmail = useRef();

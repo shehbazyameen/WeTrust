@@ -12,8 +12,140 @@ import {Assets} from '../../assests';
 import fonts from '../../assests/fonts';
 import * as Progress from 'react-native-progress';
 import DocumentPicker from 'react-native-document-picker';
+import axios from 'react-native-axios';
+import Toast from 'react-native-simple-toast';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const SignerVerification = ({navigation}) => {
+const SignerVerification = ({navigation, route}) => {
+  // const {hasSigner,hasWitness}=route?.params;
+  console.log(route?.params, '000');
+  const [idVerificationDocuments, setIdVerificationDocuments] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [token, setToken] = useState('');
+  const {
+    Phone,
+    document,
+    email,
+    firstName,
+    lastName,
+    serviceId,
+    hasSigner,
+    hasWitness,
+  } = route?.params?.allData;
+
+
+
+
+   useEffect(() => {
+     AsyncStorage.getItem('token').then(response => {
+       setToken(response);
+     });
+      
+   }, []);
+
+  //submit documents
+
+  const docsSubmit = async () => {
+    setLoading(true);
+   
+    let obj = {
+      phone:Phone,
+      document: document,
+      email: email,
+      first_name: route?.param?.firstName,
+      last_name: route?.params?.lastName,
+      service_id: route?.params?.serviceId,
+      has_signer: route?.params?.hasSigner,
+      has_witness: route?.params?.hasWitness,
+      id_verification_document: idVerificationDocuments,
+    };
+   console.log(route?.params?.allData, '000 route params');
+    console.log(obj,"obj check")
+
+    //  const form = new FormData();
+    //  Object.keys(obj).forEach(key => {
+    //    formData.append(key,form[key]);
+    //  });
+    //  console.log(form,"form check")
+     let phoneData = new FormData();
+     phoneData.append('phone',Phone);
+
+     phoneData.append('document', document);
+
+     phoneData.append('email',email);
+
+     phoneData.append('first_name', firstName);
+
+     phoneData.append('last_name', lastName);
+
+     phoneData.append('service_id', serviceId);
+
+     phoneData.append('has_signer', hasSigner);
+
+     phoneData.append('has_witness', hasWitness);
+   
+
+     console.log(
+       phoneData,
+      //  documentData,
+      //  emailData,
+      //  firstNameData,
+      //  LastNameData,
+      //  ServicesData,
+      //  hasSignerData,
+      //  hasWitnessData,
+      //  idVerificationDocuments,
+       'all form data check',
+     );
+
+      
+        // let formData = new FormData();
+      
+
+        // let id_verificationDocumentData =new FormData()
+        // id_verificationDocumentData.append(idVerificationDocuments);
+
+       
+
+       
+      
+     const config = {
+       headers: {Authorization: `Bearer ${token}`,
+         'content-type': 'multipart/form-data',
+         'Accept':'multipart/form-data',
+        
+        },
+     };
+  
+if(true){
+  
+   axios
+     .post(
+       'https://customdevu11.onlinetestingserver.com/wetrust/public/api/addDocument',
+       sendObj,
+       config,
+     )
+     .then(response => {
+       console.log(response, 'response');
+       setLoading(false);
+
+       // Toast.show(response?.data?.message);
+       if (response?.status == 200) {
+         setTimeout(() => {
+           navigation.navigate('Payment', {
+             serviceId: route?.params?.serviceId,
+             document: route?.params?.document,
+           });
+         }, 1000);
+       }
+     })
+     .catch(error => {
+       setLoading(false);
+       // Toast.show('Email or password incorrect');
+     });
+}
+   
+  };
   const data = [
     {
       id: 1,
@@ -74,27 +206,28 @@ const SignerVerification = ({navigation}) => {
     setProgres(0);
 
     try {
-      const res = await DocumentPicker.pickMultiple({
+      const res = await DocumentPicker.pick({
         type: [DocumentPicker.types.allFiles],
+        mode: 'import',
+        copyTo: 'documentDirectory',
       });
+      
       console.log(res, 'response');
-      let muiltipleFileNames = '';
-      res.map((r, i) => {
-        muiltipleFileNames += `${r.name}, `;
-      });
-      let request = [];
-      request = res?.map((res1, i) => {
+     
+    
+      
         let formData = new FormData();
-        formData.append('file', {
-          uri: res1.uri,
-          type: res1.type, // mime type
-          name: res1.name,
+        formData.append('id_verification_document', {
+          uri: res[0].uri,
+          type: res[0].type, // mime type
+          name: res[0].name,
         });
+        setIdVerificationDocuments(formData);
         console.log('gggg', formData);
-        let obj = {
-          name: res1.name,
-          type: res1.type,
-        };
+        // let obj = {
+        //   name: res1.name,
+        //   type: res1.type,
+        // };
         setTimeout(() => {
           setProgres(1);
         }, 300);
@@ -104,7 +237,7 @@ const SignerVerification = ({navigation}) => {
         // Get_File_Url_Method(formData, value => {
         //   getUrlMethod(value, fieldId, label, obj);
         // });
-      });
+   
       // Get_File_Url_Method(formData, value => {
       //   setSingleDocument('Doc is Selected');
       //   props.updatedFieldValue(value, fieldId);
@@ -153,7 +286,12 @@ const SignerVerification = ({navigation}) => {
       </View>
 
       <ScrollView>
-        <View style={{alignItems: 'center', justifyContent: 'center',paddingHorizontal:20}}>
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingHorizontal: 20,
+          }}>
           <Text
             style={{
               fontSize: 24,
@@ -213,10 +351,10 @@ const SignerVerification = ({navigation}) => {
               // height: height / 1.8,
               //   backgroundColor: 'red',
               backgroundColor: colors.backgroundColor,
-             
+
               borderRadius: 6,
               paddingHorizontal: 15,
-              padding:5,
+              padding: 5,
             }}>
             <Text
               style={{
@@ -260,7 +398,10 @@ const SignerVerification = ({navigation}) => {
           <View style={{paddingVertical: 20, paddingBottom: 30}}>
             {showProgress && (
               <TouchableOpacity
-                onPress={() => navigation.navigate('Payment')}
+                onPress={() =>
+                  // navigation.navigate('Payment')
+                  docsSubmit()
+                }
                 style={{backgroundColor: '#AC872E', borderRadius: 6}}>
                 <Text
                   style={{

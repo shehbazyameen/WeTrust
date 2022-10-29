@@ -32,6 +32,7 @@ const HomeScreen = ({navigation}) => {
   React.useEffect(() => {
     const unsubscribe = navigation.addListener('focus', () => {
       AsyncStorage.getItem('token').then(response => {
+        console.log(response,"TOKEN")
         const config = {
           headers: {Authorization: `Bearer ${response}`},
         };

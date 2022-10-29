@@ -17,13 +17,26 @@ import styles from './Styles';
 import axios from 'react-native-axios';
 import Toast from 'react-native-simple-toast';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  BallIndicator,
+  BarIndicator,
+  DotIndicator,
+  MaterialIndicator,
+  PacmanIndicator,
+  PulseIndicator,
+  SkypeIndicator,
+  UIActivityIndicator,
+  WaveIndicator,
+} from 'react-native-indicators';
 
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading,setLoading]=useState(false);
 
   const login = () => {
+    setLoading(true)
     let obj = {
       email,
       password,
@@ -37,6 +50,8 @@ const Login = ({navigation}) => {
         )
         .then(response => {
            AsyncStorage.setItem('token', response.data.access_token);
+            Toast.show(response?.data?.message);
+           setLoading(false)
           console.log(response,"response")
           if (response?.status == 200) {
             setTimeout(() => {
@@ -47,10 +62,13 @@ const Login = ({navigation}) => {
             }, 1000);
           }
         }).catch((error)=>{
+           setLoading(false);
           Toast.show("Email or password incorrect")
         })
     } else {
+      setLoading(false)
       Toast.show('All fields are required');
+      
     }
   };
 
@@ -119,13 +137,18 @@ const Login = ({navigation}) => {
               onChange={e => setPassword(e)}
             />
             <View style={{marginTop: 42}} />
-            <SmallButton
-              title={labels.signIn}
-              onPress={() => {
-                // navigation.navigate('Signup');
-                login()
-              }}
-            />
+            {loading ? (
+              <MaterialIndicator color="#AC872E" />
+            ) : (
+              <SmallButton
+                title={labels.signIn}
+                onPress={() => {
+                  // navigation.navigate('Signup');
+                  login();
+                }}
+              />
+            )}
+
             <View style={{marginTop: 53}} />
             <Text style={[styles.textSignWith]}>{labels.orSignWth}</Text>
             <View style={{marginTop: 16}} />
