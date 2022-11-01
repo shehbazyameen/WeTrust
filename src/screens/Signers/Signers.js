@@ -61,8 +61,8 @@ const Signers = ({navigation,route}) => {
             onPress={() => {
               navigation.navigate('SignersDetails', {
                 signer: true,
-                hasSigner: true,
-                hasWitness: false,
+                hasSigner: 1,
+                hasWitness: 0,
                 document: route?.params?.document,
                 serviceId: route?.params?.serviceId,
               });
@@ -91,8 +91,8 @@ const Signers = ({navigation,route}) => {
             onPress={() => {
               navigation.navigate('SignersDetails', {
                 signer: false,
-                hasSigner: false,
-                hasWitness: true,
+                hasSigner: 0,
+                hasWitness: 1,
                 document: route?.params?.document,
                 serviceId: route?.params?.serviceId,
               });
@@ -121,10 +121,11 @@ const Signers = ({navigation,route}) => {
               style={{flexDirection: 'row', marginTop: 110}}
               onPress={() =>
                 navigation.navigate('SignerVerification', {
-                  hasSigner: false,
-                  hasWitness: false,
+                  hasSigner: 0,
+                  hasWitness: 0,
                   document: route?.params?.document,
                   serviceId: route?.params?.serviceId,
+                  signerData:false,
                 })
               }>
               <Text

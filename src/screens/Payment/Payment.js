@@ -28,30 +28,87 @@ import axios from 'react-native-axios';
 const {height, width} = Dimensions.get('window');
 
 const Payment = ({navigation,route}) => {
+  const [token, setToken] = useState('');
+  const [stripeToken, setStripeToken] = useState();
+
+  const addPayment=()=>{
+
+     const config = {
+       headers: {Authorization: `Bearer ${token}`},
+      
+     };
+     let obj = {
+       service_id: route?.params?.serviceId,
+       cardholder_name: cardHolderNumber,
+       date: cardHolderExp,
+       last_4_digit: last4,
+       stripe_token:stripeToken,
+     };
+     let cardForm = new FormData()
+     cardForm.append('service_id', route?.params?.serviceId);
+     cardForm.append('cardholder_name', cardHolderNumber);
+     cardForm.append('date',cardHolderExp);
+     cardForm.append('last_4_digit', last4);
+     cardForm.append('stripe_token', stripeToken);
+      axios
+        .post(
+          'https://customdevu11.onlinetestingserver.com/wetrust/public/api/payment',
+          obj,
+          config,
+        )
+        .then(response => {
+          console.log(response, 'response');
+
+          // Toast.show(response?.data?.message);
+          if (response?.status == 200) {
+            console.log(response, 'PAYMENT');
+          }
+        })
+        .catch(error => {
+          // alert(JSON.stringify(error));
+          console.log(error?.config, 'error object');
+          //  Toast.show(error?.messages);
+        });
+
+  }
 
    React.useEffect(() => {
      const unsubscribe = navigation.addListener('focus', () => {
        AsyncStorage.getItem('token').then(response => {
+        setToken(response);
          const config = {
            headers: {Authorization: `Bearer ${response}`},
+           'content-type': 'multipart/form-data',
+           Accept: 'multipart/form-data',
          };
          let obj = {
            document: route?.params?.document,
            service_id: route?.params?.serviceId,
          };
-         return axios
+         let formData = new FormData();
+          formData.append('document',route?.params?.document)
+           formData.append('service_id',route?.params?.serviceId)
+           console.log('sss',formData);
+         
+         axios
            .post(
              'https://customdevu11.onlinetestingserver.com/wetrust/public/api/getPrice',
-              obj,
+            formData,
              config,
            )
            .then(response => {
+            
+             console.log(response, 'response');
+
+             // Toast.show(response?.data?.message);
              if (response?.status == 200) {
-              console.log(response?.data?.data);
+               console.log(response, 'response');
              }
            })
            .catch(error => {
-             console.log(error);
+            //  alert(JSON.stringify(error));
+             console.log(error?.config, 'error object');
+             //  Toast.show(error?.messages);
            });
        });
       
@@ -62,6 +119,7 @@ const Payment = ({navigation,route}) => {
    }, [navigation]);
 
   const [date, setDate] = useState(new Date());
+  const [last4,setLast4]=useState('');
   const [open, setOpen] = useState(false);
   const [cardHolder, setcardHolder] = useState('');
   const [cardHolderNumber, setcardHolderNumber] = useState('');
@@ -85,11 +143,16 @@ const Payment = ({navigation,route}) => {
     try {
       const token = client.createToken(obj);
       token.then(e => {
-        console.log(e);
-        alert(e?.error?.code);
+        console.log(e,"token1");
+        setStripeToken(e)
+        setLast4(e?.card?.last4);
+        setTimeout(()=>{
+           addPayment();
+        },500)
+      
       });
     } catch (e) {
-      alert(e);
+      // alert(e);
     }
   };
 
@@ -114,6 +177,7 @@ const Payment = ({navigation,route}) => {
           setOpen(false);
         }}
         mode="date"
+        minimumDate={new Date()}
       />
       <ImageBackground
         resizeMode="stretch"
@@ -177,7 +241,9 @@ const Payment = ({navigation,route}) => {
                   marginVertical: 12,
                 }}>
                 <Text style={[styles.textSignWith]}>Notary Fees</Text>
-                <Text style={[styles.textSignWith]}>$1000.00</Text>
+                <Text style={[styles.textSignWith]}>
+                  ${route?.params?.additionalPrice}
+                </Text>
               </View>
               <View
                 style={{
@@ -191,8 +257,8 @@ const Payment = ({navigation,route}) => {
                   justifyContent: 'space-between',
                   marginVertical: 12,
                 }}>
-                <Text style={[styles.textSignWith]}>Notary Fees</Text>
-                <Text style={[styles.textSignWith]}>$1000.00</Text>
+                <Text style={[styles.textSignWith]}>Signer Charges</Text>
+                <Text style={[styles.textSignWith]}>$05.00</Text>
               </View>
 
               <View
@@ -207,8 +273,8 @@ const Payment = ({navigation,route}) => {
                   justifyContent: 'space-between',
                   marginVertical: 12,
                 }}>
-                <Text style={[styles.textSignWith]}>Notary Fees</Text>
-                <Text style={[styles.textSignWith]}>$1000.00</Text>
+                <Text style={[styles.textSignWith]}>Total</Text>
+                <Text style={[styles.textSignWith]}>${route?.params?.additionalPrice+5}</Text>
               </View>
             </View>
             <View style={{marginTop: 22}} />
@@ -327,8 +393,8 @@ const Payment = ({navigation,route}) => {
               <SmallButton
                 title={'Pay Now'}
                 onPress={() => {
-                  navigation.navigate('SignersSuccess');
-                  // Submit();
+                  // navigation.navigate('SignersSuccess');
+                  Submit();
                 }}
               />
             </View>

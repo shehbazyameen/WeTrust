@@ -15,6 +15,17 @@ import DocumentPicker from 'react-native-document-picker';
 import axios from 'react-native-axios';
 import Toast from 'react-native-simple-toast';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  BallIndicator,
+  BarIndicator,
+  DotIndicator,
+  MaterialIndicator,
+  PacmanIndicator,
+  PulseIndicator,
+  SkypeIndicator,
+  UIActivityIndicator,
+  WaveIndicator,
+} from 'react-native-indicators';
 
 const SignerVerification = ({navigation, route}) => {
   // const {hasSigner,hasWitness}=route?.params;
@@ -22,20 +33,16 @@ const SignerVerification = ({navigation, route}) => {
   const [idVerificationDocuments, setIdVerificationDocuments] = useState({});
   const [loading, setLoading] = useState(false);
   const [token, setToken] = useState('');
-  const {
-    Phone,
-    document,
-    email,
-    firstName,
-    lastName,
-    serviceId,
-    hasSigner,
-    hasWitness,
-  } = route?.params?.allData;
-
-
-
-
+  // const {
+  //   Phone,
+  //   document,
+  //   email,
+  //   firstName,
+  //   lastName,
+  //   serviceId,
+  //   hasSigner,
+  //   hasWitness,
+  // } = route?.params?.allData;
    useEffect(() => {
      AsyncStorage.getItem('token').then(response => {
        setToken(response);
@@ -49,18 +56,18 @@ const SignerVerification = ({navigation, route}) => {
     setLoading(true);
    
     let obj = {
-      phone:Phone,
-      document: document,
-      email: email,
-      first_name: route?.param?.firstName,
-      last_name: route?.params?.lastName,
-      service_id: route?.params?.serviceId,
-      has_signer: route?.params?.hasSigner,
-      has_witness: route?.params?.hasWitness,
-      id_verification_document: idVerificationDocuments,
+      phone: route?.params?.allData?.Phone,
+      document: route?.params?.allData?.document?._parts?.[0][1],
+      email: route?.params?.allData?.email,
+      first_name: route?.param?.allData?.firstName,
+      last_name: route?.params?.allData?.lastName,
+      service_id: route?.params?.allData?.serviceId,
+      has_signer: route?.params?.allData?.hasSigner,
+      has_witness: route?.params?.allData?.hasWitness,
+      id_verification_document: idVerificationDocuments?._parts?.[0][1],
     };
-   console.log(route?.params?.allData, '000 route params');
-    console.log(obj,"obj check")
+  //  console.log(route?.params?.allData, '000 route params');
+  //   console.log(obj,"obj check")
 
     //  const form = new FormData();
     //  Object.keys(obj).forEach(key => {
@@ -68,33 +75,40 @@ const SignerVerification = ({navigation, route}) => {
     //  });
     //  console.log(form,"form check")
      let phoneData = new FormData();
-     phoneData.append('phone',Phone);
+     phoneData.append('phone', route?.params?.allData?.Phone);
 
-     phoneData.append('document', document);
+     phoneData.append('document',route?.params?.allData?.document?._parts?.[0][1]);
 
-     phoneData.append('email',email);
+     phoneData.append('email',route?.params?.allData?.email);
 
-     phoneData.append('first_name', firstName);
+     phoneData.append('first_name',route?.params?.allData?.firstName);
 
-     phoneData.append('last_name', lastName);
+     phoneData.append('last_name', route?.params?.allData?.lastName);
 
-     phoneData.append('service_id', serviceId);
+     phoneData.append('service_id',route?.params?.allData?.serviceId);
 
-     phoneData.append('has_signer', hasSigner);
+     phoneData.append('has_signer', route?.params?.allData?.hasSigner);
+      // phoneData.append('has_signer', 0);
 
-     phoneData.append('has_witness', hasWitness);
+     phoneData.append('has_witness',route?.params?.allData?.hasWitness);
+    // phoneData.append('has_witness', 0);
+
+     phoneData.append(
+       'id_verification_document',
+      idVerificationDocuments?._parts?.[0][1]
+     );
+    // phoneData.append('email', 'abc@ymail.com');
    
-
      console.log(
        phoneData,
-      //  documentData,
-      //  emailData,
-      //  firstNameData,
-      //  LastNameData,
-      //  ServicesData,
-      //  hasSignerData,
-      //  hasWitnessData,
-      //  idVerificationDocuments,
+       //  documentData,
+       //  emailData,
+       //  firstNameData,
+       //  LastNameData,
+       //  ServicesData,
+       //  hasSignerData,
+       //  hasWitnessData,
+       //  idVerificationDocuments,
        'all form data check',
      );
 
@@ -115,14 +129,15 @@ const SignerVerification = ({navigation, route}) => {
          'Accept':'multipart/form-data',
         
         },
-     };
-  
+     }; 
+
+    //  alert(JSON.stringify(phoneData?._parts));
 if(true){
   
    axios
      .post(
        'https://customdevu11.onlinetestingserver.com/wetrust/public/api/addDocument',
-       sendObj,
+       phoneData,
        config,
      )
      .then(response => {
@@ -131,17 +146,21 @@ if(true){
 
        // Toast.show(response?.data?.message);
        if (response?.status == 200) {
+        
          setTimeout(() => {
            navigation.navigate('Payment', {
-             serviceId: route?.params?.serviceId,
-             document: route?.params?.document,
+             serviceId: route?.params?.allData?.serviceId,
+             document: route?.params?.allData?.document?._parts?.[0]?.[1],
+             additionalPrice:response?.data?.price
            });
          }, 1000);
        }
      })
      .catch(error => {
        setLoading(false);
-       // Toast.show('Email or password incorrect');
+       alert(JSON.stringify(error));
+       console.log(error,"error object")
+       //  Toast.show(error?.messages);
      });
 }
    
@@ -218,10 +237,12 @@ if(true){
       
         let formData = new FormData();
         formData.append('id_verification_document', {
-          uri: res[0].uri,
+          uri: res[0].fileCopyUri,
           type: res[0].type, // mime type
           name: res[0].name,
+          fileCopyUri: res[0].fileCopyUri,
         });
+        
         setIdVerificationDocuments(formData);
         console.log('gggg', formData);
         // let obj = {

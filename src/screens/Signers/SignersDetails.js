@@ -188,7 +188,16 @@ const SignersDetails = ({navigation, route}) => {
             onPress={() => {
             if(firstName!=="" && lastName!==""&& email!=="" && Phone?.length){
 
-                  navigation.navigate('SignerVerification',{allData:{...route.params,firstName,lastName,email,Phone}})
+                  navigation.navigate('SignerVerification', {
+                    allData: {
+                      ...route.params,
+                      firstName,
+                      lastName,
+                      email,
+                      Phone,
+                    },
+                    signerData: true,
+                  });
                   setFirstName("");
                   setLastName("");
                   setEmail("");

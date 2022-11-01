@@ -34,7 +34,7 @@ const DocumentUpload = ({navigation,route}) => {
     
       let formData = new FormData();
       formData.append('document', {
-        uri: res.uri,
+        uri: res.fileCopyUri,
         type: res.type, // mime type
         name: res.name,
         fileCopyUri: res.fileCopyUri,

@@ -150,9 +150,9 @@ const Login = ({navigation}) => {
             )}
 
             <View style={{marginTop: 53}} />
-            <Text style={[styles.textSignWith]}>{labels.orSignWth}</Text>
+            {/* <Text style={[styles.textSignWith]}>{labels.orSignWth}</Text> */}
             <View style={{marginTop: 16}} />
-            <View
+            {/* <View
               style={{
                 flexDirection: 'row',
               }}>
@@ -168,7 +168,7 @@ const Login = ({navigation}) => {
               <TouchableOpacity activeOpacity={0.7}>
                 <Image resizeMode="contain" source={Assets.facebook} />
               </TouchableOpacity>
-            </View>
+            </View> */}
             <View style={{marginTop: 64}} />
             <View
               style={{
