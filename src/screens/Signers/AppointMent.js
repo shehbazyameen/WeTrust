@@ -66,7 +66,7 @@ const AppointMent = ({navigation}) => {
 
 
   const bookAppointment = async () => {
-    setLoading(true)
+   
     let obj = {
       first_name: firstName,
       last_name:lastName,
@@ -78,6 +78,7 @@ const AppointMent = ({navigation}) => {
       headers: {Authorization: `Bearer ${token}`},
     };
     if (firstName !== ''&& lastName!=="" && email !== '' && Phone !== '') {
+      setLoading(true)
       axios
         .post(
           'https://customdevu11.onlinetestingserver.com/wetrust/public/api/addAppointment',

@@ -61,6 +61,7 @@ const Signup = ({navigation}) => {
           console.log(response,"response")
           setLoading(false);
             AsyncStorage.setItem('token', response.data.access_token);
+            
             // Toast.show(response?.data?.message);
            if (response?.status == 200) {
              setTimeout(() => {

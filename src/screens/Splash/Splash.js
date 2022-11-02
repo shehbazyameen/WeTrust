@@ -7,13 +7,19 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const Splash = ({navigation}) => {
   setTimeout(() => {
      let Token = AsyncStorage.getItem('token');
-     if(Token!==null){
-       navigation.navigate("HomeStack",{
-        screen:"HomeScreen"
-       })
-     }else{
-       navigation.navigate('Intro');
-     }
+     console.log(Token,"token CHECK")
+     Token.then((response)=>{
+      if(response!==null){
+        navigation.navigate("HomeStack",{
+          screen:"HomeScreen"
+         })
+
+      }
+      else{
+        navigation.navigate('Intro');
+      }
+     })
+     
    
   }, 1000);
 
