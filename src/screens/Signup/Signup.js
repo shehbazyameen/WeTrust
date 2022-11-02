@@ -32,6 +32,8 @@ import {
 } from 'react-native-indicators';
  
 const Signup = ({navigation}) => {
+
+ 
   //use ref
   const userNameRef = useRef();
   const refenterEmail = useRef();
@@ -41,9 +43,25 @@ const Signup = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  
+ const [validateEmail, setValidateEmail] = useState(false);
+  
+ 
+ function emailValidation(email) {
+    var re =
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-
+    if (re.test(email)) {
+     setValidateEmail(true)
+    } else {
+      // setValidateEmail(false);
+    }
+  }
+  
+  
   const signUp = async() => {
+
+
     setLoading(true)
     let obj = {
       name: userName,
@@ -158,7 +176,7 @@ const Signup = ({navigation}) => {
                 placeholder={labels.email}
                 leftIcon={Assets.Email}
                 value={email}
-                onChange={e => setEmail(e)}
+                onChange={e =>{ setEmail(e);emailValidation(e)}}
               />
               <View style={{marginTop: 35}} />
               <InputFeild
@@ -180,7 +198,17 @@ const Signup = ({navigation}) => {
                   title={labels.signUp}
                   onPress={() => {
                     // navigation.replace('HomeStack', {screen: 'HomeScreen'});
-                    signUp();
+                    if (validateEmail){
+                      if (password.length >= 8) {
+                        signUp();
+                      } else {
+                        Toast.show('password should have 8 character');
+                      }
+                    }else{
+                      Toast.show("Email is not valid")
+                    }
+                      
+                   
                   }}
                 />
               )}

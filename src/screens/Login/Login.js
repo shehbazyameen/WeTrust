@@ -31,9 +31,27 @@ import {
 
 
 const Login = ({navigation}) => {
+
+  
+   
+   console.log(emailValidation(email))
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading,setLoading]=useState(false);
+  const [validateEmail, setValidateEmail] = useState(false);
+
+  function emailValidation(email) {
+    var re =
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (re.test(email)) {
+      //  global.validate = true;
+      setValidateEmail(true)
+    } else {
+    //  setValidateEmail(false)
+    }
+  }
+  
 
   const login = () => {
     setLoading(true)
@@ -124,7 +142,7 @@ const Login = ({navigation}) => {
               leftIcon={Assets.user}
               // rightIcon={Assets.user}
               value={email}
-              onChange={e => setEmail(e)}
+              onChange={e =>{setEmail(e);emailValidation(e)}}
             />
             <View style={{marginTop: 35}} />
             <InputFeild
@@ -144,7 +162,14 @@ const Login = ({navigation}) => {
                 title={labels.signIn}
                 onPress={() => {
                   // navigation.navigate('Signup');
-                  login();
+                  if (validateEmail) {
+                   
+                      login();
+                   
+                  } else {
+                    Toast.show('Email is not valid');
+                  }
+                  
                 }}
               />
             )}

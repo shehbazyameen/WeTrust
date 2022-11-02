@@ -141,20 +141,24 @@ const Payment = ({navigation,route}) => {
    
     try {
       const token = client.createToken(obj);
-      
+      console.log(token,"00000")
       token.then(e => {
         console.log(e,"token1");
+        if(e.error){
+          setLoading(false)
+          return Toast.show(e?.error?.message)
+        }
         setStripeToken(e)
         setLast4(e?.card?.last4);
-      
+        
        
            addPayment(e?.card?.last4,e?.id);
         
       
-      });
+      })
     } catch (e) {
       setLoading(false)
-       Toast.show(e)
+       Toast.show(e?.code)
     }
   };
 
