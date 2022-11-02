@@ -54,6 +54,7 @@ const SignerVerification = ({navigation, route}) => {
 
   const docsSubmit = async () => {
     setLoading(true);
+ 
    
     let obj = {
       phone: route?.params?.allData?.Phone,
@@ -75,22 +76,27 @@ const SignerVerification = ({navigation, route}) => {
     //  });
     //  console.log(form,"form check")
      let phoneData = new FormData();
-     phoneData.append('phone', route?.params?.allData?.Phone);
+     phoneData.append('phone',route?.params?.signerData==true?route?.params?.allData?.Phone:null);
 
-     phoneData.append('document',route?.params?.allData?.document?._parts?.[0][1]);
+     phoneData.append('document',route?.params?.signerData==true ? route?.params?.allData?.document?._parts?.[0][1]:route?.params?.document?._parts?.[0][1]);
 
-     phoneData.append('email',route?.params?.allData?.email);
+     phoneData.append('email',route?.params?.signerData==true? route?.params?.allData?.email:null);
 
-     phoneData.append('first_name',route?.params?.allData?.firstName);
+     phoneData.append('first_name',route?.params?.signerData==true?route?.params?.allData?.firstName:null);
 
-     phoneData.append('last_name', route?.params?.allData?.lastName);
+     phoneData.append('last_name',route?.params?.signerData==true? route?.params?.allData?.lastName:null);
 
-     phoneData.append('service_id',route?.params?.allData?.serviceId);
+     phoneData.append(
+       'service_id',
+       route?.params?.signerData == true
+         ? route?.params?.allData?.serviceId
+         : route?.params?.serviceId,
+     );
 
-     phoneData.append('has_signer', route?.params?.allData?.hasSigner);
+     phoneData.append('has_signer',route?.params?.signerData==true ? route?.params?.allData?.hasSigner: route?.params?.hasSigner);
       // phoneData.append('has_signer', 0);
 
-     phoneData.append('has_witness',route?.params?.allData?.hasWitness);
+     phoneData.append('has_witness',route?.params?.signerData==true ? route?.params?.allData?.hasWitness:route?.params?.hasWitness);
     // phoneData.append('has_witness', 0);
 
      phoneData.append(
@@ -149,17 +155,22 @@ if(true){
         
          setTimeout(() => {
            navigation.navigate('Payment', {
-             serviceId: route?.params?.allData?.serviceId,
+             serviceId:
+               route?.params?.signerData == true
+                 ? route?.params?.allData?.serviceId
+                 : route?.params?.serviceId,
              document: route?.params?.allData?.document?._parts?.[0]?.[1],
-             additionalPrice:response?.data?.price
+             additionalPrice: response?.data?.price,
+             formId: response?.data?.form_id,
+             signerCharges: route?.params?.signerData == true?5:0
            });
          }, 1000);
        }
      })
      .catch(error => {
        setLoading(false);
-       alert(JSON.stringify(error));
-       console.log(error,"error object")
+     
+       console.log(error.config,"error object")
        //  Toast.show(error?.messages);
      });
 }
@@ -415,29 +426,32 @@ if(true){
               })}
             </View>
           </View>
-
-          <View style={{paddingVertical: 20, paddingBottom: 30}}>
-            {showProgress && (
-              <TouchableOpacity
-                onPress={() =>
-                  // navigation.navigate('Payment')
-                  docsSubmit()
-                }
-                style={{backgroundColor: '#AC872E', borderRadius: 6}}>
-                <Text
-                  style={{
-                    marginHorizontal: 40,
-                    color: '#ffffff',
-                    marginVertical: 12,
-                    fontFamily: fonts.SitkaDisplay,
-                    fontWeight: 'bold',
-                    fontSize: 14,
-                  }}>
-                  Pay Now
-                </Text>
-              </TouchableOpacity>
-            )}
-          </View>
+          {loading ? (
+            <MaterialIndicator color="#AC872E" />
+          ) : (
+            <View style={{paddingVertical: 20, paddingBottom: 30}}>
+              {showProgress && (
+                <TouchableOpacity
+                  onPress={() =>
+                    // navigation.navigate('Payment')
+                    docsSubmit()
+                  }
+                  style={{backgroundColor: '#AC872E', borderRadius: 6}}>
+                  <Text
+                    style={{
+                      marginHorizontal: 40,
+                      color: '#ffffff',
+                      marginVertical: 12,
+                      fontFamily: fonts.SitkaDisplay,
+                      fontWeight: 'bold',
+                      fontSize: 14,
+                    }}>
+                    Pay Now
+                  </Text>
+                </TouchableOpacity>
+              )}
+            </View>
+          )}
         </View>
       </ScrollView>
     </View>

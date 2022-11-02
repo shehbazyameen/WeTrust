@@ -2,10 +2,19 @@ import {View, Image} from 'react-native';
 import React from 'react';
 import styles from './Styles';
 import {Assets} from '../../assests';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Splash = ({navigation}) => {
   setTimeout(() => {
-    navigation.navigate('Intro');
+     let Token = AsyncStorage.getItem('token');
+     if(Token!==null){
+       navigation.navigate("HomeStack",{
+        screen:"HomeScreen"
+       })
+     }else{
+       navigation.navigate('Intro');
+     }
+   
   }, 1000);
 
   return (

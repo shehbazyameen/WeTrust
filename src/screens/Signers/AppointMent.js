@@ -19,6 +19,17 @@ import moment from 'moment/moment';
 import axios from 'react-native-axios';
 import Toast from 'react-native-simple-toast';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {
+  BallIndicator,
+  BarIndicator,
+  DotIndicator,
+  MaterialIndicator,
+  PacmanIndicator,
+  PulseIndicator,
+  SkypeIndicator,
+  UIActivityIndicator,
+  WaveIndicator,
+} from 'react-native-indicators';
 
 const AppointMent = ({navigation}) => {
   //use ref
@@ -29,6 +40,7 @@ const AppointMent = ({navigation}) => {
    const [lastName, setLastName] = useState('');
    const [email, setEmail] = useState('');
    const [Phone, setPhone] = useState('');
+   const [loading, setLoading] = useState(false);
 
   useEffect(()=>{
   AsyncStorage.getItem("token").then((response)=>{
@@ -54,12 +66,14 @@ const AppointMent = ({navigation}) => {
 
 
   const bookAppointment = async () => {
+    setLoading(true)
     let obj = {
-      firstName: firstName,
-      lastName:lastName,
+      first_name: firstName,
+      last_name:lastName,
       email:email,
       Phone:Phone
     };
+    console.log(obj,"000")
     const config = {
       headers: {Authorization: `Bearer ${token}`},
     };
@@ -73,6 +87,7 @@ const AppointMent = ({navigation}) => {
         .then(response => {
        
           if (response?.status == 200) {
+            setLoading(false)
             setTimeout(() => {
               setFirstName('');
               setLastName('');
@@ -84,7 +99,8 @@ const AppointMent = ({navigation}) => {
           }
         })
         .catch(error => {
-          Toast.show('Email or password incorrect');
+          setLoading(false)
+          Toast.show(error?.message);
         });
     } else {
       Toast.show('All fields are required');
@@ -217,6 +233,7 @@ const AppointMent = ({navigation}) => {
             paddingHorizontalRight={22}
             value={Phone}
             onChange={e => setPhone(e)}
+            keyboardType="numeric"
           />
           <View
             style={{
@@ -238,6 +255,7 @@ const AppointMent = ({navigation}) => {
             <TouchableOpacity
               onPress={() => {
                 // setDatePickerVisibility(true);
+
                 setOpen(true);
               }}
               style={{
@@ -297,30 +315,34 @@ const AppointMent = ({navigation}) => {
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <TouchableOpacity
-              onPress={() => bookAppointment()}
-              style={{
-                backgroundColor: '#AC872E',
-                borderRadius: 6,
-                width: width / 2.2,
-
-                justifyContent: 'center',
-                alignItems: 'center',
-                paddingHorizontal: 18,
-                paddingVertical: 12,
-              }}>
-              <Text
+            {loading ? (
+              <MaterialIndicator color="#AC872E" />
+            ) : (
+              <TouchableOpacity
+                onPress={() => bookAppointment()}
                 style={{
-                  // marginHorizontal: 40,
-                  color: '#ffffff',
-                  // marginVertical: 12,
-                  fontFamily: fonts.SitkaDisplay,
-                  fontWeight: 'bold',
-                  fontSize: 14,
+                  backgroundColor: '#AC872E',
+                  borderRadius: 6,
+                  width: width / 2.2,
+
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  paddingHorizontal: 18,
+                  paddingVertical: 12,
                 }}>
-                Book Appointment
-              </Text>
-            </TouchableOpacity>
+                <Text
+                  style={{
+                    // marginHorizontal: 40,
+                    color: '#ffffff',
+                    // marginVertical: 12,
+                    fontFamily: fonts.SitkaDisplay,
+                    fontWeight: 'bold',
+                    fontSize: 14,
+                  }}>
+                  Book Appointment
+                </Text>
+              </TouchableOpacity>
+            )}
           </View>
         </ScrollView>
       </ImageBackground>

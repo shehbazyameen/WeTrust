@@ -10,7 +10,7 @@ import {
   ScrollView,
   Alert,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import {colors} from '../../config/Colors';
 import {Assets} from '../../assests';
 import {labels} from '../../config/Lables';
@@ -24,51 +24,81 @@ import moment from 'moment/moment';
 import fonts from '../../assests/fonts';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'react-native-axios';
+import Toast from 'react-native-simple-toast';
+import {
+  BallIndicator,
+  BarIndicator,
+  DotIndicator,
+  MaterialIndicator,
+  PacmanIndicator,
+  PulseIndicator,
+  SkypeIndicator,
+  UIActivityIndicator,
+  WaveIndicator,
+} from 'react-native-indicators';
 
 const {height, width} = Dimensions.get('window');
 
 const Payment = ({navigation,route}) => {
+  const [loading,setLoading]=useState(false);
   const [token, setToken] = useState('');
   const [stripeToken, setStripeToken] = useState();
 
-  const addPayment=()=>{
+  useEffect(() => {
+  setStripeToken(stripeToken)
+  setLast4(last4)
+  }, [stripeToken,last4])
+  
+
+  const addPayment=(last4,stripe)=>{
 
      const config = {
        headers: {Authorization: `Bearer ${token}`},
       
      };
+    
      let obj = {
        service_id: route?.params?.serviceId,
-       cardholder_name: cardHolderNumber,
-       date: cardHolderExp,
+       cardholder_name: cardHolder,
+       date: cardHolderExp.toString(),
        last_4_digit: last4,
-       stripe_token:stripeToken,
+       stripe_token: stripe,
+       document_id: route?.params?.formId,
      };
+     console.log(obj,"obj check");
      let cardForm = new FormData()
      cardForm.append('service_id', route?.params?.serviceId);
      cardForm.append('cardholder_name', cardHolderNumber);
      cardForm.append('date',cardHolderExp);
      cardForm.append('last_4_digit', last4);
      cardForm.append('stripe_token', stripeToken);
-      axios
-        .post(
-          'https://customdevu11.onlinetestingserver.com/wetrust/public/api/payment',
-          obj,
-          config,
-        )
-        .then(response => {
-          console.log(response, 'response');
+     cardForm.append('document_id', route?.params?.formId);
+      
+        axios
+          .post(
+            'https://customdevu11.onlinetestingserver.com/wetrust/public/api/payment',
+            obj,
+            config,
+          )
+          .then(response => {
+            setLoading(false)
+            console.log(response, 'response1');
 
-          // Toast.show(response?.data?.message);
-          if (response?.status == 200) {
-            console.log(response, 'PAYMENT');
-          }
-        })
-        .catch(error => {
-          // alert(JSON.stringify(error));
-          console.log(error?.config, 'error object');
-          //  Toast.show(error?.messages);
-        });
+            // Toast.show(response?.data?.message);
+            if (response?.status == 200) {
+              console.log(response, 'PAYMENT');
+              
+              setcardHolder("")
+              setcardHolderNumber("")
+              setcardHolderExp("")
+             setcardHolderCvc("")
+              navigation.navigate('SignersSuccess');
+            }
+          })
+          .catch(error => {
+            setLoading(false)
+             Toast.show(error?.messages);
+          });
 
   }
 
@@ -76,40 +106,6 @@ const Payment = ({navigation,route}) => {
      const unsubscribe = navigation.addListener('focus', () => {
        AsyncStorage.getItem('token').then(response => {
         setToken(response);
-         const config = {
-           headers: {Authorization: `Bearer ${response}`},
-           'content-type': 'multipart/form-data',
-           Accept: 'multipart/form-data',
-         };
-         let obj = {
-           document: route?.params?.document,
-           service_id: route?.params?.serviceId,
-         };
-         let formData = new FormData();
-          formData.append('document',route?.params?.document)
-           formData.append('service_id',route?.params?.serviceId)
-           console.log('sss',formData);
-         
-         axios
-           .post(
-             'https://customdevu11.onlinetestingserver.com/wetrust/public/api/getPrice',
-            formData,
-             config,
-           )
-           .then(response => {
-            
-             console.log(response, 'response');
-
-             // Toast.show(response?.data?.message);
-             if (response?.status == 200) {
-               console.log(response, 'response');
-             }
-           })
-           .catch(error => {
-            //  alert(JSON.stringify(error));
-             console.log(error?.config, 'error object');
-             //  Toast.show(error?.messages);
-           });
        });
       
      });
@@ -127,12 +123,14 @@ const Payment = ({navigation,route}) => {
   const [cardHolderCvc, setcardHolderCvc] = useState('');
 
   const Secret_key =
-    'sk_test_51LAfD3JVHJPHzoCJBRqz7JPDH5PsT6uigHHgWBt3U9uu8Q6hYMNrG5DE6pfzFTStmCSyihJnjzGjQhSPLRKzt97200bys5KoAU';
+    'pk_test_51LAfD3JVHJPHzoCJFDECjV749Iqs0Vku39ckKNltoUrJMYaDQ1nKTuHCBAlkLUMSKpJpRihQD3at9Aq9XSt8B4M100TwkiWO3Z';
 
-  console.log(cardHolderExp);
+  
 
   //Validation on fields
   const Submit = () => {
+    
+    setLoading(true)
     var client = new Stripe(Secret_key);
     const obj = {
       number: cardHolderNumber,
@@ -140,19 +138,23 @@ const Payment = ({navigation,route}) => {
       exp_year: cardHolderExp[1],
       cvc: cardHolderCvc,
     };
+   
     try {
       const token = client.createToken(obj);
+      
       token.then(e => {
         console.log(e,"token1");
         setStripeToken(e)
         setLast4(e?.card?.last4);
-        setTimeout(()=>{
-           addPayment();
-        },500)
+      
+       
+           addPayment(e?.card?.last4,e?.id);
+        
       
       });
     } catch (e) {
-      // alert(e);
+      setLoading(false)
+       Toast.show(e)
     }
   };
 
@@ -258,7 +260,9 @@ const Payment = ({navigation,route}) => {
                   marginVertical: 12,
                 }}>
                 <Text style={[styles.textSignWith]}>Signer Charges</Text>
-                <Text style={[styles.textSignWith]}>$05.00</Text>
+                <Text style={[styles.textSignWith]}>
+                  ${route?.params?.signerCharges}.0
+                </Text>
               </View>
 
               <View
@@ -274,7 +278,9 @@ const Payment = ({navigation,route}) => {
                   marginVertical: 12,
                 }}>
                 <Text style={[styles.textSignWith]}>Total</Text>
-                <Text style={[styles.textSignWith]}>${route?.params?.additionalPrice+5}</Text>
+                <Text style={[styles.textSignWith]}>
+                  ${route?.params?.additionalPrice + 5}
+                </Text>
               </View>
             </View>
             <View style={{marginTop: 22}} />
@@ -389,14 +395,32 @@ const Payment = ({navigation,route}) => {
               </View>
             </View>
             <View style={{marginTop: 24}} />
-            <View style={{alignSelf: 'center'}}>
-              <SmallButton
-                title={'Pay Now'}
-                onPress={() => {
-                  // navigation.navigate('SignersSuccess');
-                  Submit();
-                }}
-              />
+            <View style={{alignSelf: 'center', flexDirection: 'row'}}>
+              {loading ? (
+                <MaterialIndicator color="#AC872E" />
+              ) : (
+                <SmallButton
+                  title={'Pay Now'}
+                  onPress={() => {
+                    // navigation.navigate('SignersSuccess');
+                    if (
+                      cardHolder !== '' &&
+                      cardHolderNumber !== '' &&
+                      cardHolderExp !== '' &&
+                      cardHolderCvc
+                    ) {
+                      if (cardHolderNumber?.length>=16) {
+                        Submit();
+                      }else{
+                        Toast.show("minimum length of card number should be 16")
+                      }
+                     
+                    } else {
+                    Toast.show("All Fields related to payment are required")
+                    }
+                  }}
+                />
+              )}
             </View>
             <View style={{marginTop: 64}} />
           </View>

@@ -10,9 +10,10 @@ import React, {useState, useEffect} from 'react';
 import {colors} from '../../config/Colors';
 import {Assets} from '../../assests';
 import fonts from '../../assests/fonts';
+import Toast from 'react-native-simple-toast';
 
-const Signers = ({navigation,route}) => {
-  console.log(route?.params,"all data")
+const Signers = ({navigation, route}) => {
+  console.log(route?.params, 'all data');
   const [progress, setProgres] = useState(0);
   const [showProgress, setShowProgress] = useState(false);
   const {width, height} = Dimensions.get('window');
@@ -66,6 +67,7 @@ const Signers = ({navigation,route}) => {
                 document: route?.params?.document,
                 serviceId: route?.params?.serviceId,
               });
+              Toast.show('$5 added as signer charges');
             }}
             style={{
               backgroundColor: '#A5822C',
@@ -96,6 +98,7 @@ const Signers = ({navigation,route}) => {
                 document: route?.params?.document,
                 serviceId: route?.params?.serviceId,
               });
+               Toast.show('$5 added as signer charges');
             }}
             style={{
               backgroundColor: '#A5822C',
@@ -119,14 +122,17 @@ const Signers = ({navigation,route}) => {
           <View>
             <TouchableOpacity
               style={{flexDirection: 'row', marginTop: 110}}
-              onPress={() =>
-                navigation.navigate('SignerVerification', {
-                  hasSigner: 0,
-                  hasWitness: 0,
-                  document: route?.params?.document,
-                  serviceId: route?.params?.serviceId,
-                  signerData:false,
-                })
+              onPress={() =>{
+                  navigation.navigate('SignerVerification', {
+                    hasSigner: 0,
+                    hasWitness: 0,
+                    document: route?.params?.document,
+                    serviceId: route?.params?.serviceId,
+                    signerData: false,
+                  });
+                 
+              }
+              
               }>
               <Text
                 style={{
