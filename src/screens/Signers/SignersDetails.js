@@ -32,6 +32,20 @@ const SignersDetails = ({navigation, route}) => {
   const [email, setEmail] = useState('');
   const [Phone, setPhone] = useState('');
 
+  const [validateEmail, setValidateEmail] = useState(false);
+
+  function emailValidation(email) {
+   
+    var re =
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+     if(re.test(email)){
+      setValidateEmail(true)
+     } else{
+      setValidateEmail(false);
+     }
+  }
+
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
@@ -144,7 +158,7 @@ const SignersDetails = ({navigation, route}) => {
           // leftIcon={Assets.Password}
           rightIcon={Assets.Email}
           value={email}
-          onChange={e => setEmail(e)}
+          onChange={e =>{ setEmail(e.trim()); emailValidation(e);}}
         />
         <View
           style={{
@@ -186,22 +200,29 @@ const SignersDetails = ({navigation, route}) => {
         <View style={{marginHorizontal: 40, marginVertical: 25}}>
           <TouchableOpacity
             onPress={() => {
+              emailValidation(email)
             if(firstName!=="" && lastName!==""&& email!=="" && Phone?.length){
+                  if(validateEmail){
+                        navigation.navigate('SignerVerification', {
+                          allData: {
+                            ...route.params,
+                            firstName,
+                            lastName,
+                            email,
+                            Phone,
+                          },
+                          signerData: true,
+                        });
+                        setFirstName('');
+                        setLastName('');
+                        setEmail('');
+                        setPhone('');
+                  }
 
-                  navigation.navigate('SignerVerification', {
-                    allData: {
-                      ...route.params,
-                      firstName,
-                      lastName,
-                      email,
-                      Phone,
-                    },
-                    signerData: true,
-                  });
-                  setFirstName("");
-                  setLastName("");
-                  setEmail("");
-                  setPhone("");
+                  else{
+                    Toast.show("Email is invalid")
+                  }
+              
             }else{
             Toast.show("All fields are required")
             }  

@@ -22,7 +22,7 @@ const AppointmentDetails = ({navigation,route}) => {
   let day = moment(route?.params?.date).format('dddd');
   let time = moment(route?.params?.date).format('hh:mm A');
   let date = moment(route?.params?.date).format('dddd,MM,YY');
-   console.log(day,"day",time,"time",date,"date" );
+  
   return (
     <ImageBackground
       style={{flex: 1}}

@@ -44,20 +44,17 @@ const Signup = ({navigation}) => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   
- const [validateEmail, setValidateEmail] = useState(false);
-  
- 
- function emailValidation(email) {
-    var re =
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+   const [validateEmail, setValidateEmail] = useState(false);
+   function emailValidation(email) {
+     var re =
+       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    if (re.test(email)) {
-     setValidateEmail(true)
-    } else {
-      // setValidateEmail(false);
-    }
-  }
-  
+     if (re.test(email)) {
+       setValidateEmail(true);
+     } else {
+       setValidateEmail(false);
+     }
+   }
   
   const signUp = async() => {
 
@@ -176,7 +173,7 @@ const Signup = ({navigation}) => {
                 placeholder={labels.email}
                 leftIcon={Assets.Email}
                 value={email}
-                onChange={e =>{ setEmail(e);emailValidation(e)}}
+                onChange={e =>{setEmail(e.trim());emailValidation(e)}}
               />
               <View style={{marginTop: 35}} />
               <InputFeild
@@ -202,7 +199,7 @@ const Signup = ({navigation}) => {
                       if (password.length >= 8) {
                         signUp();
                       } else {
-                        Toast.show('password should have 8 character');
+                        Toast.show('password should have 8 characters');
                       }
                     }else{
                       Toast.show("Email is not valid")

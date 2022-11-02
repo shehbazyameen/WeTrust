@@ -63,6 +63,17 @@ const AppointMent = ({navigation}) => {
   };
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
+  const [validateEmail, setValidateEmail] = useState(false);
+  function emailValidation(email) {
+    var re =
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (re.test(email)) {
+      setValidateEmail(true);
+    } else {
+      setValidateEmail(false);
+    }
+  }
 
 
   const bookAppointment = async () => {
@@ -78,31 +89,37 @@ const AppointMent = ({navigation}) => {
       headers: {Authorization: `Bearer ${token}`},
     };
     if (firstName !== ''&& lastName!=="" && email !== '' && Phone !== '') {
-      setLoading(true)
-      axios
-        .post(
-          'https://customdevu11.onlinetestingserver.com/wetrust/public/api/addAppointment',
-          obj,
-          config
-        )
-        .then(response => {
-       
-          if (response?.status == 200) {
-            setLoading(false)
-            setTimeout(() => {
-              setFirstName('');
-              setLastName('');
-              setEmail('');
-              setPhone('');
+      if (validateEmail){
+        setLoading(true);
+        axios
+          .post(
+            'https://customdevu11.onlinetestingserver.com/wetrust/public/api/addAppointment',
+            obj,
+            config,
+          )
+          .then(response => {
+            if (response?.status == 200) {
+              setLoading(false);
+              setTimeout(() => {
+                setFirstName('');
+                setLastName('');
+                setEmail('');
+                setPhone('');
 
-            navigation.navigate('AppointmentDetails',{date:date});
-            }, 1000);
-          }
-        })
-        .catch(error => {
-          setLoading(false)
-          Toast.show(error?.message);
-        });
+                navigation.navigate('AppointmentDetails', {date: date});
+              }, 1000);
+            }
+          })
+          .catch(error => {
+            setLoading(false);
+            Toast.show(error?.message);
+          });
+
+      }else{
+        Toast.show("Email is invalid");
+      }
+      
+      
     } else {
       Toast.show('All fields are required');
     }
@@ -215,7 +232,7 @@ const AppointMent = ({navigation}) => {
             paddingHorizontal={0}
             paddingHorizontalRight={22}
             value={email}
-            onChange={e => setEmail(e)}
+            onChange={e =>{setEmail(e?.trim()); emailValidation(e.trim());}}
           />
           <View
             style={{
