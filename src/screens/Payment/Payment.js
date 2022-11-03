@@ -123,7 +123,7 @@ const Payment = ({navigation,route}) => {
   const [cardHolderCvc, setcardHolderCvc] = useState('');
 
   const Secret_key =
-    'pk_test_51LAfD3JVHJPHzoCJFDECjV749Iqs0Vku39ckKNltoUrJMYaDQ1nKTuHCBAlkLUMSKpJpRihQD3at9Aq9XSt8B4M100TwkiWO3Z';
+    'pk_live_51LcDmNH2NicKN5GQVyhBXuD6MXu0cFq7MlLaA3yG9Wms39QMHbwgKMCpv5Afg7lKahUp8qD3t9lcr2IFzf0cDRMl00Ck26CC0a';
 
   
 
