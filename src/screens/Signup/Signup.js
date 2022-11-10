@@ -147,13 +147,13 @@ const Signup = ({navigation}) => {
               contentContainerStyle={{
                 alignItems: 'center',
               }}>
-              <View style={{marginTop: 42}} />
+              <View style={{marginTop: 25}} />
               <Text style={[styles.textWelcome]}>{labels.welcomeBack}</Text>
-              <View style={{marginTop: 10}} />
+              {/* <View style={{marginTop: 5}} />
               <Text style={[styles.createYourAccount]}>
                 {labels.createYourAccount}
-              </Text>
-              <View style={{marginTop: 42}} />
+              </Text> */}
+              <View style={{marginTop: 25}} />
               <InputFeild
                 refValueCurrent={userNameRef}
                 returnKeyType={'next'}
@@ -164,7 +164,7 @@ const Signup = ({navigation}) => {
                 value={userName}
                 onChange={e => setUserName(e)}
               />
-              <View style={{marginTop: 35}} />
+              <View style={{marginTop: 25}} />
               <InputFeild
                 valueRef={userNameRef}
                 refValueCurrent={refenterEmail}
@@ -175,7 +175,7 @@ const Signup = ({navigation}) => {
                 value={email}
                 onChange={e =>{setEmail(e.trim());emailValidation(e)}}
               />
-              <View style={{marginTop: 35}} />
+              <View style={{marginTop: 25}} />
               <InputFeild
                 valueRef={refenterEmail}
                 returnKeyType={'done'}
