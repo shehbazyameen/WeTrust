@@ -283,7 +283,9 @@ const Payment = ({navigation,route}) => {
                 }}>
                 <Text style={[styles.textSignWith]}>Total</Text>
                 <Text style={[styles.textSignWith]}>
-                  ${route?.params?.additionalPrice + 5}
+                  $
+                  {route?.params?.additionalPrice +
+                    route?.params?.signerCharges}
                 </Text>
               </View>
             </View>
@@ -413,14 +415,15 @@ const Payment = ({navigation,route}) => {
                       cardHolderExp !== '' &&
                       cardHolderCvc
                     ) {
-                      if (cardHolderNumber?.length>=16) {
+                      if (cardHolderNumber?.length >= 16) {
                         Submit();
-                      }else{
-                        Toast.show("minimum length of card number should be 16")
+                      } else {
+                        Toast.show(
+                          'minimum length of card number should be 16',
+                        );
                       }
-                     
                     } else {
-                    Toast.show("All Fields related to payment are required")
+                      Toast.show('All Fields related to payment are required');
                     }
                   }}
                 />

@@ -144,7 +144,7 @@ const Login = ({navigation}) => {
               value={email}
               onChange={e =>{setEmail(e);emailValidation(e)}}
             />
-            <View style={{marginTop: 35}} />
+            <View style={{marginTop: 25}} />
             <InputFeild
               valueRef={refenterNewPassword}
               // imageInputField
@@ -174,9 +174,9 @@ const Login = ({navigation}) => {
               />
             )}
 
-            <View style={{marginTop: 53}} />
+            <View style={{marginTop: 33}} />
             {/* <Text style={[styles.textSignWith]}>{labels.orSignWth}</Text> */}
-            <View style={{marginTop: 16}} />
+            <View style={{marginTop: 10}} />
             {/* <View
               style={{
                 flexDirection: 'row',
@@ -194,7 +194,7 @@ const Login = ({navigation}) => {
                 <Image resizeMode="contain" source={Assets.facebook} />
               </TouchableOpacity>
             </View> */}
-            <View style={{marginTop: 64}} />
+            <View style={{marginTop: 4}} />
             <View
               style={{
                 flexDirection: 'row',
