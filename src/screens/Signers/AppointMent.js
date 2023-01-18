@@ -30,6 +30,7 @@ import {
   UIActivityIndicator,
   WaveIndicator,
 } from 'react-native-indicators';
+import { baseURL } from '../../config/constants';
 
 const AppointMent = ({navigation}) => {
   //use ref
@@ -93,7 +94,7 @@ const AppointMent = ({navigation}) => {
         setLoading(true);
         axios
           .post(
-            'https://customdevu11.onlinetestingserver.com/wetrust/public/api/addAppointment',
+            `${baseURL}/addAppointment`,
             obj,
             config,
           )

@@ -30,6 +30,7 @@ import {
   UIActivityIndicator,
   WaveIndicator,
 } from 'react-native-indicators';
+import { baseURL } from '../../config/constants';
  
 const Signup = ({navigation}) => {
 
@@ -69,7 +70,7 @@ const Signup = ({navigation}) => {
     if(userName!==""&&email!==""&&password!==""){
        axios
          .post(
-           'https://customdevu11.onlinetestingserver.com/wetrust/public/api/register',
+           `${baseURL}/register`,
            obj,
          )
          .then(response => {

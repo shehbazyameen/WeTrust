@@ -28,6 +28,7 @@ import {
   UIActivityIndicator,
   WaveIndicator,
 } from 'react-native-indicators';
+import { baseURL } from '../../config/constants';
 
 
 const Login = ({navigation}) => {
@@ -63,7 +64,7 @@ const Login = ({navigation}) => {
     if (email !== '' && password !== '') {
       axios
         .post(
-          'https://customdevu11.onlinetestingserver.com/wetrust/public/api/login',
+          `${baseURL}/login`,
           obj,
         )
         .then(response => {
@@ -175,25 +176,9 @@ const Login = ({navigation}) => {
             )}
 
             <View style={{marginTop: 33}} />
-            {/* <Text style={[styles.textSignWith]}>{labels.orSignWth}</Text> */}
+            
             <View style={{marginTop: 10}} />
-            {/* <View
-              style={{
-                flexDirection: 'row',
-              }}>
-              <TouchableOpacity activeOpacity={0.7}>
-                <Image resizeMode="contain" source={Assets.twitter} />
-              </TouchableOpacity>
-              <View style={{width: 16}} />
-
-              <TouchableOpacity activeOpacity={0.7}>
-                <Image resizeMode="contain" source={Assets.google} />
-              </TouchableOpacity>
-              <View style={{width: 16}} />
-              <TouchableOpacity activeOpacity={0.7}>
-                <Image resizeMode="contain" source={Assets.facebook} />
-              </TouchableOpacity>
-            </View> */}
+            
             <View style={{marginTop: 4}} />
             <View
               style={{

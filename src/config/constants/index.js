@@ -1,0 +1,2 @@
+export const baseURL = "https://customdevu11.onlinetestingserver.com/wetrust/public/api";
+export const secret_key='pk_live_51LcDmNH2NicKN5GQVyhBXuD6MXu0cFq7MlLaA3yG9Wms39QMHbwgKMCpv5Afg7lKahUp8qD3t9lcr2IFzf0cDRMl00Ck26CC0a'; 

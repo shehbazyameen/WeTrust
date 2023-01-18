@@ -240,6 +240,7 @@ if(true){
         type: [DocumentPicker.types.allFiles],
         mode: 'import',
         copyTo: 'documentDirectory',
+        allowMultiSelection:true
       });
       
       console.log(res, 'response');

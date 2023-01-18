@@ -36,6 +36,7 @@ import {
   UIActivityIndicator,
   WaveIndicator,
 } from 'react-native-indicators';
+import { baseURL, secret_key, Secret_key } from '../../config/constants';
 
 const {height, width} = Dimensions.get('window');
 
@@ -76,7 +77,7 @@ const Payment = ({navigation,route}) => {
       
         axios
           .post(
-            'https://customdevu11.onlinetestingserver.com/wetrust/public/api/payment',
+            `${baseURL}/payment`,
             obj,
             config,
           )
@@ -122,8 +123,7 @@ const Payment = ({navigation,route}) => {
   const [cardHolderExp, setcardHolderExp] = useState([]);
   const [cardHolderCvc, setcardHolderCvc] = useState('');
 
-  const Secret_key =
-    'pk_live_51LcDmNH2NicKN5GQVyhBXuD6MXu0cFq7MlLaA3yG9Wms39QMHbwgKMCpv5Afg7lKahUp8qD3t9lcr2IFzf0cDRMl00Ck26CC0a';
+  const Secret_key = secret_key;
 
   
 
@@ -284,8 +284,7 @@ const Payment = ({navigation,route}) => {
                 <Text style={[styles.textSignWith]}>Total</Text>
                 <Text style={[styles.textSignWith]}>
                   $
-                  {route?.params?.additionalPrice +
-                    route?.params?.signerCharges}
+                  {Number(route?.params?.additionalPrice) + Number(route?.params?.signerCharges)}
                 </Text>
               </View>
             </View>
